@@ -236,12 +236,11 @@
       "sector": "education",
       "year": null,
       "platform": "youtube",
-      "embedId": null,
+      "embedId": "MqUMCehhKiA",
       "cuePoint": null,
       "featured": true,
       "poster": "thumbnails-posters/colburn-testimonial-thumbnail.jpg",
-      "needsConfirmation": true,
-      "notes": "AWAITING URL. Client confirmed a testimonial video exists but there is no root/programme film for Colburn. Brief Section 7 requires this be embedded rather than quoted. Poster art is on hand; the embed slot renders as a poster-with-quote fallback until the ID lands."
+      "notes": "Client testimonial. Supplied twice (short link + iframe) but both resolve to the same ID, so this is one video, not two. Brief Section 7 requires it be embedded rather than quoted. No Summer Encounter / programme film has been supplied for Colburn."
     }
   ]
 }
