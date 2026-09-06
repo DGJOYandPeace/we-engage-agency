@@ -70,15 +70,14 @@
     {
       "id": "meet-our-community",
       "title": "Meet our Community",
-      "client": null,
-      "sector": "education",
+      "client": "Cubieverse",
+      "sector": "brand",
       "year": null,
       "platform": "youtube",
       "embedId": "hqVIYGsu4Lk",
       "cuePoint": null,
       "featured": false,
-      "needsConfirmation": true,
-      "notes": "Client not identified in the brief or the link list. Sector inferred from title only \u2014 could be education or civic. Confirm before placing on a sector page."
+      "notes": "Cubieverse. Strong production quality, but Coin Hunt Fest is the preferred showcase for this client per David, so this stays in the lower 'additional work' grid."
     },
     {
       "id": "w-geriatrics-intro",
@@ -113,8 +112,8 @@
       "platform": "youtube",
       "embedId": "pZhWkHZIKaQ",
       "cuePoint": null,
-      "featured": false,
-      "notes": "Event highlight reel. David also produced original music and handled the audio-to-video mix."
+      "featured": true,
+      "notes": "Preferred showcase for the Titanium Toaster / Coin Hunt World relationship. David also produced original music and handled the audio-to-video mix. NOTE: David referred to this as 'CHF 2013'; the supplied link is the 2023 festival. Confirm if a separate 2013 film exists."
     },
     {
       "id": "gamified-brand-engagement",
@@ -204,19 +203,6 @@
       "notes": "Not mentioned in the brief. A general showreel may conflict with the sector-specific funnel strategy in Section 4 \u2014 decide whether it appears at all."
     },
     {
-      "id": "hair-and-beauty-reel",
-      "title": "Hair and Beauty Reel",
-      "client": null,
-      "sector": "brand",
-      "year": null,
-      "platform": "vimeo",
-      "embedId": "239795743",
-      "cuePoint": null,
-      "featured": false,
-      "needsConfirmation": true,
-      "notes": "POSSIBLY the Magic Hair Company material. The brief wants MHC featured prominently on /work with the verified 40% store-traffic stat, but no link in the list is labelled Magic Hair. Confirm whether this reel is it."
-    },
-    {
       "id": "music-composer-reel",
       "title": "Music Composer Reel",
       "client": "We Engage Agency",
@@ -231,7 +217,7 @@
     },
     {
       "id": "colburn-testimonial",
-      "title": "Colburn School \u2014 Client Testimonial",
+      "title": "Colburn School \u2014 On Video Production with We Engage Agency",
       "client": "Colburn School",
       "sector": "education",
       "year": null,
@@ -240,7 +226,33 @@
       "cuePoint": null,
       "featured": true,
       "poster": "thumbnails-posters/colburn-testimonial-thumbnail.jpg",
-      "notes": "Client testimonial. Supplied twice (short link + iframe) but both resolve to the same ID, so this is one video, not two. Brief Section 7 requires it be embedded rather than quoted. No Summer Encounter / programme film has been supplied for Colburn."
+      "notes": "Confirmed the only Colburn asset; the programme film is not available. Frame this as a testimonial about the video service itself rather than a Colburn programme piece \u2014 that is what the client is speaking to on camera."
+    },
+    {
+      "id": "magic-hair-testimonial",
+      "title": "Magic Hair Company \u2014 Client Testimonial",
+      "client": "Magic Hair Company",
+      "sector": "brand",
+      "year": null,
+      "platform": "youtube",
+      "embedId": "aAeyGK0lGgg",
+      "cuePoint": null,
+      "featured": true,
+      "needsConfirmation": true,
+      "notes": "On-camera client testimonial promoting We Engage Agency, hosted on the client's own page. Production quality is low by current standards \u2014 David's call \u2014 but a named client advocating on camera outweighs polish for a trust asset. Attribution to Magic Hair inferred from conversation context; confirm before publishing."
+    },
+    {
+      "id": "magic-hair-commercial-2",
+      "title": "Magic Hair Company \u2014 Commercial (second campaign)",
+      "client": "Magic Hair Company",
+      "sector": "brand",
+      "year": null,
+      "platform": "youtube",
+      "embedId": "wwP2EuyoHqk",
+      "cuePoint": null,
+      "featured": true,
+      "needsConfirmation": true,
+      "notes": "The second of the two commercials, and the one referenced in the client testimonial \u2014 so the two should sit together on the page. Ties to the publishable outcome: two TV ad campaigns increased store traffic by 40%. Attribution inferred from conversation context; confirm before publishing."
     }
   ]
 }
