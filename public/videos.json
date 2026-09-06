@@ -1,0 +1,179 @@
+{
+  "_meta": {
+    "schemaVersion": 1,
+    "note": "Seeded from BUILDBRIEF.md Section 9. Entries with embedId:null are named in the brief but no ID was recoverable from it — these MUST be filled in before build. No IDs have been guessed or fabricated.",
+    "sectors": ["education", "healthcare", "brand", "nonprofit", "narrative", "music"]
+  },
+  "videos": [
+    {
+      "id": "lbusd-cams-high-school",
+      "title": "CAMS High School",
+      "client": "Long Beach Unified School District",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": "LgQIx5MdfnU",
+      "cuePoint": 45,
+      "featured": true,
+      "notes": "Single film. The former '(Interviews)' catalog row was not a separate cut — it is this film deep-linked to 0:45, stored here as cuePoint. Do not re-add a second row."
+    },
+    {
+      "id": "lbusd-next-gen-learning",
+      "title": "Next-Gen Learning",
+      "client": "Long Beach Unified School District",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": "eGcAtYZUJTk",
+      "cuePoint": null,
+      "featured": false,
+      "notes": "Deduplicated. Previously listed twice under two titles; 'Video Production for Schools' was the duplicate title for this same ID and has been dropped. Confirm preferred title with David."
+    },
+    {
+      "id": "village-treasures",
+      "title": "Village Treasures",
+      "client": "Independent / We Engage Agency",
+      "sector": "narrative",
+      "year": null,
+      "platform": "vimeo",
+      "embedId": "869003902",
+      "vimeoHash": "235dd7ccb8",
+      "cuePoint": null,
+      "featured": true,
+      "notes": "UNLISTED / hash-gated. The hash MUST travel with every embed or playback fails: https://player.vimeo.com/video/869003902?h=235dd7ccb8 . Do not strip the hash while the video remains unlisted. Open item: David to confirm whether this moves to public Vimeo visibility."
+    },
+    {
+      "id": "lbusd-renaissance-high-school",
+      "title": "Renaissance High School for the Arts",
+      "client": "Long Beach Unified School District",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": true,
+      "notes": "NEEDS EMBED ID — named in brief Section 7 as a required embed for /education."
+    },
+    {
+      "id": "lbusd-teach-long-beach",
+      "title": "Teach Long Beach",
+      "client": "Long Beach Unified School District",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": true,
+      "notes": "NEEDS EMBED ID — teacher recruitment campaign film, required embed for /education."
+    },
+    {
+      "id": "lbusd-cabrillo-high-school",
+      "title": "Cabrillo High School",
+      "client": "Long Beach Unified School District",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": false,
+      "notes": "NEEDS EMBED ID — third campus in the 'four films, three campuses' stat line. Confirm whether a separate film exists."
+    },
+    {
+      "id": "colburn-summer-encounter",
+      "title": "Summer Encounter",
+      "client": "Colburn School",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": true,
+      "notes": "NEEDS EMBED ID — program promotional film."
+    },
+    {
+      "id": "colburn-testimonial",
+      "title": "Colburn School Client Testimonial",
+      "client": "Colburn School",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": true,
+      "poster": "thumbnails-posters/colburn-testimonial-thumbnail.jpg",
+      "notes": "NEEDS EMBED ID — brief flags this as one of the strongest trust assets; must be embedded on /education, not reduced to a text quote."
+    },
+    {
+      "id": "w-geriatrics-promo",
+      "title": "W Geriatrics Promotional Film",
+      "client": "W Geriatrics",
+      "sector": "healthcare",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": true,
+      "notes": "NEEDS EMBED ID — anchor case study for /healthcare. Outcome language: delivered in two weeks, within budget, now on the practice homepage."
+    },
+    {
+      "id": "magic-hair-company",
+      "title": "Magic Hair Company",
+      "client": "Magic Hair Company",
+      "sector": "brand",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": true,
+      "notes": "NEEDS EMBED ID — 2015-2019 relationship, rebrand + Culver City brick-and-mortar move. Publishable outcome stat: two TV ad campaigns increased store traffic by 40%."
+    },
+    {
+      "id": "la-master-chorale-big-sing-2022",
+      "title": "Big Sing 2022",
+      "client": "LA Master Chorale",
+      "sector": "nonprofit",
+      "year": 2022,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": false,
+      "notes": "NEEDS EMBED ID — frame as sustained 2018-2022 arts partnership incl. fundraising films, not a one-off event video."
+    },
+    {
+      "id": "unconquered-trailer",
+      "title": "Unconquered (Trailer)",
+      "client": "Independent",
+      "sector": "narrative",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": false,
+      "notes": "NEEDS EMBED ID — David as editor and sound designer. Black Seminole history subject matter."
+    },
+    {
+      "id": "craft-and-light",
+      "title": "Craft + Light",
+      "client": "Craft + Light Creative Arts Studio",
+      "sector": "brand",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": false,
+      "notes": "NEEDS EMBED ID — Long Beach retail brand film."
+    },
+    {
+      "id": "coin-hunt-fest-2023",
+      "title": "Coin Hunt Fest 2023",
+      "client": "Titanium Toaster Corp / Coin Hunt World",
+      "sector": "brand",
+      "year": 2023,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": false,
+      "notes": "NEEDS EMBED ID — event highlight reel; David also produced original music and handled audio-to-video mix."
+    }
+  ]
+}

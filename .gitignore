@@ -1,0 +1,23 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Dependencies / build output
+node_modules/
+dist/
+.cache/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Internal planning docs — NOT for a public repo.
+# BUILDBRIEF.md contains internal costing units explicitly marked "DO NOT PUBLISH",
+# plus pricing strategy and business-sensitive background.
+.private/
+BUILDBRIEF.md
