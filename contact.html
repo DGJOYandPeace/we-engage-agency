@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a Discovery Call — We Engage Agency</title>
+<meta name="description" content="Tell us about your project — budget, timeline, goal and audience — and book a discovery call with We Engage Agency.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/public/logos/wea-mark-round.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <a class="masthead__mark" href="/" aria-label="We Engage Agency — home">
+    <img src="/public/logos/wea-mark-rectangle-transparent.png" alt="We Engage Agency">
+  </a>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">☰</button>
+  <nav class="nav" id="primary-nav" data-open="false">
+    <a href="/">Home</a>
+    <a href="/education.html">Education</a>
+    <a href="/healthcare.html">Healthcare</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a class="btn btn--primary" href="/contact.html" aria-current="page">Book a Discovery Call</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="pagehead">
+    <div class="shell">
+      <p class="eyebrow">Start here</p>
+      <h1>Tell us what you're trying to say.</h1>
+      <p class="lede">Four questions, about two minutes. They let us come to the call already knowing whether we're the right fit and what a realistic scope looks like — so we can spend the time on your story instead of on qualifying each other.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="split" style="align-items:start">
+        <div class="split__text">
+          <!-- The intake form gates the calendar: no booking without it. -->
+          <form class="form" id="intake" novalidate>
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+              <span class="field__error">Please add your name.</span>
+            </div>
+            <div class="field">
+              <label for="email">Work email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <span class="field__error">Please add a valid email address.</span>
+            </div>
+            <div class="field">
+              <label for="org">Organization</label>
+              <input type="text" id="org" name="organization" autocomplete="organization" required>
+              <span class="field__error">Please add your organization.</span>
+            </div>
+            <div class="field">
+              <label for="budget">Budget range</label>
+              <select id="budget" name="budget" required>
+                <option value="">Select a range</option>
+                <option>Under $6,500</option>
+                <option>$6,500 – $12,500</option>
+                <option>$12,500 – $24,000</option>
+                <option>$24,000+</option>
+                <option>Not sure yet</option>
+              </select>
+              <span class="field__hint">Ranges only — this sets the shape of the conversation, not a quote.</span>
+              <span class="field__error">Please choose a range.</span>
+            </div>
+            <div class="field">
+              <label for="timeline">Timeline</label>
+              <select id="timeline" name="timeline" required>
+                <option value="">Select a timeline</option>
+                <option>Within 4 weeks</option>
+                <option>1 – 3 months</option>
+                <option>3 – 6 months</option>
+                <option>This budget cycle / next fiscal year</option>
+                <option>Exploring</option>
+              </select>
+              <span class="field__error">Please choose a timeline.</span>
+            </div>
+            <div class="field">
+              <label for="audience">Who needs to see this?</label>
+              <input type="text" id="audience" name="audience" placeholder="Families considering enrollment, prospective patients, donors…" required>
+              <span class="field__error">Please tell us who the audience is.</span>
+            </div>
+            <div class="field">
+              <label for="goal">What are you trying to say?</label>
+              <textarea id="goal" name="goal" placeholder="The story you want told, and what you need it to do." required></textarea>
+              <span class="field__error">Please tell us a little about the project.</span>
+            </div>
+            <div>
+              <button class="btn btn--primary" type="submit">Continue to scheduling <span class="arr">→</span></button>
+            </div>
+            <p class="formnote">We read every one of these. If we're not the right fit, we'll say so and point you somewhere better.</p>
+          </form>
+
+          <!-- Revealed only after the form validates. -->
+          <div class="booking" id="booking" hidden>
+            <p class="eyebrow">Last step</p>
+            <h2 style="font-size:var(--step-3)">Pick a time that works.</h2>
+            <p class="lede">Thanks — your answers are with us. Choose a slot below and we'll come prepared.</p>
+            <div class="booking__frame" id="calendly">
+              <div class="booking__placeholder">
+                <p><strong>Scheduling isn't connected yet.</strong></p>
+                <p class="formnote">Add the Calendly link to <code>data-calendly</code> on this page's <code>#booking</code> element and the live scheduler replaces this panel. Until then, intake answers still need somewhere to go — see the note in <code>js/site.js</code>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="split__media">
+          <div class="callout">
+            <p><strong>Why we ask first.</strong> A discovery call is worth having when both sides can be specific. Knowing your range and timeline before we talk means the first conversation is about the work, not about whether the work is possible.</p>
+          </div>
+          <p class="formnote" style="margin-top:2rem">Prefer email? <a href="mailto:hello@weengageagency.com" style="color:var(--terracotta-lit)">hello@weengageagency.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__grid">
+      <div class="foot__sig">
+        <img src="/public/logos/david-geathers-signature-white.png" alt="">
+        <p style="margin:0">We Engage Agency<br>Altadena, California</p>
+      </div>
+      <nav class="foot__links" aria-label="Footer">
+        <a href="/education.html">Education</a>
+        <a href="/healthcare.html">Healthcare</a>
+        <a href="/work.html">Work</a>
+        <a href="/village-treasures.html">Village Treasures</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="foot__bottom">
+      <p style="margin:0">© <span id="year">2026</span> We Engage Agency. Founded 2015.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+</body>
+</html>

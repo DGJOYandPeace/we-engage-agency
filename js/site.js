@@ -139,6 +139,83 @@
     });
   });
 
+  /* ---------- Intake form ----------
+     Qualification gates the calendar: the scheduler stays hidden until the
+     form validates, per the funnel in the brief.
+
+     NOT YET WIRED TO A BACKEND. This is a static site, so there is nowhere
+     for answers to be delivered until one of these is set up:
+       - set data-endpoint on #intake to a form service (Formspree, Basin), or
+       - add a serverless function and post to it.
+     Until then the answers are held in sessionStorage only, so a submission
+     reaches the calendar but nobody receives the responses. Wire this before
+     launch or the qualification step collects nothing. */
+  var intake = document.getElementById("intake");
+  if (intake) {
+    var booking = document.getElementById("booking");
+
+    var validate = function (el) {
+      var wrap = el.closest(".field");
+      var ok = el.checkValidity() && String(el.value).trim() !== "";
+      if (wrap) wrap.setAttribute("data-invalid", String(!ok));
+      return ok;
+    };
+
+    intake.querySelectorAll("input, select, textarea").forEach(function (el) {
+      el.addEventListener("blur", function () { validate(el); });
+      el.addEventListener("input", function () {
+        var wrap = el.closest(".field");
+        if (wrap && wrap.getAttribute("data-invalid") === "true") validate(el);
+      });
+    });
+
+    intake.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var fields = intake.querySelectorAll("input, select, textarea");
+      var firstBad = null;
+      fields.forEach(function (el) {
+        if (!validate(el) && !firstBad) firstBad = el;
+      });
+      if (firstBad) { firstBad.focus(); return; }
+
+      var data = {};
+      new FormData(intake).forEach(function (v, k) { data[k] = v; });
+
+      try { sessionStorage.setItem("wea-intake", JSON.stringify(data)); } catch (err) {}
+
+      var endpoint = intake.getAttribute("data-endpoint");
+      if (endpoint) {
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(data)
+        }).catch(function () { /* never strand the visitor on a network failure */ });
+      }
+
+      /* Swap in the real scheduler if one is configured. */
+      var url = booking && booking.getAttribute("data-calendly");
+      if (url) {
+        var slot = document.getElementById("calendly");
+        if (slot) {
+          var f = document.createElement("iframe");
+          f.src = url;
+          f.title = "Schedule a discovery call";
+          f.style.cssText = "width:100%;height:700px;border:0;";
+          slot.innerHTML = "";
+          slot.appendChild(f);
+        }
+      }
+
+      intake.hidden = true;
+      if (booking) {
+        booking.hidden = false;
+        booking.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "start" });
+        var h = booking.querySelector("h2");
+        if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+      }
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();

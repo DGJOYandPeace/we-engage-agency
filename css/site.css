@@ -1,31 +1,35 @@
 /* =========================================================================
    We Engage Agency — design system
-   Warm dark ground, terracotta accent, cool teal secondary.
-   Cormorant Garamond display against Outfit body, per the build brief.
+   Cool slate ground, coral primary accent, teal secondary.
+   Cormorant Garamond display against Outfit body.
+   Every colour is a token on :root — retheme there, not in the rules.
    ========================================================================= */
 
 :root {
-  /* Ground */
-  --ink:            #1C1410;   /* primary background */
-  --ink-raised:     #241A15;   /* cards, raised panels */
-  --ink-deep:       #140E0B;   /* footer, wells */
-  --hairline:       rgba(240, 232, 224, 0.13);
+  /* Ground — cool slate, not brown. The warm-brown ground read as dated;
+     a neutral-cool near-black keeps the cinematic depth without the
+     seventies cast, and lets the accents do the warming. */
+  --ink:            #101417;   /* primary background */
+  --ink-raised:     #171C20;   /* cards, raised panels */
+  --ink-deep:       #0A0D0F;   /* footer, wells */
+  --hairline:       rgba(232, 238, 242, 0.14);
 
   /* Type */
-  --bone:           #F4EDE6;   /* primary text on dark */
-  --bone-soft:      rgba(244, 237, 230, 0.72);
-  --bone-faint:     rgba(244, 237, 230, 0.48);
+  --bone:           #EEF2F5;   /* primary text on dark */
+  --bone-soft:      rgba(238, 242, 245, 0.72);
+  --bone-faint:     rgba(238, 242, 245, 0.46);
 
-  /* Accents */
-  --terracotta:     #D4824A;
-  --terracotta-lit: #E39B67;
-  --teal:           #00888E;
-  --teal-lit:       #14A5AB;
+  /* Accents — one warm, one cool. Coral replaces terracotta: same warmth,
+     cleaner and more saturated, none of the mud. */
+  --terracotta:     #FF7A4D;   /* primary accent / CTA */
+  --terracotta-lit: #FF9670;
+  --teal:           #2BB3B8;   /* secondary accent */
+  --teal-lit:       #45CBD0;
 
   /* Light surfaces (trust band, light sections) */
-  --paper:          #F6F1EA;
-  --paper-ink:      #2A1F19;
-  --paper-soft:     rgba(42, 31, 25, 0.68);
+  --paper:          #F4F6F8;
+  --paper-ink:      #14181B;
+  --paper-soft:     rgba(20, 24, 27, 0.66);
 
   /* Rhythm */
   --gutter: clamp(1.25rem, 5vw, 4rem);
@@ -65,7 +69,7 @@ body::after {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.24;
+  opacity: 0.13;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
@@ -124,7 +128,7 @@ img, video { max-width: 100%; display: block; }
   border: 1px solid transparent;
   transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
-.btn--primary { background: var(--terracotta); color: #1A120D; }
+.btn--primary { background: var(--terracotta); color: #0F1315; }
 .btn--primary:hover { background: var(--terracotta-lit); transform: translateY(-2px); }
 .btn--ghost { border-color: var(--hairline); color: var(--bone); }
 .btn--ghost:hover { border-color: var(--terracotta); color: var(--terracotta-lit); transform: translateY(-2px); }
@@ -141,7 +145,7 @@ img, video { max-width: 100%; display: block; }
   border-bottom: 1px solid transparent;
 }
 .masthead.is-stuck {
-  background: rgba(20, 14, 11, 0.86);
+  background: rgba(10, 13, 15, 0.86);
   backdrop-filter: blur(14px);
   border-bottom-color: var(--hairline);
 }
@@ -195,8 +199,8 @@ img, video { max-width: 100%; display: block; }
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(180deg, rgba(20,14,11,0.72) 0%, rgba(20,14,11,0.30) 38%, rgba(20,14,11,0.88) 82%, var(--ink) 100%),
-    radial-gradient(120% 80% at 12% 88%, rgba(20,14,11,0.75), transparent 62%);
+    linear-gradient(180deg, rgba(16,20,23,0.70) 0%, rgba(16,20,23,0.26) 38%, rgba(16,20,23,0.88) 82%, var(--ink) 100%),
+    radial-gradient(120% 80% at 12% 88%, rgba(16,20,23,0.78), transparent 62%);
 }
 .hero__inner { padding-block: clamp(5rem, 14vh, 9rem); }
 .hero h1 {
@@ -312,7 +316,7 @@ img, video { max-width: 100%; display: block; }
   position: absolute; inset: 0; margin: auto;
   width: 74px; height: 74px; border-radius: 50%;
   border: 1px solid rgba(244,237,230,0.5);
-  background: rgba(20,14,11,0.5);
+  background: rgba(10,13,15,0.5);
   backdrop-filter: blur(4px);
   color: var(--bone); cursor: pointer;
   display: grid; place-items: center;
@@ -322,7 +326,7 @@ img, video { max-width: 100%; display: block; }
 .player__pending {
   position: absolute; inset: auto 0 0 0;
   padding: 0.7rem 1rem; font-size: var(--step--1);
-  background: rgba(20,14,11,0.82); color: var(--bone-faint);
+  background: rgba(10,13,15,0.82); color: var(--bone-faint);
   border-top: 1px solid var(--hairline);
 }
 
@@ -348,7 +352,7 @@ img, video { max-width: 100%; display: block; }
   display: flex; flex-direction: column; gap: 0.7rem;
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.offer:hover { border-color: rgba(212,130,74,0.55); transform: translateY(-4px); }
+.offer:hover { border-color: rgba(255,122,77,0.5); transform: translateY(-4px); }
 .offer h3 { font-size: var(--step-2); margin-bottom: 0.1em; }
 .offer__price {
   font-size: var(--step--1); letter-spacing: 0.13em; text-transform: uppercase;
@@ -393,7 +397,7 @@ img, video { max-width: 100%; display: block; }
 }
 .flagship::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(90deg, var(--ink-deep) 8%, rgba(20,14,11,0.55) 55%, rgba(20,14,11,0.8));
+  background: linear-gradient(90deg, var(--ink-deep) 8%, rgba(10,13,15,0.55) 55%, rgba(10,13,15,0.8));
 }
 .flagship .shell { position: relative; z-index: 2; }
 .laurels { display: flex; align-items: center; gap: 1.6rem; margin: 1.8rem 0 2rem; flex-wrap: wrap; }
@@ -425,8 +429,8 @@ img, video { max-width: 100%; display: block; }
 }
 .pagehead::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
-  background: radial-gradient(120% 130% at 82% 0%, rgba(0,136,142,0.16), transparent 58%),
-              radial-gradient(90% 120% at 8% 100%, rgba(212,130,74,0.13), transparent 60%);
+  background: radial-gradient(120% 130% at 82% 0%, rgba(43,179,184,0.15), transparent 58%),
+              radial-gradient(90% 120% at 8% 100%, rgba(255,122,77,0.12), transparent 60%);
 }
 .pagehead .shell { position: relative; z-index: 1; }
 .pagehead h1 { font-size: var(--step-4); max-width: 19ch; }
@@ -479,3 +483,64 @@ img, video { max-width: 100%; display: block; }
     transition-duration: 0.001ms !important;
   }
 }
+
+
+/* ---------- Forms (intake) ---------- */
+.form { display: grid; gap: 1.6rem; max-width: 640px; margin-top: 2.5rem; }
+.field { display: grid; gap: 0.6rem; }
+.field > label {
+  font-size: var(--step--1); letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--bone-faint); font-weight: 500;
+}
+.field input, .field select, .field textarea {
+  font-family: inherit; font-size: var(--step-0); color: var(--bone);
+  background: var(--ink-raised); border: 1px solid var(--hairline);
+  border-radius: 2px; padding: 0.85rem 1rem; width: 100%;
+  transition: border-color 0.2s var(--ease);
+}
+.field textarea { min-height: 130px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--terracotta); }
+.field select { appearance: none; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--bone-faint) 50%), linear-gradient(135deg, var(--bone-faint) 50%, transparent 50%);
+  background-position: calc(100% - 20px) center, calc(100% - 14px) center;
+  background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; }
+.field select option { background: var(--ink-raised); color: var(--bone); }
+.field__hint { font-size: var(--step--1); color: var(--bone-faint); }
+.field__error { font-size: var(--step--1); color: var(--terracotta-lit); display: none; }
+.field[data-invalid="true"] input,
+.field[data-invalid="true"] select,
+.field[data-invalid="true"] textarea { border-color: var(--terracotta); }
+.field[data-invalid="true"] .field__error { display: block; }
+
+.formnote { font-size: var(--step--1); color: var(--bone-faint); max-width: 52ch; }
+
+/* Calendly slot stays hidden until the intake form is completed. */
+.booking { margin-top: 3rem; }
+.booking__frame {
+  border: 1px solid var(--hairline); background: var(--ink-raised);
+  min-height: 640px; border-radius: 2px;
+}
+.booking__placeholder { padding: clamp(2rem, 5vw, 3.5rem); }
+
+/* ---------- Work index grid ---------- */
+.workgrid { display: grid; gap: clamp(1.5rem, 3.5vw, 2.5rem); margin-top: 3rem; }
+@media (min-width: 780px)  { .workgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .workgrid--three { grid-template-columns: repeat(3, 1fr); } }
+.workcard__body { padding-top: 1rem; }
+.workcard__client {
+  font-size: var(--step--1); letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--teal-lit); margin: 0 0 0.4rem;
+}
+.workcard h3 { font-size: var(--step-2); margin-bottom: 0.35em; }
+.workcard p { color: var(--bone-soft); margin: 0; }
+
+/* ---------- Prose (Village Treasures, About) ---------- */
+.prose { max-width: 62ch; }
+.prose p + p { margin-top: 0; }
+.prose h2 { font-size: var(--step-3); margin-top: 2.5em; }
+.prose h2:first-child { margin-top: 0; }
+.prose--airy p { font-size: var(--step-1); line-height: 1.62; color: var(--bone-soft); }
+
+/* ---------- Credit rows (About) ---------- */
+.credits { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(1.75rem, 4.5vw, 3.5rem); margin-top: 2rem; }
+.credits img { height: auto; width: auto; max-height: 40px; max-width: 150px; object-fit: contain; opacity: 0.62; }
