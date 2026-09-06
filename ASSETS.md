@@ -108,7 +108,21 @@ I'd recommend (a) or (c) now, with (b) as the upgrade. I can generate knockout v
 
 ### 3. Missing vs. the brief
 - **Micheaux Film Festival laurel** — Section 8 claims both Micheaux and PAFF selections, but only PAFF laurels were supplied. Micheaux is text-only credit unless a graphic arrives.
-- **11 of 14 video embed IDs.** Only `LgQIx5MdfnU` (CAMS), `eGcAtYZUJTk` (Next-Gen Learning), and Village Treasures' Vimeo were recoverable from the brief. Nothing guessed. Still needed: Renaissance HS, Teach Long Beach, Cabrillo HS, Colburn Summer Encounter, Colburn testimonial, W Geriatrics, Magic Hair, LA Master Chorale, Unconquered, Craft + Light, Coin Hunt Fest.
+
+### 3a. Two case studies the brief requires have no video
+
+The link list closed most catalog gaps, but two of the brief's named case studies still have nothing to embed:
+
+- **Colburn School — nothing at all.** Section 7 makes Colburn the #2 case study on `/education` and specifically requires the client testimonial video be embedded, calling it "one of the strongest trust assets David has." We have `colburn-testimonial-thumbnail.jpg` but no video for it, and no Summer Encounter promo. **This blocks the `/education` page as specified.**
+- **Cabrillo High School — no film.** Section 7's headline stat is "four films, three campuses." The links supply Renaissance and CAMS only — two campuses. Counting Teach Long Beach gives three films across two campuses. Either a Cabrillo link is missing, or the stat line needs rewording so it doesn't overstate to a district reviewer doing diligence.
+- **Magic Hair Company — no labelled video.** Section 7 says feature MHC prominently on `/work` with the verified 40% store-traffic stat. Nothing in the list is labelled Magic Hair; `Hair and Beauty Reel` (Vimeo 239795743) may be it. Needs confirmation.
+
+### 3b. Answered by the link list
+- **Girl Scouts of Greater LA** — no video supplied, which resolves the brief's own open question (Section 14): logo-only in the trust bar, no forced case study.
+- **The two known duplicates are confirmed**, not just assumed: "Video Production for Schools" and "Next-Gen Learning" both resolve to `eGcAtYZUJTk`, and CAMS "(Interviews)" is the CAMS film at `?t=45`.
+
+### 3c. Work the brief did not anticipate
+The list includes eight videos with no place in the current IA: CODON VR and The Wave VR (tech/startup — a vertical the brief doesn't cover), the WEA Showreel (a general reel, which cuts against the sector-specific funnel in Section 4), Meet our Community (client unidentified), Veda MeLA, and three music videos plus a music showreel (Section 2 retires music-video work from the front page). They are catalogued with `needsConfirmation: true` rather than dropped.
 
 ### 4. Positioning conflict inside the hero loop
 The reel contains an event/nightlife segment around t=12s. Section 2 explicitly retires standalone event videography and music-video work from front-page and hero content. Consider a re-cut before launch.
@@ -120,7 +134,18 @@ This repo is **public**. `BUILDBRIEF.md` contains internal costing units explici
 
 ## videos.json
 
-14 entries. The three Section 9 data-quality issues are resolved:
-- Duplicate collapsed — `eGcAtYZUJTk` was listed under two titles; kept "Next-Gen Learning".
-- CAMS "(Interviews)" folded into one entry with `cuePoint: 45` rather than a second row.
-- Village Treasures' Vimeo hash (`235dd7ccb8`) stored as its own field so embed construction cannot silently drop it and break playback.
+**23 entries, every one with an embed ID.** No duplicates. Built from the client-supplied link list.
+
+All three Section 9 data-quality issues resolved, and the first two are now *confirmed* by the link list rather than inferred:
+- `eGcAtYZUJTk` appears under two titles ("Next-Gen Learning" and "Video Production for Schools") — collapsed to one entry.
+- CAMS "(Interviews)" is the CAMS film at `?t=45` — stored as `cuePoint: 45`, not a second row.
+- Village Treasures' Vimeo hash (`235dd7ccb8`) is a separate field so embed construction cannot silently drop it and break playback.
+
+Distribution: education 5 · brand 5 · music 4 · healthcare 2 · nonprofit 2 · narrative 2 · tech 2 · agency 1.
+Featured: Renaissance HS, CAMS HS, Teach Long Beach, W Geriatrics, Village Treasures.
+
+**Schema extended** beyond the brief's Section 9 enum with `tech` and `agency` sectors — the link list contains VR/startup work and WEA's own reels that the original six sectors didn't anticipate. Also added `vimeoHash`, `needsConfirmation`, and an `embedPatterns` block in `_meta` so embed URLs are built from one definition rather than hand-assembled per page.
+
+**Embed IDs are transcribed verbatim and could not be machine-verified** — YouTube and Vimeo are unreachable from this build container (a known-good control ID also failed to resolve). Worth a click-through pass once the pages render.
+
+7 entries carry `needsConfirmation: true` where the client or sector was inferred from a title rather than stated.
