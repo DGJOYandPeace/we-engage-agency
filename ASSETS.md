@@ -84,7 +84,17 @@ Transparency was preserved on every logo that actually uses it. All images verif
 
 ## Needs a decision
 
-### 1. Trust-bar logos will not read on the dark palette
+### 1. RESOLVED — white knockouts generated
+
+Client approved knockouts, so `public/trusted-by-marks/` now holds white monochrome versions of all five trust-bar marks (`*-white.png`), plus knockouts for Ayurveda, W Geriatrics, and all four career credits. Full-colour originals stay in `/clients` and `/career-credits` for light-background use.
+
+Three extraction methods were needed because the sources are built differently: marks with real alpha were recoloured in place; marks sitting on a white field had alpha derived from ink density; and two marks (LBUSD, W Geriatrics) are *light art on a coloured field*, needing the inverse. Alcon is light art on near-black and needed a luminance ramp of its own. Each was checked against `#1C1410` rather than assumed.
+
+**Craft + Light was deliberately not knocked out.** Its identity is a peach-and-gold watercolour brushstroke; reduced to one colour it becomes an unreadable white blob. Use the full-colour original on a light tile.
+
+The homepage trust bar also caps logo width as well as height. These marks range from 2.6:1 to 7.4:1, and height-only sizing rendered LA Master Chorale at 339px against Magic Hair's 95px — the row stopped reading as a set.
+
+<details><summary>Original finding (kept for the record)</summary>
 
 The brief's reference palette is a warm dark background (`#1C1410`). I composited each logo onto it. **Two of the five trust-bar marks the brief specifies are dark-inked transparent PNGs and become nearly invisible:**
 
@@ -101,6 +111,7 @@ Three ways out:
 I'd recommend (a) or (c) now, with (b) as the upgrade. I can generate knockout versions myself, but recoloring a client's mark without permission can violate their brand guidelines, so I haven't.
 
 `colburn-white-nontransparent.png` and `girl-scouts-gla-two.png` are the white-boxed variants already on hand if you go the tile route.
+</details>
 
 ### 2. Two logos still have no home in the IA
 - **Cubieverse** — Section 7 says don't feature it as a primary Work entry; allowed only in a lower "additional work" grid. Include at all?

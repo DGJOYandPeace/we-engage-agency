@@ -1,9 +1,17 @@
 {
   "_meta": {
     "schemaVersion": 2,
-    "note": "Catalog built from the client-supplied link list. Embed IDs transcribed verbatim; they could not be machine-verified because YouTube/Vimeo are unreachable from the build container. Entries flagged needsConfirmation have a client or sector inferred from the title rather than stated in the build brief.",
-    "sectors": ["education", "healthcare", "brand", "nonprofit", "narrative", "music", "tech", "agency"],
-    "sectorNote": "'tech' and 'agency' extend the brief's Section 9 enum. The link list contains VR/startup work and WEA's own reels, which the brief's six sectors did not anticipate.",
+    "note": "Catalog built from the client-supplied link list and pruned to the client's editorial decisions: music videos, Veda MeLA and all VR/startup work removed. Embed IDs transcribed verbatim and not machine-verified (YouTube/Vimeo unreachable from the build container). Entries flagged needsConfirmation have an unresolved client, sector, or URL.",
+    "sectors": [
+      "education",
+      "healthcare",
+      "brand",
+      "nonprofit",
+      "narrative",
+      "music",
+      "agency"
+    ],
+    "sectorNote": "'agency' extends the brief's Section 9 enum for WEA's own showreel. 'tech' was removed with the VR work.",
     "embedPatterns": {
       "youtube": "https://www.youtube-nocookie.com/embed/{embedId}",
       "youtubeWithCue": "https://www.youtube-nocookie.com/embed/{embedId}?start={cuePoint}",
@@ -14,7 +22,7 @@
   "videos": [
     {
       "id": "lbusd-renaissance-high-school",
-      "title": "Renaissance High School for the Arts — Campus Introduction Film",
+      "title": "Renaissance High School for the Arts \u2014 Campus Introduction Film",
       "client": "Long Beach Unified School District",
       "sector": "education",
       "year": null,
@@ -25,7 +33,7 @@
     },
     {
       "id": "lbusd-cams-high-school",
-      "title": "CAMS High School — Campus Introduction Film",
+      "title": "CAMS High School \u2014 Campus Introduction Film",
       "client": "Long Beach Unified School District",
       "sector": "education",
       "year": null,
@@ -33,11 +41,11 @@
       "embedId": "LgQIx5MdfnU",
       "cuePoint": 45,
       "featured": true,
-      "notes": "Confirmed single film. The link list included a '(Interviews)' entry pointing at this same ID with ?t=45 — stored as cuePoint, not a second row."
+      "notes": "Confirmed single film. The link list included a '(Interviews)' entry pointing at this same ID with ?t=45 \u2014 stored as cuePoint, not a second row."
     },
     {
       "id": "lbusd-teach-long-beach",
-      "title": "We Are Ready for You! — Teach Long Beach",
+      "title": "We Are Ready for You! \u2014 Teach Long Beach",
       "client": "Long Beach Unified School District",
       "sector": "education",
       "year": null,
@@ -70,11 +78,11 @@
       "cuePoint": null,
       "featured": false,
       "needsConfirmation": true,
-      "notes": "Client not identified in the brief or the link list. Sector inferred from title only — could be education or civic. Confirm before placing on a sector page."
+      "notes": "Client not identified in the brief or the link list. Sector inferred from title only \u2014 could be education or civic. Confirm before placing on a sector page."
     },
     {
       "id": "w-geriatrics-intro",
-      "title": "W Geriatrics — Introductory Video",
+      "title": "W Geriatrics \u2014 Introductory Video",
       "client": "W Geriatrics",
       "sector": "healthcare",
       "year": null,
@@ -86,7 +94,7 @@
     },
     {
       "id": "craft-and-light",
-      "title": "Craft + Light — WE ARE OPEN",
+      "title": "Craft + Light \u2014 WE ARE OPEN",
       "client": "Craft + Light Creative Arts Studio",
       "sector": "brand",
       "year": null,
@@ -119,7 +127,7 @@
       "cuePoint": null,
       "featured": false,
       "needsConfirmation": true,
-      "notes": "Client inferred from subject matter. Brief Section 7 says gamified content must not be a primary /work entry — lower 'additional work' grid only."
+      "notes": "Client inferred from subject matter. Brief Section 7 says gamified content must not be a primary /work entry \u2014 lower 'additional work' grid only."
     },
     {
       "id": "welcome-to-cubieverse",
@@ -135,7 +143,7 @@
     },
     {
       "id": "lamc-big-sing-2022",
-      "title": "Big Sing 2022 — Event Highlight",
+      "title": "Big Sing 2022 \u2014 Event Highlight",
       "client": "LA Master Chorale",
       "sector": "nonprofit",
       "year": 2022,
@@ -155,7 +163,7 @@
       "embedId": "YCDo6ueNJKk",
       "cuePoint": null,
       "featured": false,
-      "notes": "Second LAMC film — supports the multi-year relationship framing."
+      "notes": "Second LAMC film \u2014 supports the multi-year relationship framing."
     },
     {
       "id": "village-treasures",
@@ -168,11 +176,11 @@
       "vimeoHash": "235dd7ccb8",
       "cuePoint": null,
       "featured": true,
-      "notes": "UNLISTED / hash-gated. The hash MUST travel with every embed: https://player.vimeo.com/video/869003902?h=235dd7ccb8 . Do not strip it while the video remains unlisted. Flagship — gets its own page."
+      "notes": "UNLISTED / hash-gated. The hash MUST travel with every embed: https://player.vimeo.com/video/869003902?h=235dd7ccb8 . Do not strip it while the video remains unlisted. Flagship \u2014 gets its own page."
     },
     {
       "id": "unconquered-trailer",
-      "title": "Unconquered — Trailer",
+      "title": "Unconquered \u2014 Trailer",
       "client": "Independent",
       "sector": "narrative",
       "year": null,
@@ -180,37 +188,11 @@
       "embedId": "3oOpkhOlmTU",
       "cuePoint": null,
       "featured": false,
-      "notes": "David as editor and sound designer. Black Seminole history subject matter — demonstrates range into serious narrative work."
-    },
-    {
-      "id": "codon-vr",
-      "title": "CODON VR",
-      "client": "CODON",
-      "sector": "tech",
-      "year": null,
-      "platform": "youtube",
-      "embedId": "JskoDSIBU3o",
-      "cuePoint": null,
-      "featured": false,
-      "needsConfirmation": true,
-      "notes": "Tech/VR work is absent from the brief's vertical strategy. Placement undecided."
-    },
-    {
-      "id": "the-wave-vr",
-      "title": "The Wave VR",
-      "client": "The Wave VR",
-      "sector": "tech",
-      "year": null,
-      "platform": "vimeo",
-      "embedId": "183907100",
-      "cuePoint": null,
-      "featured": false,
-      "needsConfirmation": true,
-      "notes": "Tech/VR work is absent from the brief's vertical strategy. Placement undecided."
+      "notes": "David as editor and sound designer. Black Seminole history subject matter \u2014 demonstrates range into serious narrative work."
     },
     {
       "id": "wea-showreel",
-      "title": "We Engage Agency — Showreel",
+      "title": "We Engage Agency \u2014 Showreel",
       "client": "We Engage Agency",
       "sector": "agency",
       "year": null,
@@ -219,7 +201,7 @@
       "cuePoint": null,
       "featured": false,
       "needsConfirmation": true,
-      "notes": "Not mentioned in the brief. A general showreel may conflict with the sector-specific funnel strategy in Section 4 — decide whether it appears at all."
+      "notes": "Not mentioned in the brief. A general showreel may conflict with the sector-specific funnel strategy in Section 4 \u2014 decide whether it appears at all."
     },
     {
       "id": "hair-and-beauty-reel",
@@ -235,55 +217,6 @@
       "notes": "POSSIBLY the Magic Hair Company material. The brief wants MHC featured prominently on /work with the verified 40% store-traffic stat, but no link in the list is labelled Magic Hair. Confirm whether this reel is it."
     },
     {
-      "id": "veda-mela-promo",
-      "title": "Veda MeLA Promo Video",
-      "client": null,
-      "sector": "healthcare",
-      "year": null,
-      "platform": "vimeo",
-      "embedId": "159288379",
-      "cuePoint": null,
-      "featured": false,
-      "needsConfirmation": true,
-      "notes": "POSSIBLY related to Dr. Siva Mohan / Ayurveda By Siva, given the name. Confirm before using on /healthcare."
-    },
-    {
-      "id": "music-video-showreel",
-      "title": "Music Video Showreel",
-      "client": "We Engage Agency",
-      "sector": "music",
-      "year": null,
-      "platform": "youtube",
-      "embedId": "IXnGJmXuMKc",
-      "cuePoint": null,
-      "featured": false,
-      "notes": "Brief Section 2 retires music-video work from the front page. Archive/lower grid only."
-    },
-    {
-      "id": "full-freedom",
-      "title": "Full Freedom",
-      "client": null,
-      "sector": "music",
-      "year": null,
-      "platform": "youtube",
-      "embedId": "-M8ENP9e8wg",
-      "cuePoint": null,
-      "featured": false,
-      "notes": "Retired from front page per Section 2."
-    },
-    {
-      "id": "new-years-kiss",
-      "title": "New Year's KISS",
-      "client": null,
-      "sector": "music",
-      "year": null,
-      "platform": "youtube",
-      "embedId": "mqWfEB8A1tM",
-      "cuePoint": null,
-      "featured": false,
-      "notes": "Retired from front page per Section 2."
-    },
-    {
       "id": "music-composer-reel",
       "title": "Music Composer Reel",
       "client": "We Engage Agency",
@@ -293,7 +226,22 @@
       "embedId": "135116158",
       "cuePoint": null,
       "featured": false,
-      "notes": "Supports the About-page composer credential and the Village Treasures score narrative, rather than a service line."
+      "notes": "KEPT DELIBERATELY: this is a composer/scoring reel, not a music video, and it evidences the About-page composer credential behind the Village Treasures score. Music videos were dropped per client instruction. Say the word and this goes too.",
+      "needsConfirmation": true
+    },
+    {
+      "id": "colburn-testimonial",
+      "title": "Colburn School \u2014 Client Testimonial",
+      "client": "Colburn School",
+      "sector": "education",
+      "year": null,
+      "platform": "youtube",
+      "embedId": null,
+      "cuePoint": null,
+      "featured": true,
+      "poster": "thumbnails-posters/colburn-testimonial-thumbnail.jpg",
+      "needsConfirmation": true,
+      "notes": "AWAITING URL. Client confirmed a testimonial video exists but there is no root/programme film for Colburn. Brief Section 7 requires this be embedded rather than quoted. Poster art is on hand; the embed slot renders as a poster-with-quote fallback until the ID lands."
     }
   ]
 }
