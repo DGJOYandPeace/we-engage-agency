@@ -587,3 +587,44 @@ img, video { max-width: 100%; display: block; }
 /* A word in a stat slot needs a smaller size than a numeral or it crowds
    the row; the label beneath still carries the meaning. */
 .stat__num--word { font-size: var(--step-1); letter-spacing: 0.01em; }
+
+/* =========================================================================
+   Production mosaic
+   An asymmetric tile grid for stills of mixed aspect ratio. Each tile is
+   given a ratio and crops to fill, so the grid stays predictable no matter
+   what shape the source images are.
+   ========================================================================= */
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(0.6rem, 1.4vw, 1rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+.mosaic figure { margin: 0; position: relative; overflow: hidden; background: var(--ink-raised); }
+.mosaic img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s var(--ease), filter 0.5s var(--ease);
+  filter: saturate(0.94);
+}
+.mosaic figure:hover img { transform: scale(1.035); filter: saturate(1.04); }
+
+.m-tall { grid-column: span 2; grid-row: span 2; aspect-ratio: 3 / 4; }
+.m-wide { grid-column: span 4; aspect-ratio: 16 / 9; }
+.m-half { grid-column: span 2; aspect-ratio: 4 / 3; }
+.m-band { grid-column: span 6; aspect-ratio: 21 / 8; }
+
+@media (max-width: 900px) {
+  .mosaic { grid-template-columns: repeat(2, 1fr); }
+  .m-tall { grid-column: span 1; grid-row: span 2; }
+  .m-wide, .m-band { grid-column: span 2; }
+  .m-half { grid-column: span 1; }
+}
+@media (max-width: 560px) {
+  .mosaic { grid-template-columns: 1fr; }
+  .m-tall, .m-wide, .m-half, .m-band { grid-column: span 1; grid-row: auto; }
+  .m-tall { aspect-ratio: 4 / 5; }
+  .m-band { aspect-ratio: 16 / 9; }
+}
+
+/* Larger client mark for a centred case study head. */
+.case__mark--lg { max-height: 72px; max-width: 260px; opacity: 0.8; margin-inline: auto; }
