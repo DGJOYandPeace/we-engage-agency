@@ -176,15 +176,32 @@
       });
     });
 
-    var revealBooking = function () {
+    /* Calendly, themed to the site and pre-filled from the intake answers.
+       They have just typed their name and email; asking again on the very
+       next screen is the kind of friction that loses a booking. Colours are
+       passed as bare hex, which is the format Calendly's embed expects. */
+    var calendlyUrl = function (base, data) {
+      var q = [
+        "hide_gdpr_banner=1",
+        "background_color=0E1216",
+        "text_color=F0F3F6",
+        "primary_color=E0A85C"
+      ];
+      if (data && data.name)  q.push("name="  + encodeURIComponent(data.name));
+      if (data && data.email) q.push("email=" + encodeURIComponent(data.email));
+      return base + (base.indexOf("?") > -1 ? "&" : "?") + q.join("&");
+    };
+
+    var revealBooking = function (data) {
       var url = booking && booking.getAttribute("data-calendly");
       if (url) {
         var slot = document.getElementById("calendly");
         if (slot) {
           var f = document.createElement("iframe");
-          f.src = url;
+          f.src = calendlyUrl(url, data);
           f.title = "Schedule a discovery call";
-          f.style.cssText = "width:100%;height:700px;border:0;";
+          f.setAttribute("loading", "lazy");
+          f.style.cssText = "width:100%;height:760px;border:0;";
           slot.innerHTML = "";
           slot.appendChild(f);
         }
@@ -229,7 +246,7 @@
       try { sessionStorage.setItem("wea-intake", JSON.stringify(data)); } catch (err) {}
 
       var endpoint = intake.getAttribute("data-endpoint");
-      if (!endpoint) { revealBooking(); return; }
+      if (!endpoint) { revealBooking(data); return; }
 
       var btn = intake.querySelector('button[type="submit"]');
       var label = btn ? btn.innerHTML : "";
@@ -242,11 +259,11 @@
       })
         .then(function (res) {
           if (!res.ok) throw new Error("HTTP " + res.status);
-          revealBooking();
+          revealBooking(data);
         })
         .catch(function () {
           /* Let them book regardless, but make sure the lead is recoverable. */
-          revealBooking();
+          revealBooking(data);
           showFallback(data);
         })
         .then(function () {
