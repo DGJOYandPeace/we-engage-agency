@@ -143,16 +143,23 @@
      Qualification gates the calendar: the scheduler stays hidden until the
      form validates, per the funnel in the brief.
 
-     NOT YET WIRED TO A BACKEND. This is a static site, so there is nowhere
-     for answers to be delivered until one of these is set up:
-       - set data-endpoint on #intake to a form service (Formspree, Basin), or
-       - add a serverless function and post to it.
-     Until then the answers are held in sessionStorage only, so a submission
-     reaches the calendar but nobody receives the responses. Wire this before
-     launch or the qualification step collects nothing. */
+     Posts JSON to the form backend named by data-endpoint on #intake
+     (Basin: https://usebasin.com/f/<form-id>). With no endpoint set the form
+     still works and still gates the calendar, but nobody receives the
+     answers — so set it before launch.
+
+     These submissions are inbound leads, so a failed POST must never pass
+     silently. On failure the visitor still reaches the calendar (never trap
+     someone who is trying to book) but a fallback appears with their answers
+     pre-filled into a mailto, so the lead survives a backend outage. */
   var intake = document.getElementById("intake");
   if (intake) {
     var booking = document.getElementById("booking");
+    var FALLBACK_EMAIL = intake.getAttribute("data-fallback-email") || "hello@weengageagency.com";
+
+    /* The honeypot is a visible-to-bots text input that must stay empty, so
+       it can never be run through the "required and non-empty" check below. */
+    var FIELDS = 'input:not([name="_gotcha"]), select, textarea';
 
     var validate = function (el) {
       var wrap = el.closest(".field");
@@ -161,7 +168,7 @@
       return ok;
     };
 
-    intake.querySelectorAll("input, select, textarea").forEach(function (el) {
+    intake.querySelectorAll(FIELDS).forEach(function (el) {
       el.addEventListener("blur", function () { validate(el); });
       el.addEventListener("input", function () {
         var wrap = el.closest(".field");
@@ -169,30 +176,7 @@
       });
     });
 
-    intake.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var fields = intake.querySelectorAll("input, select, textarea");
-      var firstBad = null;
-      fields.forEach(function (el) {
-        if (!validate(el) && !firstBad) firstBad = el;
-      });
-      if (firstBad) { firstBad.focus(); return; }
-
-      var data = {};
-      new FormData(intake).forEach(function (v, k) { data[k] = v; });
-
-      try { sessionStorage.setItem("wea-intake", JSON.stringify(data)); } catch (err) {}
-
-      var endpoint = intake.getAttribute("data-endpoint");
-      if (endpoint) {
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(data)
-        }).catch(function () { /* never strand the visitor on a network failure */ });
-      }
-
-      /* Swap in the real scheduler if one is configured. */
+    var revealBooking = function () {
       var url = booking && booking.getAttribute("data-calendly");
       if (url) {
         var slot = document.getElementById("calendly");
@@ -205,7 +189,6 @@
           slot.appendChild(f);
         }
       }
-
       intake.hidden = true;
       if (booking) {
         booking.hidden = false;
@@ -213,6 +196,62 @@
         var h = booking.querySelector("h2");
         if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
       }
+    };
+
+    var showFallback = function (data) {
+      var note = document.getElementById("intake-fallback");
+      if (!note) return;
+      var body = Object.keys(data).map(function (k) { return k + ": " + data[k]; }).join("\n");
+      var link = note.querySelector("a");
+      if (link) {
+        link.href = "mailto:" + FALLBACK_EMAIL +
+          "?subject=" + encodeURIComponent("Discovery call request — " + (data.organization || data.name || "")) +
+          "&body=" + encodeURIComponent(body);
+      }
+      note.hidden = false;
+    };
+
+    intake.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      /* Honeypot: real people never fill a field they cannot see. */
+      var trap = intake.querySelector('input[name="_gotcha"]');
+      if (trap && trap.value) { revealBooking(); return; }
+
+      var firstBad = null;
+      intake.querySelectorAll(FIELDS).forEach(function (el) {
+        if (!validate(el) && !firstBad) firstBad = el;
+      });
+      if (firstBad) { firstBad.focus(); return; }
+
+      var data = {};
+      new FormData(intake).forEach(function (v, k) { if (k !== "_gotcha") data[k] = v; });
+      try { sessionStorage.setItem("wea-intake", JSON.stringify(data)); } catch (err) {}
+
+      var endpoint = intake.getAttribute("data-endpoint");
+      if (!endpoint) { revealBooking(); return; }
+
+      var btn = intake.querySelector('button[type="submit"]');
+      var label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          revealBooking();
+        })
+        .catch(function () {
+          /* Let them book regardless, but make sure the lead is recoverable. */
+          revealBooking();
+          showFallback(data);
+        })
+        .then(function () {
+          if (btn) { btn.disabled = false; btn.innerHTML = label; }
+        });
     });
   }
 

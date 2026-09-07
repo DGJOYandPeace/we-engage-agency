@@ -44,7 +44,15 @@
       <div class="split" style="align-items:start">
         <div class="split__text">
           <!-- The intake form gates the calendar: no booking without it. -->
-          <form class="form" id="intake" novalidate>
+          <!-- data-endpoint: paste the Basin form URL (https://usebasin.com/f/<id>).
+               Leave empty and the form still gates the calendar, but nobody
+               receives the answers. -->
+          <form class="form" id="intake" novalidate
+                data-endpoint=""
+                data-fallback-email="hello@weengageagency.com">
+            <!-- Honeypot. Hidden from people, irresistible to bots. -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                   aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="field">
               <label for="name">Your name</label>
               <input type="text" id="name" name="name" autocomplete="name" required>
@@ -100,6 +108,13 @@
             </div>
             <p class="formnote">We read every one of these. If we're not the right fit, we'll say so and point you somewhere better.</p>
           </form>
+
+          <!-- Shown only when the submission fails, so a backend outage
+               cannot quietly swallow a lead. -->
+          <div class="callout" id="intake-fallback" hidden style="border-left-color:var(--terracotta)">
+            <p><strong>We couldn't deliver your answers automatically.</strong> Please go ahead and book below — and
+            <a href="#" style="color:var(--terracotta-lit)">send them to us by email</a> so nothing gets lost.</p>
+          </div>
 
           <!-- Revealed only after the form validates. -->
           <div class="booking" id="booking" hidden>
