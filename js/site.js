@@ -252,10 +252,19 @@
       var label = btn ? btn.innerHTML : "";
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
 
+      /* Form-encoded rather than JSON. Basin treats this as its native
+         format and maps each key to a named field in the notification
+         email; a JSON body can arrive as one opaque blob with no fields
+         broken out. It is also a "simple" request, so the browser skips
+         the CORS preflight entirely — one less thing between a lead and
+         the inbox. */
+      var body = new URLSearchParams();
+      Object.keys(data).forEach(function (k) { body.append(k, data[k]); });
+
       fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(data)
+        headers: { "Accept": "application/json" },
+        body: body
       })
         .then(function (res) {
           if (!res.ok) throw new Error("HTTP " + res.status);
