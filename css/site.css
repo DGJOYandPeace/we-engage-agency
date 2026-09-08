@@ -944,11 +944,15 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 
 /* =========================================================================
    Social proof panel
-   Screenshots of a client's own feed, kept as screenshots on purpose. The
-   platform chrome — verified badges, like counts, the share number — is the
-   credibility, and a scraped text feed would throw exactly that away. Sits
-   as a dark inset so the captured dark UI belongs to the panel rather than
-   fighting the paper around it.
+   Comments from a client's own post, rebuilt as markup rather than shown as
+   screenshots. Screenshots would carry real people's handles and profile
+   photos onto a commercial page, and a blurred screenshot just looks like a
+   screenshot with something hidden. Rebuilding keeps the parts that are the
+   evidence — the verification badges, the like counts, the words themselves —
+   and drops the parts that identify anyone.
+
+   Sits as a dark inset so it reads as captured material against the paper
+   around it.
    ========================================================================= */
 .socialproof {
   --ink:        var(--night);
@@ -963,27 +967,49 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
   border-radius: var(--r-lg);
   padding: clamp(1.5rem, 3.5vw, 2.75rem);
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  text-align: left;
 }
-.socialproof__head { display: flex; flex-wrap: wrap; gap: 0.75rem 2.5rem; align-items: baseline; justify-content: space-between; }
-.socialproof__head p { margin: 0; max-width: 46ch; color: var(--night-soft); }
-.socialproof__counts { display: flex; gap: clamp(1.25rem, 3vw, 2.25rem); flex: none; }
+.socialproof__head { display: flex; flex-wrap: wrap; gap: 1.25rem 2.5rem; align-items: baseline; justify-content: space-between; }
+.socialproof__head p { margin: 0; max-width: 48ch; color: var(--night-soft); }
+.socialproof__head strong { color: var(--night-bone); font-weight: 500; }
+.socialproof__window { flex: none; }
+.socialproof__window > span {
+  display: block; font-size: var(--step--1); letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent-night-lit); margin-bottom: 0.85rem;
+}
+.socialproof__counts { display: flex; gap: clamp(1.25rem, 3vw, 2.25rem); }
 .socialproof__count b {
   display: block; font-family: "Cormorant Garamond", serif;
-  font-size: var(--step-2); font-weight: 400; color: var(--accent-night-lit); line-height: 1;
+  font-size: var(--step-2); font-weight: 400; color: var(--night-bone); line-height: 1;
 }
 .socialproof__count span { display: block; font-size: var(--step--1); letter-spacing: 0.1em; text-transform: uppercase; color: var(--night-faint); margin-top: 0.35rem; }
-.socialproof__grid {
-  display: grid; gap: clamp(0.75rem, 1.6vw, 1.15rem);
-  grid-template-columns: 1fr;
-  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+
+.c-wall {
+  list-style: none; margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0; padding: 0;
+  display: grid; gap: clamp(0.7rem, 1.5vw, 1rem); grid-template-columns: 1fr;
 }
-@media (min-width: 620px)  { .socialproof__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1000px) { .socialproof__grid { grid-template-columns: repeat(3, 1fr); } }
-.socialproof__grid img {
-  width: 100%; height: auto; display: block;
-  border-radius: var(--r-sm);
+@media (min-width: 620px)  { .c-wall { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .c-wall { grid-template-columns: repeat(3, 1fr); } }
+.c-item {
+  display: flex; gap: 0.85rem;
+  background: var(--night-raised);
   border: 1px solid var(--night-hairline);
+  border-radius: var(--r-md);
+  padding: 1.05rem 1.15rem;
 }
-/* These are captured dark screenshots, so the invert rule for white
-   knockouts must not touch them. */
-.socialproof img { filter: none !important; }
+/* The disc colour is derived from the handle, so one person is one colour
+   everywhere without the page ever carrying who they are. */
+.c-avatar {
+  flex: none; width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(145deg, hsl(var(--h) 42% 46%), hsl(calc(var(--h) + 38) 38% 28%));
+  display: grid; place-items: center;
+  font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.9);
+}
+.c-body { min-width: 0; }
+.c-meta { display: flex; align-items: center; gap: 0.35rem; margin: 0 0 0.3rem; }
+.c-handle { font-size: var(--step--1); letter-spacing: 0.02em; color: var(--night-soft); font-weight: 500; }
+.c-check { width: 14px; height: 14px; flex: none; fill: #5E9BE0; }
+.c-check .c-tick { stroke: var(--night); }
+.c-text { margin: 0; font-size: var(--step-0); line-height: 1.5; color: var(--night-bone); }
+.c-likes { margin: 0.5rem 0 0; font-size: var(--step--1); letter-spacing: 0.06em; color: var(--night-faint); }
+.c-foot { margin: clamp(1.5rem, 3vw, 2rem) 0 0; font-size: var(--step--1); color: var(--night-faint); max-width: 78ch; }

@@ -143,6 +143,25 @@ This repo is **public**. `BUILDBRIEF.md` contains internal costing units explici
 
 ---
 
+## Altadena Music Theatre — audience response
+
+The `/work` case reproduces the response to the client's own post as markup,
+not as screenshots. The screenshots David supplied
+(`amt-lsh-socialfeed-comments1-6.png`) were the source for the transcription
+and have been **removed from the repo** — an unreferenced file in `public/` is
+still publicly fetchable, so leaving them would have published the very
+handles and profile photos the rebuild exists to withhold. David holds the
+originals as the record.
+
+What the page keeps, because it is the evidence: verification badges, the
+per-comment like counts, the words verbatim, and the 747 / 39 / 25 totals.
+What it drops: profile photos, replaced by a gradient disc whose hue is
+derived from the handle, so one person is one colour across the page without
+the markup ever carrying who they are; and full handles, shortened to their
+first two characters.
+
+Figures are the first 72 hours after posting. The run sold out.
+
 ## Behind-the-scenes stills
 
 `public/images/bts/` — seven frames supplied by David for the homepage "what we
