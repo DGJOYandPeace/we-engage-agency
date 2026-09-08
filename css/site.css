@@ -401,8 +401,15 @@ img, video { max-width: 100%; display: block; }
   background: linear-gradient(90deg, var(--ink-deep) 8%, rgba(8,11,14,0.55) 55%, rgba(8,11,14,0.8));
 }
 .flagship .shell { position: relative; z-index: 2; }
-.laurels { display: flex; align-items: center; gap: 1.6rem; margin: 1.8rem 0 2rem; flex-wrap: wrap; }
-.laurels img { height: clamp(58px, 8vw, 82px); width: auto; opacity: 0.9; }
+.laurels {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 2.2rem 0 2.4rem;
+}
+.laurels img {
+  height: clamp(84px, 11vw, 132px);
+  width: auto; opacity: 0.92;
+}
 
 /* ---------- Final CTA ---------- */
 .endcta { background: var(--ink-deep); border-top: 1px solid var(--hairline); text-align: center; }
