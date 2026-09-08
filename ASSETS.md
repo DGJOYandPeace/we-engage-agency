@@ -143,6 +143,28 @@ This repo is **public**. `BUILDBRIEF.md` contains internal costing units explici
 
 ---
 
+## Village Treasures — facts of record
+
+Written down because the first version of this page carried invented
+biography. Nothing here should be embellished again without David confirming it.
+
+- **Max Vitz is a woman.** She owns Village Treasures, an African art store in
+  downtown Long Beach. Earlier copy called her "a man" throughout and built a
+  backstory about her holding a neighbourhood together for decades. None of that
+  came from David. It is gone.
+- **The film is fiction, not a portrait.** Coming-of-age with a turn into magical
+  realism: Stevi, a screen-absorbed teenager, finds a Kalimba in the store and
+  every play of it fills the room with dancers. The studio chose to lean into the
+  shop as a setting and write a story that could only happen there.
+- **The City Council honours were hers, not the film's.** Long Beach City Council
+  honoured Max Vitz in chambers with recognition from Mayor Rex Richardson and
+  Congressman Robert Garcia. The film's own recognition was *part of* those
+  ceremonial honours — it did not cause them.
+- **The season around it:** Official Selection at the Pan African Film Festival
+  and the Micheaux Film Festival, press coverage, and festival screenings.
+- **Credits:** co-directed with Donovan Gardener; David edited and wrote and
+  performed the score, *I Call It Kalimba*.
+
 ## Testimonial source text
 
 Full text as supplied, so a future pull can be re-cut without hunting for the

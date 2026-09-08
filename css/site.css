@@ -45,6 +45,19 @@
   --step-4:  clamp(2.6rem, 1.9rem + 3.4vw, 4.6rem);
   --step-5:  clamp(3.1rem, 2rem + 5.2vw, 6.2rem);
 
+  /* Radius and depth. The site read as a stack of hard rectangles; these
+     give it edges that turn and surfaces that sit above the ground rather
+     than being cut out of it. One scale, used everywhere, or rounding
+     becomes noise. */
+  --r-sm:   8px;
+  --r-md:   14px;
+  --r-lg:   22px;
+  --r-xl:   clamp(20px, 3vw, 40px);
+  --r-pill: 999px;
+
+  --lift:      0 18px 40px rgba(0, 0, 0, 0.34);
+  --lift-high: 0 30px 70px rgba(0, 0, 0, 0.46);
+
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -124,7 +137,7 @@ img, video { max-width: 100%; display: block; }
   display: inline-flex; align-items: center; gap: 0.7rem;
   font-family: inherit; font-size: var(--step-0); font-weight: 600;
   padding: 0.95rem 1.9rem;
-  border-radius: 2px;
+  border-radius: var(--r-pill);
   text-decoration: none;
   border: 1px solid transparent;
   transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
@@ -269,7 +282,7 @@ img, video { max-width: 100%; display: block; }
   .split--flip .split__text, .split--flip .split__media { grid-column: 1 / -1; }
 }
 
-.frame { position: relative; border-radius: 3px; overflow: hidden; }
+.frame { position: relative; border-radius: var(--r-md); overflow: hidden; }
 .frame img { width: 100%; }
 .frame--offset::after {
   content: ""; position: absolute; inset: 0;
@@ -306,8 +319,12 @@ img, video { max-width: 100%; display: block; }
   position: relative; aspect-ratio: 16 / 9;
   background: var(--ink-deep);
   border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
   overflow: hidden;
+  box-shadow: var(--lift);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
+.player:hover { transform: translateY(-3px); box-shadow: var(--lift-high); }
 .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .player__poster {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -541,7 +558,7 @@ img, video { max-width: 100%; display: block; }
 .field input, .field select, .field textarea {
   font-family: inherit; font-size: var(--step-0); color: var(--bone);
   background: var(--ink-raised); border: 1px solid var(--hairline);
-  border-radius: 2px; padding: 0.85rem 1rem; width: 100%;
+  border-radius: var(--r-sm); padding: 0.85rem 1rem; width: 100%;
   transition: border-color 0.2s var(--ease);
 }
 .field textarea { min-height: 130px; resize: vertical; }
@@ -564,7 +581,7 @@ img, video { max-width: 100%; display: block; }
 .booking { margin-top: 3rem; }
 .booking__frame {
   border: 1px solid var(--hairline); background: var(--ink-raised);
-  min-height: 640px; border-radius: 2px;
+  min-height: 640px; border-radius: var(--r-lg);
 }
 .booking__placeholder { padding: clamp(2rem, 5vw, 3.5rem); }
 
@@ -747,3 +764,58 @@ img, video { max-width: 100%; display: block; }
 
 /* Larger client mark for a centred case study head. */
 .case__mark--lg { max-height: 72px; max-width: 260px; opacity: 0.8; margin-inline: auto; }
+
+/* =========================================================================
+   Rounding and depth pass
+   Applied as one block rather than scattered through the file, so the whole
+   system can be tuned or reverted in one place. Surfaces that a visitor can
+   act on lift on hover; surfaces that only hold content do not.
+   ========================================================================= */
+.poster { border-radius: var(--r-lg); }
+.offer { border-radius: var(--r-lg); transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+.offer:hover { box-shadow: var(--lift); }
+.offer--wide { border-radius: var(--r-lg); }
+.mosaic figure { border-radius: var(--r-md); overflow: hidden; }
+.outcomes { border-radius: var(--r-lg); overflow: hidden; border-inline: 1px solid var(--hairline); }
+.linktile { border-radius: var(--r-lg); }
+.callout { border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.trustband__row img { border-radius: 2px; }
+.masthead__mark img { border-radius: 2px; }
+.card, .quote { border-radius: var(--r-md); }
+
+/* The film one-sheet already carried a shadow; align it to the token scale
+   so every raised surface on the site falls off at the same rate. */
+.poster { box-shadow: var(--lift-high); }
+
+/* =========================================================================
+   Light panel
+   A section that inverts to paper, with a large radius so it reads as a
+   panel resting on the dark ground rather than a band cut through it. Every
+   colour inside is a token, so the whole subtree re-themes by redeclaring
+   them here — no component needs a light-mode variant of its own.
+   ========================================================================= */
+.section--paper {
+  background: var(--paper);
+  color: var(--paper-ink);
+  border-radius: var(--r-xl);
+  margin-inline: clamp(0px, 2.5vw, 40px);
+  box-shadow: var(--lift-high);
+
+  --ink:        var(--paper);
+  --ink-raised: #FFFFFF;
+  --ink-deep:   #E7EAEE;
+  --bone:       var(--paper-ink);
+  --bone-soft:  var(--paper-soft);
+  --bone-faint: rgba(18, 22, 26, 0.52);
+  --hairline:   rgba(18, 22, 26, 0.14);
+  /* Brass at its display value fails contrast on paper; text-weight uses
+     for it darken, while the button keeps the bright fill it needs. */
+  --accent-lit: #8A5A12;
+}
+.section--paper .eyebrow,
+.section--paper .offer__price,
+.section--paper .quote blockquote::before,
+.section--paper .quote blockquote::after { color: #8A5A12; }
+.section--paper .btn--primary { color: #14100A; }
+.section--paper .btn--ghost { border-color: rgba(18,22,26,0.22); }
+.section--paper .btn--ghost:hover { border-color: #8A5A12; color: #8A5A12; }
