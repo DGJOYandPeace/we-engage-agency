@@ -93,6 +93,7 @@ Still open:
 - [ ] **Confirm the domain** — weengageagency.com vs. weengage.co. Neither is hardcoded anywhere yet.
 - [ ] **Magic Hair attribution.** Two videos are published on `/work` with attribution inferred from conversation, not confirmed: `wwP2EuyoHqk` (the commercial) and `aAeyGK0lGgg` (the client testimonial). Confirm both are Magic Hair Company work, that We Engage produced them, and that the 40% store-traffic lift is fairly attributed to those two campaigns.
 - [ ] **LBUSD witness quote.** The anchor education case has no human voice in it — only facts. Needs someone at the district on record, with name, title and permission.
+- [ ] **CAMS claim not independently verified.** The `/education` caption reads "A public magnet on a college campus, ranked among California's top STEM high schools." Supplied as fact-checked in the language-pass brief, but this build environment has no outbound access to rankings sources, so it went live unverified. It is a public factual claim about a client's school — worth confirming against a current source before it stays.
 - [ ] **Audrey II build film.** The link was mentioned but never supplied. The Altadena Music Theatre grid is built to take it.
 
 Open questions are tracked in `ASSETS.md`.
