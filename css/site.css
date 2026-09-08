@@ -8,24 +8,36 @@
 :root {
   /* Ground — deep blue-black. Cooler and a shade deeper than the slate it
      replaces, so the brass accent has room to feel warm against it. */
-  --ink:            #0E1216;   /* primary background */
-  --ink-raised:     #151B21;   /* cards, raised panels */
-  --ink-deep:       #080B0E;   /* footer, wells */
-  --hairline:       rgba(226, 232, 240, 0.13);
+  --ink:            #F7F3EA;   /* primary background — warm paper */
+  --ink-raised:     #FFFDF8;   /* cards, raised panels */
+  --ink-deep:       #EFE8DA;   /* wells */
+  --hairline:       rgba(28, 22, 14, 0.15);
 
   /* Type */
-  --bone:           #F0F3F6;
-  --bone-soft:      rgba(240, 243, 246, 0.70);
-  --bone-faint:     rgba(240, 243, 246, 0.44);
+  --bone:           #16130E;
+  --bone-soft:      rgba(22, 19, 14, 0.74);
+  --bone-faint:     rgba(22, 19, 14, 0.52);
+
+  /* The dark register, kept as tokens so any zone can borrow it. Film needs
+     a dark surround, and the site still opens and closes on it. */
+  --night:          #0E1216;
+  --night-raised:   #151B21;
+  --night-deep:     #080B0E;
+  --night-hairline: rgba(226, 232, 240, 0.13);
+  --night-bone:     #F0F3F6;
+  --night-soft:     rgba(240, 243, 246, 0.70);
+  --night-faint:    rgba(240, 243, 246, 0.44);
 
   /* Accents — brass and steel blue. Brass carries the warmth without the
      brightness of coral: it is the register of film awards and institutional
      prestige rather than consumer energy, which is the room this site is
      selling into. Steel blue is a quieter partner than teal. */
-  --accent:         #E0A85C;   /* primary accent / CTA */
-  --accent-lit:     #F0C081;
-  --accent2:        #5E8CA6;   /* secondary accent */
-  --accent2-lit:    #7BA9C2;
+  --accent:         #C98A2E;   /* primary accent / CTA — brass, fill weight */
+  --accent-lit:     #7A4E10;   /* brass at text weight, contrast-safe on paper */
+  --accent-night:   #E0A85C;   /* the fill brass used inside dark zones */
+  --accent-night-lit:#F0C081;
+  --accent2:        #3F6B85;   /* secondary accent */
+  --accent2-lit:    #31576D;
 
   /* Light surfaces (trust band, light sections) */
   --paper:          #F4F5F7;
@@ -708,6 +720,16 @@ img, video { max-width: 100%; display: block; }
 /* A vertical cut — a social reel — in the same player chrome. Capped so it
    cannot tower over the copy beside it. */
 .player--vertical { aspect-ratio: 9 / 16; max-width: 300px; margin-inline: auto; }
+/* Self-hosted film. `contain` rather than `cover`: the MHC testimonial is
+   1920x990, wider than the 16:9 box, and cropping a talking head to fill the
+   frame is the one thing not to do. Letting it letterbox costs about 12px of
+   bar top and bottom against a near-black player ground — invisible in
+   practice — and keeps every card in a row the same height, which a bespoke
+   aspect ratio for one video would not. */
+.player video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  border: 0; background: #000; object-fit: contain;
+}
 
 /* ---------- Poster (film one-sheet) ---------- */
 .poster {
@@ -787,35 +809,89 @@ img, video { max-width: 100%; display: block; }
    so every raised surface on the site falls off at the same rate. */
 .poster { box-shadow: var(--lift-high); }
 
+
+
 /* =========================================================================
-   Light panel
-   A section that inverts to paper, with a large radius so it reads as a
-   panel resting on the dark ground rather than a band cut through it. Every
-   colour inside is a token, so the whole subtree re-themes by redeclaring
-   them here — no component needs a light-mode variant of its own.
+   Dark zones
+   The site is paper now. These are the places that stay night, and they are
+   not decoration: the hero and page heads carry video and sit under a
+   transparent masthead, the trust band and flagship carry white logo
+   knockouts, film players need a dark surround, and the footer anchors the
+   page. Each one re-declares the palette tokens, so every component inside
+   re-themes without needing a variant of its own.
    ========================================================================= */
+.hero, .pagehead, .trustband--dark, .flagship, .foot, .section--paper {
+  --ink:        var(--night);
+  --ink-raised: var(--night-raised);
+  --ink-deep:   var(--night-deep);
+  --hairline:   var(--night-hairline);
+  --bone:       var(--night-bone);
+  --bone-soft:  var(--night-soft);
+  --bone-faint: var(--night-faint);
+  --accent:     var(--accent-night);
+  --accent-lit: var(--accent-night-lit);
+  background-color: var(--night);
+  color: var(--night-bone);
+}
+/* .section--paper is now the inversion, not the ground: on a paper site the
+   commercial panel is the dark one. Same class, opposite job, and it still
+   reads as a panel resting on the page rather than a band cut through it. */
 .section--paper {
-  background: var(--paper);
-  color: var(--paper-ink);
   border-radius: var(--r-xl);
   margin-inline: clamp(0px, 2.5vw, 40px);
-  box-shadow: var(--lift-high);
-
-  --ink:        var(--paper);
-  --ink-raised: #FFFFFF;
-  --ink-deep:   #E7EAEE;
-  --bone:       var(--paper-ink);
-  --bone-soft:  var(--paper-soft);
-  --bone-faint: rgba(18, 22, 26, 0.52);
-  --hairline:   rgba(18, 22, 26, 0.14);
-  /* Brass at its display value fails contrast on paper; text-weight uses
-     for it darken, while the button keeps the bright fill it needs. */
-  --accent-lit: #8A5A12;
+  box-shadow: 0 30px 70px rgba(40, 32, 18, 0.22);
 }
-.section--paper .eyebrow,
-.section--paper .offer__price,
-.section--paper .quote blockquote::before,
-.section--paper .quote blockquote::after { color: #8A5A12; }
-.section--paper .btn--primary { color: #14100A; }
-.section--paper .btn--ghost { border-color: rgba(18,22,26,0.22); }
-.section--paper .btn--ghost:hover { border-color: #8A5A12; color: #8A5A12; }
+.hero, .pagehead { background-color: var(--night-deep); }
+
+/* Film keeps dark chrome on every ground, or the frame edge reads as a bug. */
+.player { background: var(--night-deep); border-color: rgba(28, 22, 14, 0.18); }
+.flagship .player, .section--paper .player, .hero .player { border-color: var(--night-hairline); }
+
+/* White logo knockouts are monochrome-on-transparent, so a straight invert
+   gives a clean black mark with the alpha intact — no second set of assets.
+   Zones that stayed dark keep the white originals. */
+img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
+.hero img, .pagehead img, .trustband--dark img, .flagship img,
+.foot img, .section--paper img, .masthead__mark img { filter: none; }
+
+/* The masthead floats transparent over a dark hero or page head, so the mark
+   starts white. Once it sticks it gains a paper background, and the mark has
+   to change with it. */
+.masthead.is-stuck {
+  background: rgba(247, 243, 234, 0.9);
+  border-bottom-color: var(--hairline);
+}
+.masthead.is-stuck .masthead__mark img { content: url("/public/logos/wea-mark-rectangle-dark.png"); }
+.masthead.is-stuck .nav a { color: var(--bone-soft); }
+.masthead.is-stuck .nav a:hover, .masthead.is-stuck .nav a[aria-current="page"] { color: var(--bone); }
+.masthead.is-stuck .nav__toggle { color: var(--bone); }
+.nav a { color: var(--night-soft); }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--night-bone); }
+
+/* Depth on paper reads as warm shadow, not black. */
+.player  { box-shadow: 0 18px 40px rgba(40, 32, 18, 0.16); }
+.player:hover { box-shadow: 0 30px 60px rgba(40, 32, 18, 0.24); }
+.poster  { box-shadow: 0 30px 70px rgba(40, 32, 18, 0.26); }
+.offer:hover { box-shadow: 0 18px 40px rgba(40, 32, 18, 0.16); }
+.flagship .poster, .section--paper .poster { box-shadow: var(--lift-high); }
+
+/* Single lead offer. One card, centred, brass-edged — a lone card in a
+   three-column grid would read as two missing cards. */
+/* One card, left-aligned with the argument above it. Centring it under
+   left-aligned copy sets up two competing edges and makes the panel read
+   like a pricing page again, which is the thing this pivot moves away from. */
+.offers.offers--single { grid-template-columns: 1fr; max-width: 560px; }
+.offer--lead { border-color: var(--accent); }
+
+/* Mark weights were tuned for white-on-dark, where a knocked-back logo still
+   reads. Inverted onto paper the same values go washed and grey, so every
+   mark on a light ground carries more of itself. Alcon is the extreme case:
+   its knockout came from a luminance ramp, so it is semi-transparent
+   throughout and needs to sit at full strength. */
+.credits img { opacity: 0.82; }
+.credits img[src*="alcon"] { opacity: 1; }
+.trustband__row img { opacity: 0.86; }
+.trustband--dark .trustband__row img { opacity: 0.72; }
+.case__mark { opacity: 0.9; }
+.case__mark--xl, .case__mark--lg { opacity: 1; }
+.testimonial__mark { opacity: 1; }

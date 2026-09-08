@@ -164,6 +164,10 @@
     if (!openPlayer) return;
     var el = openPlayer;
     openPlayer = null;
+    /* Pause and detach the source first. Dropping the node alone can leave a
+       buffering video pulling bytes in some browsers. */
+    var vid = el.querySelector("video");
+    if (vid) { try { vid.pause(); vid.removeAttribute("src"); vid.load(); } catch (e) {} }
     el.innerHTML = el.__weaPoster;
     el.setAttribute("tabindex", "0");
     /* The restored poster is a fresh <img>, so it needs the maxres check
@@ -172,21 +176,44 @@
     if (img && YT_POSTER.test(img.getAttribute("src") || "")) armPoster(img);
   };
 
-  document.querySelectorAll("[data-embed]").forEach(function (el) {
+  document.querySelectorAll("[data-embed], [data-video]").forEach(function (el) {
     var load = function () {
-      var src = el.getAttribute("data-embed");
+      var file = el.getAttribute("data-video");
+      var src = file || el.getAttribute("data-embed");
       if (!src || openPlayer === el) return;
       /* Stash the poster markup once, the first time this player is opened. */
       if (el.__weaPoster === undefined) el.__weaPoster = el.innerHTML;
       closePlayer();
-      var frame = document.createElement("iframe");
-      frame.src = src + (src.indexOf("?") > -1 ? "&" : "?") + "autoplay=1";
-      frame.setAttribute("title", el.getAttribute("data-title") || "Video");
-      frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
-      frame.setAttribute("allowfullscreen", "");
-      frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+
+      /* A self-hosted file gets a real <video>, not an iframe: native
+         controls, no third party in the request, and nothing to consent to.
+         Not preloaded — the bytes are only fetched once someone asks. */
+      var node;
+      if (file) {
+        node = document.createElement("video");
+        node.src = file;
+        node.controls = true;
+        node.autoplay = true;
+        node.playsInline = true;
+        node.setAttribute("playsinline", "");
+        node.setAttribute("preload", "none");
+        node.setAttribute("title", el.getAttribute("data-title") || "Video");
+        var poster = el.getAttribute("data-poster");
+        if (poster) node.poster = poster;
+      } else {
+        node = document.createElement("iframe");
+        node.src = src + (src.indexOf("?") > -1 ? "&" : "?") + "autoplay=1";
+        node.setAttribute("title", el.getAttribute("data-title") || "Video");
+        node.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+        node.setAttribute("allowfullscreen", "");
+        node.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      }
       el.innerHTML = "";
-      el.appendChild(frame);
+      el.appendChild(node);
+      if (file) {
+        var q = node.play();
+        if (q && q.catch) q.catch(function () { /* controls are there; let them press play */ });
+      }
       /* The frame takes over as the interactive element; the wrapper should
          no longer be a tab stop or swallow clicks meant for the player. */
       el.removeAttribute("tabindex");

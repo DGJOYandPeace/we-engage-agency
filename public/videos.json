@@ -243,7 +243,9 @@
       "cuePoint": null,
       "featured": true,
       "needsConfirmation": true,
-      "notes": "On-camera client testimonial promoting We Engage Agency, hosted on the client's own page. Production quality is low by current standards — David's call — but a named client advocating on camera outweighs polish for a trust asset. Attribution to Magic Hair inferred from conversation context; confirm before publishing."
+      "notes": "On-camera client testimonial. David supplied a clean master with no repost watermark, which replaced the YouTube copy in Sept 2026. Self-hosted: H.264 High 1280x660 (native 1920x990, no crop), AAC 128k, faststart, 6.1MB for 43s, click-gated so nothing downloads until a visitor asks. Attribution to Magic Hair still needs David's confirmation.",
+      "host": "self-hosted",
+      "file": "/public/video/mhc-testimonial.mp4"
     },
     {
       "id": "magic-hair-commercial-2",
