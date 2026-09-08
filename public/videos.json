@@ -257,6 +257,54 @@
       "featured": true,
       "needsConfirmation": true,
       "notes": "The second of the two commercials, and the one referenced in the client testimonial — so the two should sit together on the page. Ties to the publishable outcome: two TV ad campaigns increased store traffic by 40%. Attribution inferred from conversation context; confirm before publishing."
+    },
+    {
+      "id": "amt-youth-programme",
+      "title": "Altadena Music Theatre — Youth Programme",
+      "client": "Altadena Music Theatre",
+      "url": "https://youtu.be/eX4K6-R-Gaw",
+      "embed": "https://www.youtube-nocookie.com/embed/eX4K6-R-Gaw",
+      "sector": "nonprofit-arts",
+      "orientation": "landscape",
+      "placement": "work",
+      "credit": "Shot and edited by We Engage Agency.",
+      "notes": "Covers the company's youth programme. Ran while AMT was seeking support to return to programming after the fire."
+    },
+    {
+      "id": "amt-summer-camp",
+      "title": "Altadena Music Theatre — Summer Camp",
+      "client": "Altadena Music Theatre",
+      "url": "https://youtube.com/shorts/U-jlRhew6DI",
+      "embed": "https://www.youtube-nocookie.com/embed/U-jlRhew6DI",
+      "sector": "nonprofit-arts",
+      "orientation": "vertical",
+      "placement": "work",
+      "credit": "Shot and edited by We Engage Agency.",
+      "notes": "Vertical short for social. Tied to the fundraising and grant support that brought programming back."
+    },
+    {
+      "id": "amt-audrey-ii-build",
+      "title": "Altadena Music Theatre — Audrey II build",
+      "client": "Altadena Music Theatre",
+      "url": null,
+      "embed": null,
+      "sector": "nonprofit-arts",
+      "orientation": "vertical",
+      "placement": "pending",
+      "needsConfirmation": true,
+      "notes": "BLOCKED: David has the YouTube link for the first vertical but has not supplied it. Build film for the 11ft Audrey II puppet, Little Shop of Horrors."
+    },
+    {
+      "id": "amt-vertical-two",
+      "title": "Altadena Music Theatre — second vertical",
+      "client": "Altadena Music Theatre",
+      "url": "https://www.instagram.com/reel/Dc6k9rSuu38/",
+      "embed": null,
+      "sector": "nonprofit-arts",
+      "orientation": "vertical",
+      "placement": "work (link-out)",
+      "notes": "Lives on the client's own Instagram. Linked out rather than embedded — Instagram's embed script is heavy, sets third-party cookies on arrival, and breaks if a post goes private. Solves the host-mismatch problem too, since we host neither.",
+      "host": "instagram"
     }
   ]
 }

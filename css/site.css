@@ -619,6 +619,79 @@ img, video { max-width: 100%; display: block; }
 .player--wide { margin-top: clamp(2.5rem, 5vw, 3.75rem); }
 .player--wide + .caption { text-align: center; }
 
+/* =========================================================================
+   Outcome links
+   The homepage used to close "what we do" with a claim that the work makes
+   people want to send a film to someone. The claim is better made by naming
+   what happens when they do, with each outcome linking to the case that
+   proves it. Placed at the end of the section so it reads as the exit, not
+   as a distraction mid-argument.
+   ========================================================================= */
+.outcomes {
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--hairline);
+  border-block: 1px solid var(--hairline);
+}
+@media (min-width: 720px) { .outcomes { grid-template-columns: repeat(3, 1fr); } }
+.outcomes a {
+  display: block;
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  background: var(--ink);
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.25s var(--ease);
+}
+.outcomes a:hover, .outcomes a:focus-visible { background: var(--ink-raised); }
+.outcomes__verb {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: var(--step-2);
+  color: var(--accent-lit);
+  line-height: 1.1;
+}
+.outcomes__note {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: var(--step--1);
+  color: var(--bone-faint);
+  line-height: 1.45;
+}
+.outcomes a:hover .outcomes__note { color: var(--bone-soft); }
+
+/* A cut that lives on the client's own social account rather than on a
+   host we control. Deliberately not an Instagram embed: their embed script
+   is heavy, sets third-party cookies on arrival, and breaks whenever a post
+   is made private. A link tile is honest about where the film lives, and
+   the client having published it is the stronger signal anyway. */
+.linktile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--hairline);
+  background: var(--ink-deep);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.linktile:hover, .linktile:focus-visible { border-color: var(--accent); background: var(--ink-raised); }
+.linktile__eyebrow {
+  font-size: var(--step--1); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.9rem;
+}
+.linktile__title { font-family: "Cormorant Garamond", serif; font-size: var(--step-2); line-height: 1.15; margin: 0; }
+.linktile__note { font-size: var(--step--1); color: var(--bone-faint); margin: 0.85rem 0 0; line-height: 1.5; }
+
+/* A vertical cut — a social reel — in the same player chrome. Capped so it
+   cannot tower over the copy beside it. */
+.player--vertical { aspect-ratio: 9 / 16; max-width: 300px; margin-inline: auto; }
+
 /* ---------- Poster (film one-sheet) ---------- */
 .poster {
   position: relative;
