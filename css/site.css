@@ -941,3 +941,49 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
   .m-fill { aspect-ratio: 4 / 3; }
   .m-tall--fill { aspect-ratio: 3 / 4; }
 }
+
+/* =========================================================================
+   Social proof panel
+   Screenshots of a client's own feed, kept as screenshots on purpose. The
+   platform chrome — verified badges, like counts, the share number — is the
+   credibility, and a scraped text feed would throw exactly that away. Sits
+   as a dark inset so the captured dark UI belongs to the panel rather than
+   fighting the paper around it.
+   ========================================================================= */
+.socialproof {
+  --ink:        var(--night);
+  --ink-raised: var(--night-raised);
+  --hairline:   var(--night-hairline);
+  --bone:       var(--night-bone);
+  --bone-soft:  var(--night-soft);
+  --bone-faint: var(--night-faint);
+  --accent-lit: var(--accent-night-lit);
+  background: var(--night);
+  color: var(--night-bone);
+  border-radius: var(--r-lg);
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+.socialproof__head { display: flex; flex-wrap: wrap; gap: 0.75rem 2.5rem; align-items: baseline; justify-content: space-between; }
+.socialproof__head p { margin: 0; max-width: 46ch; color: var(--night-soft); }
+.socialproof__counts { display: flex; gap: clamp(1.25rem, 3vw, 2.25rem); flex: none; }
+.socialproof__count b {
+  display: block; font-family: "Cormorant Garamond", serif;
+  font-size: var(--step-2); font-weight: 400; color: var(--accent-night-lit); line-height: 1;
+}
+.socialproof__count span { display: block; font-size: var(--step--1); letter-spacing: 0.1em; text-transform: uppercase; color: var(--night-faint); margin-top: 0.35rem; }
+.socialproof__grid {
+  display: grid; gap: clamp(0.75rem, 1.6vw, 1.15rem);
+  grid-template-columns: 1fr;
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+@media (min-width: 620px)  { .socialproof__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .socialproof__grid { grid-template-columns: repeat(3, 1fr); } }
+.socialproof__grid img {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--night-hairline);
+}
+/* These are captured dark screenshots, so the invert rule for white
+   knockouts must not touch them. */
+.socialproof img { filter: none !important; }

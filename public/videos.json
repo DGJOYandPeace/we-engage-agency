@@ -300,13 +300,13 @@
       "id": "amt-vertical-two",
       "title": "Altadena Music Theatre — vertical cut (second of two)",
       "client": "Altadena Music Theatre",
-      "url": "https://www.instagram.com/reel/Dc6k9rSuu38/",
-      "embed": null,
+      "url": "https://youtube.com/shorts/VwxtTVt62Jw",
+      "embed": "https://www.youtube-nocookie.com/embed/VwxtTVt62Jw",
       "sector": "nonprofit-arts",
       "orientation": "vertical",
-      "placement": "work (link-out)",
-      "notes": "Lives on the client's own Instagram. Linked out rather than embedded — Instagram's embed script is heavy, sets third-party cookies on arrival, and breaks if a post goes private. Solves the host-mismatch problem too, since we host neither.",
-      "host": "instagram"
+      "placement": "work",
+      "notes": "Second of two vertical cuts for AMT. Was linked out to the client's Instagram while it had no other host; now on the We Engage channel, so it embeds like everything else. The Instagram post's response is reproduced on /work as screenshots — 747 likes, 39 shares, 25 comments.",
+      "host": "youtube (WEA channel)"
     }
   ]
 }
