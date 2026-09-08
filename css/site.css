@@ -844,7 +844,32 @@ img, video { max-width: 100%; display: block; }
 .hero, .pagehead { background-color: var(--night-deep); }
 
 /* Film keeps dark chrome on every ground, or the frame edge reads as a bug. */
-.player { background: var(--night-deep); border-color: rgba(28, 22, 14, 0.18); }
+/* A player is a dark zone in its own right, not just a dark box. Without
+   the tokens its children inherit paper-mode text colour and the play glyph
+   renders dark over the poster — invisible on a bright thumbnail. */
+.player {
+  --ink:        var(--night);
+  --ink-raised: var(--night-raised);
+  --ink-deep:   var(--night-deep);
+  --hairline:   var(--night-hairline);
+  --bone:       var(--night-bone);
+  --bone-soft:  var(--night-soft);
+  --bone-faint: var(--night-faint);
+  --accent:     var(--accent-night);
+  --accent-lit: var(--accent-night-lit);
+  background: var(--night-deep);
+  border-color: rgba(28, 22, 14, 0.18);
+  color: var(--night-bone);
+}
+/* A poster can be a bright frame, so the button carries its own scrim
+   rather than relying on the image behind it. */
+.player__play {
+  background: rgba(8, 11, 14, 0.55);
+  backdrop-filter: blur(2px);
+  color: var(--night-bone);
+  border-color: rgba(240, 243, 246, 0.75);
+}
+.player:hover .player__play { background: var(--accent-night); border-color: var(--accent-night); color: #14100A; }
 .flagship .player, .section--paper .player, .hero .player { border-color: var(--night-hairline); }
 
 /* White logo knockouts are monochrome-on-transparent, so a straight invert
@@ -877,10 +902,13 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 
 /* Single lead offer. One card, centred, brass-edged — a lone card in a
    three-column grid would read as two missing cards. */
-/* One card, left-aligned with the argument above it. Centring it under
-   left-aligned copy sets up two competing edges and makes the panel read
-   like a pricing page again, which is the thing this pivot moves away from. */
-.offers.offers--single { grid-template-columns: 1fr; max-width: 560px; }
+/* The offer panel centres as a whole — heading, argument, card and the
+   downsell/upsell line all on one centre axis. Centring only the card under
+   left-aligned copy was the thing that looked unresolved. */
+.section--paper .shell { text-align: center; }
+.section--paper .shell > * { margin-inline: auto; }
+.offers.offers--single { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+.offer--lead { border-color: var(--accent); text-align: left; }
 .offer--lead { border-color: var(--accent); }
 
 /* Mark weights were tuned for white-on-dark, where a knocked-back logo still
@@ -895,3 +923,21 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 .case__mark { opacity: 0.9; }
 .case__mark--xl, .case__mark--lg { opacity: 1; }
 .testimonial__mark { opacity: 1; }
+
+/* The "what we do" mosaic sits on paper, so its tiles need a warm well
+   behind them rather than the dark one the production mosaic assumes. */
+.mosaic figure { border-radius: var(--r-md); }
+.mosaic--light figure { background: var(--ink-deep); }
+
+/* A tile with a fixed aspect ratio cannot also stretch, so wherever one sits
+   beside a taller neighbour — or spans two rows — the ratio wins and the grid
+   is left with a hole. Dropping the ratio lets the tile take the row height
+   it was given, which is what a mosaic wants at the edges of a row. */
+.m-fill, .m-tall--fill { aspect-ratio: auto; }
+/* Narrow enough and the spans no longer share a row with anything, so a
+   stretch tile has no neighbour to take its height from and collapses to
+   zero. Below that width the ratios come back. */
+@media (max-width: 800px) {
+  .m-fill { aspect-ratio: 4 / 3; }
+  .m-tall--fill { aspect-ratio: 3 / 4; }
+}

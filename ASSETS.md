@@ -143,6 +143,28 @@ This repo is **public**. `BUILDBRIEF.md` contains internal costing units explici
 
 ---
 
+## Behind-the-scenes stills
+
+`public/images/bts/` — seven frames supplied by David for the homepage "what we
+do" section, renamed from `wea-what-we-do-images*.jpeg` and resampled to a
+1600px long edge (2.1 MB → 1.4 MB total).
+
+| File | What it shows |
+| --- | --- |
+| `bts-crew-and-subjects.jpg` | Crew and participants together between takes, everyone relaxed |
+| `bts-between-takes.jpg` | Two participants laughing together (vertical) |
+| `bts-studio-interview.jpg` | Studio interview, lights and monitor in frame |
+| `bts-camera-rig-shop.jpg` | Camera and monitor rig set up inside a client's shop |
+| `bts-on-location-operating.jpg` | David operating camera on location |
+| `bts-loft-interview-wide.jpg` | Wide interview setup in a brick loft |
+| `bts-subject-mid-interview.jpg` | A participant mid-sentence, talking with her hands |
+
+These replaced the David portrait in that section. The portrait duplicated the
+one on About and argued nothing; the section is about what a shoot is actually
+like, and the copy claims people finish the day glad they said yes — these
+frames are that claim as evidence. The portrait itself is untouched and still
+in use on About.
+
 ## Village Treasures — facts of record
 
 Written down because the first version of this page carried invented
