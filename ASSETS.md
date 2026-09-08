@@ -157,6 +157,6 @@ Featured: Renaissance HS, CAMS HS, Teach Long Beach, W Geriatrics, Village Treas
 
 **Schema extended** beyond the brief's Section 9 enum with `tech` and `agency` sectors — the link list contains VR/startup work and WEA's own reels that the original six sectors didn't anticipate. Also added `vimeoHash`, `needsConfirmation`, and an `embedPatterns` block in `_meta` so embed URLs are built from one definition rather than hand-assembled per page.
 
-**Embed IDs are transcribed verbatim and could not be machine-verified** — YouTube and Vimeo are unreachable from this build container (a known-good control ID also failed to resolve). Worth a click-through pass once the pages render.
+**Embed IDs were transcribed verbatim and could not be machine-verified** — YouTube and Vimeo are unreachable from this build container (a known-good control ID also failed to resolve). David has since clicked through the published pages and confirmed the embeds play.
 
 7 entries carry `needsConfirmation: true` where the client or sector was inferred from a title rather than stated.

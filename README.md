@@ -80,11 +80,19 @@ Every colour, type step and spacing value is a custom property on `:root` in `cs
 
 ## Before launch
 
-- [ ] **Wire the intake form to a backend.** It currently validates and gates the scheduler, but answers go nowhere — a static site has no delivery mechanism. Set `data-endpoint` on `#intake` in `contact.html` to a form service (Formspree, Basin) or a serverless function. Until then the qualification step collects nothing.
-- [ ] **Add the Calendly URL** to `data-calendly` on `#booking` in `contact.html`. The real scheduler replaces the placeholder panel automatically.
-- [ ] **Replace the hero loop.** The current cut contains an event/nightlife segment; event and music-video work is retired from front-page content. Drop the new render at `public/video/heroloop.mp4` — same filename, no code changes needed.
-- [ ] **Set the real contact email.** `contact.html` currently uses `hello@weengageagency.com`.
+Done and verified end to end:
+
+- [x] **Intake form wired to Basin.** `data-endpoint` on `#intake` posts form-encoded to `https://usebasin.com/f/d407cce43edb`. Confirmed by David: a test submission reaches the inbox with every answer broken out as a named field. Form-encoded rather than JSON — Basin treats it as native and maps the fields, and it is a "simple" request so the browser skips the CORS preflight.
+- [x] **Calendly wired.** `data-calendly` on `#booking` points at `https://calendly.com/davidgeathers/30min`, themed to the site and pre-filled with the name and email the visitor just typed. Confirmed landing in David's email.
+- [x] **Hero loop replaced.** Current cut is at `public/video/heroloop.mp4`, cache-busted with `?v=6`.
+- [x] **Real contact email set.** `data-fallback-email` is David's Gmail, rendered as a button and never as printed text.
+- [x] **Video embeds clicked through.** Confirmed working by David.
+
+Still open:
+
 - [ ] **Confirm the domain** — weengageagency.com vs. weengage.co. Neither is hardcoded anywhere yet.
-- [ ] **Click through every video embed** once deployed. Embed IDs were transcribed from a supplied list and could not be verified from the build environment.
+- [ ] **Magic Hair attribution.** Two videos are published on `/work` with attribution inferred from conversation, not confirmed: `wwP2EuyoHqk` (the commercial) and `aAeyGK0lGgg` (the client testimonial). Confirm both are Magic Hair Company work, that We Engage produced them, and that the 40% store-traffic lift is fairly attributed to those two campaigns.
+- [ ] **LBUSD witness quote.** The anchor education case has no human voice in it — only facts. Needs someone at the district on record, with name, title and permission.
+- [ ] **Audrey II build film.** The link was mentioned but never supplied. The Altadena Music Theatre grid is built to take it.
 
 Open questions are tracked in `ASSETS.md`.
