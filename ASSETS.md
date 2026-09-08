@@ -143,6 +143,50 @@ This repo is **public**. `BUILDBRIEF.md` contains internal costing units explici
 
 ---
 
+## Testimonial source text
+
+Full text as supplied, so a future pull can be re-cut without hunting for the
+original. Anything published on the site is an excerpt of one of these; an
+ellipsis in a published quote means a sentence was dropped, never that words
+were changed or reordered.
+
+**Jeroen Van den Bosch — Titanium Toaster Corp**
+
+> It was a delight working with David for our company introduction video. I find
+> David to be very talented, creative, ambitious, and extremely qualified for
+> many aspects of the Film and Music Production Business. I would enthusiastically
+> recommend David to any company and or production team.
+
+Published on the homepage as the first and last sentences. The middle sentence
+is a list of adjectives — true, but it makes a weaker trust asset than the named
+deliverable and the recommendation, so it is the one dropped.
+
+**Dr. Theresa Wong — W Geriatrics**
+
+> Within two weeks, and within budget, he and his team created a gorgeous and
+> effective promotional video — now featured on the homepage of my website.
+
+From her own public appreciation post, which is also reproduced as an image on
+`/healthcare` — stronger than the text alone, because a reader can see who said
+it and that nobody was asked to.
+
+**Dr. Siva Mohan — Ayurveda By Siva, Inc.**
+
+> Super professional, got what I envisioned, and timely. He gives his feedback in
+> ever so gentle a manner, so I didn't feel silly for my technical un-savvyness.
+
+Published in full on `/healthcare` and excerpted on the homepage.
+
+**Long Beach Unified School District — OUTSTANDING**
+
+No attributed quote. LBUSD is the strongest case on the site and the only major
+one carrying no human voice — the education anchor runs on facts alone. Source
+material is currently locked behind an expired Google Workspace account. Two
+routes: reactivate the subscription long enough to export the mail (Google holds
+the data for a period after expiry rather than deleting it immediately), or ask
+the district contact for a fresh line, which a client who commissioned four
+films will usually give. Needs the exact words, name, title and permission.
+
 ## videos.json
 
 **23 entries, every one with an embed ID.** No duplicates. Built from the client-supplied link list.
