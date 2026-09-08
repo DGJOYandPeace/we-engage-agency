@@ -117,6 +117,34 @@
     if (wide.addEventListener) wide.addEventListener("change", mount);
   }
 
+  /* ---------- YouTube poster fallback ----------
+     Not every video has a maxresdefault.jpg. When one is missing YouTube
+     does NOT 404 — it answers 200 with a 120x90 grey placeholder, so an
+     onerror handler never fires and the poster renders as a grey box.
+     The only reliable tell is the decoded size, so check it on load and
+     step down to hqdefault.jpg, which exists for every video. */
+  var YT_POSTER = /^https?:\/\/i\.ytimg\.com\/vi\/([^/]+)\/maxresdefault\.jpg/;
+
+  var stepDownPoster = function (img) {
+    var m = YT_POSTER.exec(img.currentSrc || img.src);
+    if (!m) return;
+    img.src = "https://i.ytimg.com/vi/" + m[1] + "/hqdefault.jpg";
+  };
+
+  var checkPoster = function (img) {
+    /* 120x90 is the placeholder; a real maxres frame is 1280x720. Width 0
+       means it has not decoded yet, which the load handler will catch. */
+    if (img.naturalWidth && img.naturalWidth <= 120) stepDownPoster(img);
+  };
+
+  document.querySelectorAll("img.player__poster").forEach(function (img) {
+    if (!YT_POSTER.test(img.getAttribute("src") || "")) return;
+    if (img.complete) checkPoster(img);
+    img.addEventListener("load", function () { checkPoster(img); });
+    /* A genuine network failure still deserves the same step-down. */
+    img.addEventListener("error", function () { stepDownPoster(img); });
+  });
+
   /* ---------- Click-to-load video embeds ----------
      Nothing from YouTube or Vimeo is requested until the visitor asks for it:
      faster first paint, and no third-party cookies set on arrival. */

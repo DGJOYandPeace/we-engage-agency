@@ -22,7 +22,7 @@
   "videos": [
     {
       "id": "lbusd-renaissance-high-school",
-      "title": "Renaissance High School for the Arts \u2014 Campus Introduction Film",
+      "title": "Renaissance High School for the Arts — Campus Introduction Film",
       "client": "Long Beach Unified School District",
       "sector": "education",
       "year": null,
@@ -33,7 +33,7 @@
     },
     {
       "id": "lbusd-cams-high-school",
-      "title": "CAMS High School \u2014 Campus Introduction Film",
+      "title": "CAMS High School — Campus Introduction Film",
       "client": "Long Beach Unified School District",
       "sector": "education",
       "year": null,
@@ -41,11 +41,11 @@
       "embedId": "LgQIx5MdfnU",
       "cuePoint": 45,
       "featured": true,
-      "notes": "Confirmed single film. The link list included a '(Interviews)' entry pointing at this same ID with ?t=45 \u2014 stored as cuePoint, not a second row."
+      "notes": "Confirmed single film. The link list included a '(Interviews)' entry pointing at this same ID with ?t=45 — stored as cuePoint, not a second row."
     },
     {
       "id": "lbusd-teach-long-beach",
-      "title": "We Are Ready for You! \u2014 Teach Long Beach",
+      "title": "We Are Ready for You! — Teach Long Beach",
       "client": "Long Beach Unified School District",
       "sector": "education",
       "year": null,
@@ -77,11 +77,12 @@
       "embedId": "hqVIYGsu4Lk",
       "cuePoint": null,
       "featured": false,
-      "notes": "Cubieverse. Strong production quality, but Coin Hunt Fest is the preferred showcase for this client per David, so this stays in the lower 'additional work' grid."
+      "notes": "Cubieverse is deprioritized. Removed from /work at David's direction (Sept 2026); kept in the catalog for reference only.",
+      "placement": "not-on-site"
     },
     {
       "id": "w-geriatrics-intro",
-      "title": "W Geriatrics \u2014 Introductory Video",
+      "title": "W Geriatrics — Introductory Video",
       "client": "W Geriatrics",
       "sector": "healthcare",
       "year": null,
@@ -93,7 +94,7 @@
     },
     {
       "id": "craft-and-light",
-      "title": "Craft + Light \u2014 WE ARE OPEN",
+      "title": "Craft + Light — WE ARE OPEN",
       "client": "Craft + Light Creative Arts Studio",
       "sector": "brand",
       "year": null,
@@ -126,7 +127,7 @@
       "cuePoint": null,
       "featured": false,
       "needsConfirmation": true,
-      "notes": "Client inferred from subject matter. Brief Section 7 says gamified content must not be a primary /work entry \u2014 lower 'additional work' grid only."
+      "notes": "Client inferred from subject matter. Brief Section 7 says gamified content must not be a primary /work entry — lower 'additional work' grid only."
     },
     {
       "id": "welcome-to-cubieverse",
@@ -138,11 +139,12 @@
       "embedId": "-UTthMsHmCM",
       "cuePoint": null,
       "featured": false,
-      "notes": "Brief Section 7 explicitly deprioritizes Cubieverse. Lower 'additional work' grid only, if included at all."
+      "notes": "Cubieverse is deprioritized. Removed from /work at David's direction (Sept 2026); kept in the catalog for reference only.",
+      "placement": "not-on-site"
     },
     {
       "id": "lamc-big-sing-2022",
-      "title": "Big Sing 2022 \u2014 Event Highlight",
+      "title": "Big Sing 2022 — Event Highlight",
       "client": "LA Master Chorale",
       "sector": "nonprofit",
       "year": 2022,
@@ -150,7 +152,8 @@
       "embedId": "Jk4RjngIjL0",
       "cuePoint": null,
       "featured": false,
-      "notes": "Frame as part of a sustained 2018-2022 arts partnership, not a standalone event video."
+      "notes": "Anchor film for the LA Master Chorale case on /work. Full project carried through post by We Engage.",
+      "credit": "Post-production: edit, finishing master and delivery."
     },
     {
       "id": "lamc-big-sing-california",
@@ -162,7 +165,7 @@
       "embedId": "YCDo6ueNJKk",
       "cuePoint": null,
       "featured": false,
-      "notes": "Second LAMC film \u2014 supports the multi-year relationship framing."
+      "notes": "Second LAMC film — supports the multi-year relationship framing."
     },
     {
       "id": "village-treasures",
@@ -175,11 +178,11 @@
       "vimeoHash": "235dd7ccb8",
       "cuePoint": null,
       "featured": true,
-      "notes": "UNLISTED / hash-gated. The hash MUST travel with every embed: https://player.vimeo.com/video/869003902?h=235dd7ccb8 . Do not strip it while the video remains unlisted. Flagship \u2014 gets its own page."
+      "notes": "UNLISTED / hash-gated. The hash MUST travel with every embed: https://player.vimeo.com/video/869003902?h=235dd7ccb8 . Do not strip it while the video remains unlisted. Flagship — gets its own page."
     },
     {
       "id": "unconquered-trailer",
-      "title": "Unconquered \u2014 Trailer",
+      "title": "Unconquered — Trailer",
       "client": "Independent",
       "sector": "narrative",
       "year": null,
@@ -187,11 +190,11 @@
       "embedId": "3oOpkhOlmTU",
       "cuePoint": null,
       "featured": false,
-      "notes": "David as editor and sound designer. Black Seminole history subject matter \u2014 demonstrates range into serious narrative work."
+      "notes": "David as editor and sound designer. Black Seminole history subject matter — demonstrates range into serious narrative work."
     },
     {
       "id": "wea-showreel",
-      "title": "We Engage Agency \u2014 Showreel",
+      "title": "We Engage Agency — Showreel",
       "client": "We Engage Agency",
       "sector": "agency",
       "year": null,
@@ -200,7 +203,7 @@
       "cuePoint": null,
       "featured": false,
       "needsConfirmation": true,
-      "notes": "Not mentioned in the brief. A general showreel may conflict with the sector-specific funnel strategy in Section 4 \u2014 decide whether it appears at all."
+      "notes": "Not mentioned in the brief. A general showreel may conflict with the sector-specific funnel strategy in Section 4 — decide whether it appears at all."
     },
     {
       "id": "music-composer-reel",
@@ -217,7 +220,7 @@
     },
     {
       "id": "colburn-testimonial",
-      "title": "Colburn School \u2014 On Video Production with We Engage Agency",
+      "title": "Colburn School — On Video Production with We Engage Agency",
       "client": "Colburn School",
       "sector": "education",
       "year": null,
@@ -226,11 +229,11 @@
       "cuePoint": null,
       "featured": true,
       "poster": "thumbnails-posters/colburn-testimonial-thumbnail.jpg",
-      "notes": "Confirmed the only Colburn asset; the programme film is not available. Frame this as a testimonial about the video service itself rather than a Colburn programme piece \u2014 that is what the client is speaking to on camera."
+      "notes": "Confirmed the only Colburn asset; the programme film is not available. Frame this as a testimonial about the video service itself rather than a Colburn programme piece — that is what the client is speaking to on camera."
     },
     {
       "id": "magic-hair-testimonial",
-      "title": "Magic Hair Company \u2014 Client Testimonial",
+      "title": "Magic Hair Company — Client Testimonial",
       "client": "Magic Hair Company",
       "sector": "brand",
       "year": null,
@@ -239,11 +242,11 @@
       "cuePoint": null,
       "featured": true,
       "needsConfirmation": true,
-      "notes": "On-camera client testimonial promoting We Engage Agency, hosted on the client's own page. Production quality is low by current standards \u2014 David's call \u2014 but a named client advocating on camera outweighs polish for a trust asset. Attribution to Magic Hair inferred from conversation context; confirm before publishing."
+      "notes": "On-camera client testimonial promoting We Engage Agency, hosted on the client's own page. Production quality is low by current standards — David's call — but a named client advocating on camera outweighs polish for a trust asset. Attribution to Magic Hair inferred from conversation context; confirm before publishing."
     },
     {
       "id": "magic-hair-commercial-2",
-      "title": "Magic Hair Company \u2014 Commercial (second campaign)",
+      "title": "Magic Hair Company — Commercial (second campaign)",
       "client": "Magic Hair Company",
       "sector": "brand",
       "year": null,
@@ -252,7 +255,7 @@
       "cuePoint": null,
       "featured": true,
       "needsConfirmation": true,
-      "notes": "The second of the two commercials, and the one referenced in the client testimonial \u2014 so the two should sit together on the page. Ties to the publishable outcome: two TV ad campaigns increased store traffic by 40%. Attribution inferred from conversation context; confirm before publishing."
+      "notes": "The second of the two commercials, and the one referenced in the client testimonial — so the two should sit together on the page. Ties to the publishable outcome: two TV ad campaigns increased store traffic by 40%. Attribution inferred from conversation context; confirm before publishing."
     }
   ]
 }
