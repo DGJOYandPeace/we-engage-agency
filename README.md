@@ -78,6 +78,55 @@ Every colour, type step and spacing value is a custom property on `:root` in `cs
 
 ---
 
+## Hosting
+
+The site is plain static HTML at the repo root with no build step, so it can be
+served straight from GitHub Pages: **repo → domain, no third service.**
+
+- `CNAME` holds `weengageagency.com`. GitHub Pages reads it and sets the custom
+  domain automatically when Pages is enabled.
+- `.nojekyll` stops Pages running the files through Jekyll. Nothing here is
+  named with a leading underscore today, but Jekyll would be a silent
+  build step sitting between the repo and the live site for no benefit.
+
+**Enabling it:** Settings → Pages → Source: *Deploy from a branch* → `main`,
+folder `/ (root)`. Then tick **Enforce HTTPS** once the certificate issues.
+
+**DNS at Namecheap** (Advanced DNS, after the transfer completes — changing
+nameservers mid-transfer can stall it):
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `dgjoyandpeace.github.io.` |
+
+Remove Namecheap's default parking/redirect records first, or they fight the
+A records.
+
+### What moving off Vercel costs
+
+`vercel.json` set three response headers that **GitHub Pages cannot send**:
+`X-Content-Type-Options`, `X-Frame-Options`, and `Referrer-Policy`. Pages has
+no equivalent to a headers config.
+
+- `Referrer-Policy` is carried in the markup instead — every page has
+  `<meta name="referrer" content="strict-origin-when-cross-origin">`.
+- The other two have no meta equivalent that browsers honour. For a static
+  marketing site with no login and no user data this is a small loss:
+  `X-Frame-Options` only stops the site being framed by someone else, and
+  `X-Content-Type-Options` only matters where a server might mis-type a file,
+  which Pages does not.
+- The cache headers go too. Pages sets its own (roughly 10 minutes), which is
+  close to what `vercel.json` asked for anyway.
+
+If those headers ever matter, Cloudflare Pages is the same repo-to-domain
+model and supports a `_headers` file. `vercel.json` is left in place: it is
+inert on GitHub Pages and keeps the existing Vercel deployment working during
+the switchover.
+
 ## Before launch
 
 Done and verified end to end:
