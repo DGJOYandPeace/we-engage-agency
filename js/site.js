@@ -137,21 +137,48 @@
     if (img.naturalWidth && img.naturalWidth <= 120) stepDownPoster(img);
   };
 
-  document.querySelectorAll("img.player__poster").forEach(function (img) {
-    if (!YT_POSTER.test(img.getAttribute("src") || "")) return;
+  var armPoster = function (img) {
     if (img.complete) checkPoster(img);
     img.addEventListener("load", function () { checkPoster(img); });
     /* A genuine network failure still deserves the same step-down. */
     img.addEventListener("error", function () { stepDownPoster(img); });
+  };
+
+  document.querySelectorAll("img.player__poster").forEach(function (img) {
+    if (YT_POSTER.test(img.getAttribute("src") || "")) armPoster(img);
   });
 
   /* ---------- Click-to-load video embeds ----------
      Nothing from YouTube or Vimeo is requested until the visitor asks for it:
-     faster first paint, and no third-party cookies set on arrival. */
+     faster first paint, and no third-party cookies set on arrival.
+
+     Only one player is ever live at a time. Opening a second video tears the
+     first one down and restores its poster, which stops the audio outright —
+     two films talking over each other on the same page is the fastest way to
+     make someone leave. Removing the iframe is deliberate: it needs no
+     third-party player API, works the same for YouTube and Vimeo, and cannot
+     leave a muted-but-running frame burning bandwidth behind the fold. */
+  var openPlayer = null;
+
+  var closePlayer = function () {
+    if (!openPlayer) return;
+    var el = openPlayer;
+    openPlayer = null;
+    el.innerHTML = el.__weaPoster;
+    el.setAttribute("tabindex", "0");
+    /* The restored poster is a fresh <img>, so it needs the maxres check
+       applied again — it has not been through the walk below. */
+    var img = el.querySelector("img.player__poster");
+    if (img && YT_POSTER.test(img.getAttribute("src") || "")) armPoster(img);
+  };
+
   document.querySelectorAll("[data-embed]").forEach(function (el) {
     var load = function () {
       var src = el.getAttribute("data-embed");
-      if (!src) return;
+      if (!src || openPlayer === el) return;
+      /* Stash the poster markup once, the first time this player is opened. */
+      if (el.__weaPoster === undefined) el.__weaPoster = el.innerHTML;
+      closePlayer();
       var frame = document.createElement("iframe");
       frame.src = src + (src.indexOf("?") > -1 ? "&" : "?") + "autoplay=1";
       frame.setAttribute("title", el.getAttribute("data-title") || "Video");
@@ -160,12 +187,39 @@
       frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
       el.innerHTML = "";
       el.appendChild(frame);
+      /* The frame takes over as the interactive element; the wrapper should
+         no longer be a tab stop or swallow clicks meant for the player. */
+      el.removeAttribute("tabindex");
+      openPlayer = el;
     };
-    el.addEventListener("click", load);
+    el.addEventListener("click", function () {
+      /* Clicks inside a live iframe never reach us, so this only ever fires
+         on the poster — but guard anyway in case of a stray bubble. */
+      if (openPlayer !== el) load();
+    });
     el.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); load(); }
     });
   });
+
+  /* Escape closes whatever is playing. */
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && openPlayer) {
+      var el = openPlayer;
+      closePlayer();
+      el.focus();
+    }
+  });
+
+  /* The hero loop is decorative and silent, but it should not keep running
+     under a film the visitor actually chose to watch. */
+  var heroPause = function (playing) {
+    var v = heroSlot && heroSlot.querySelector("video");
+    if (!v) return;
+    if (playing) { v.pause(); } else { var q = v.play(); if (q && q.catch) q.catch(function () {}); }
+  };
+  var wrapped = closePlayer;
+  closePlayer = function () { wrapped(); heroPause(false); };
 
   /* ---------- Intake form ----------
      Qualification gates the calendar: the scheduler stays hidden until the
