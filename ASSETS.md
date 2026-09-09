@@ -272,6 +272,9 @@ dropped, per David.
 > I am speechless. Both our Principal and I are so happy with this movie. In 6
 > minutes you told the CAMS story.
 
+Published as "I am speechless… In 6 minutes you told the CAMS story." — the middle
+sentence is dropped so the quote lands on the specific thing he said.
+
 Source: email to David, 29 May 2019, subject "Re: [Video Link] CAMS Campus
 Introduction Video", on delivery of the film. Published in full on `/education`
 inside the LBUSD anchor case, directly under the film grid.

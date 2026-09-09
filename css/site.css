@@ -1190,9 +1190,15 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 .saidit { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
 .saidit .quotes { margin-top: 0; }
 @media (min-width: 900px) {
-  .saidit .quotes { grid-template-columns: repeat(2, 1fr); max-width: 62rem; }
-  .saidit--one .quotes { grid-template-columns: 1fr; max-width: 44rem; }
+  /* max-width without auto margins pinned the grid to the left of a centred
+     shell — it sat 124px off the axis every other element shares. */
+  .saidit .quotes { grid-template-columns: repeat(2, 1fr); max-width: 62rem; margin-inline: auto; }
+  .saidit--one .quotes { grid-template-columns: 1fr; max-width: 44rem; margin-inline: auto; }
 }
+/* Quotes of unequal length left their attributions floating at different
+   heights. Pinning the cite to the bottom of each cell lines them up. */
+.saidit .quote { display: flex; flex-direction: column; }
+.saidit .quote cite { margin-top: auto; }
 .endcta .saidit .quote blockquote { font-size: var(--step-1); }
 
 /* A witness quote inside a case study: the moment the client speaks, set
@@ -1221,3 +1227,12 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
   font-size: var(--step--1); letter-spacing: 0.06em; color: var(--bone-faint); line-height: 1.6;
 }
 .witness cite b { display: block; color: var(--bone-soft); font-weight: 600; letter-spacing: 0.03em; }
+
+/* The line that sets up the outcome tiles, centred with them and sitting
+   directly above rather than buried at the end of a body column. */
+.outcomes__lead {
+  text-align: center;
+  max-width: 54ch;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--bone-soft);
+}
