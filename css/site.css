@@ -1183,3 +1183,14 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
   color: var(--bone-soft);
 }
 .pickedbanner strong { color: var(--bone); font-weight: 500; }
+
+/* A client voice immediately before the ask, on the page whose work they are
+   talking about. One or two, never a wall — this is corroboration at the
+   moment of decision, not the testimonials section over again. */
+.saidit { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.saidit .quotes { margin-top: 0; }
+@media (min-width: 900px) {
+  .saidit .quotes { grid-template-columns: repeat(2, 1fr); max-width: 62rem; }
+  .saidit--one .quotes { grid-template-columns: 1fr; max-width: 44rem; }
+}
+.endcta .saidit .quote blockquote { font-size: var(--step-1); }

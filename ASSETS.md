@@ -240,6 +240,33 @@ it and that nobody was asked to.
 
 Published in full on `/healthcare` and excerpted on the homepage.
 
+**Eileen Ringwald — Girl Scouts of Greater Los Angeles**
+
+> We Engage is a great company to work with. David's attention to detail shows
+> from throughout the project process from planning, to the shoot day, and
+> after. His professionalism and passion for creating the best work really made
+> it easy for us to land on what we needed. He even made a change months after
+> the fact to one of the videos when we had to make a venue change to an event
+> mentioned.
+
+Consent: ticked **"Feel free to share my testimony and my name."** No photo
+supplied. Published on `/education`. Two changes, both noted here so the
+original stands as the record: the closing sentence about a venue change is
+dropped, and "shows from throughout" is set as "shows throughout" — the stray
+"from" is a typing slip, not a turn of phrase.
+
+**Jessica Fletcher — Muir Reunion**
+
+> David and his team caught the vision of our project and delivered above and
+> beyond our expectations. They were professional and efficient and took
+> initiative to capture and execute our vision entirely. We are so pleased with
+> the outcome and we are so thankful we decided to film our event. We will be
+> returning to We Engage Agency for all future projects.
+
+Consent: ticked **"Feel free to share my testimony and my name."** No photo
+supplied. Published on `/education` with the sentence about filming the event
+dropped, per David.
+
 **Long Beach Unified School District — OUTSTANDING**
 
 No attributed quote. LBUSD is the strongest case on the site and the only major
