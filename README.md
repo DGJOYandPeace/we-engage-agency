@@ -139,6 +139,8 @@ Done and verified end to end:
 
 Still open:
 
+- [ ] **Check the Big Sing poster crop on the live site.** Both LA Master Chorale thumbnails carried the source footage's own black bars. They are cropped with `--poster-zoom: 1.34` on the `img` in `work.html` — the figure that removes 4:3 pillarboxing from a 16:9 thumbnail. This build environment cannot reach `i.ytimg.com`, so the value is reasoned rather than measured: if the frame still shows black, raise it; if the picture is now cropped too tight, lower it. One number per poster.
+
 - [ ] **Confirm the domain** — weengageagency.com vs. weengage.co. Neither is hardcoded anywhere yet.
 - [ ] **Magic Hair attribution.** Two videos are published on `/work` with attribution inferred from conversation, not confirmed: `wwP2EuyoHqk` (the commercial) and `aAeyGK0lGgg` (the client testimonial). Confirm both are Magic Hair Company work, that We Engage produced them, and that the 40% store-traffic lift is fairly attributed to those two campaigns.
 - [ ] **CAMS claim not independently verified.** The `/education` caption reads "A public magnet on a college campus, ranked among California's top STEM high schools." Supplied as fact-checked in the language-pass brief, but this build environment has no outbound access to rankings sources, so it went live unverified. It is a public factual claim about a client's school — worth confirming against a current source before it stays.

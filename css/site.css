@@ -925,7 +925,10 @@ img, video { max-width: 100%; display: block; }
    reads as a panel resting on the page rather than a band cut through it. */
 .section--paper {
   border-radius: var(--r-xl);
-  margin-inline: clamp(0px, 2.5vw, 40px);
+  /* Inset on all four sides, not just the sides. Butted straight up against
+     the section above it, a panel of a similar tone reads as a colour change
+     in one continuous surface; the gap is what makes it a frame. */
+  margin: clamp(2rem, 5vw, 4.5rem) clamp(0px, 2.5vw, 40px);
   box-shadow: 0 30px 70px rgba(40, 32, 18, 0.22);
 }
 .hero, .pagehead { background-color: var(--night-deep); }
@@ -1254,3 +1257,10 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 /* Anchor targets must clear the fixed masthead, or a jump lands with the
    section heading tucked under the bar. */
 :target, #offer, [id^="tier-"], .case[id], .section[id] { scroll-margin-top: clamp(84px, 12vh, 120px); }
+
+/* Some YouTube thumbnails carry the source video's own letterbox or
+   pillarbox bars baked in, so the poster arrives with a black frame around
+   the picture. A scale about the centre crops the bars off; the value is per
+   player because how much bar there is depends on the source footage.
+   1.34 is the figure that removes 4:3 pillarboxing from a 16:9 thumbnail. */
+.player__poster { transform: scale(var(--poster-zoom, 1)); transform-origin: center; }
