@@ -267,15 +267,23 @@ Consent: ticked **"Feel free to share my testimony and my name."** No photo
 supplied. Published on `/education` with the sentence about filming the event
 dropped, per David.
 
-**Long Beach Unified School District — OUTSTANDING**
+**Chris Thompson — Assistant Principal, CAMS High School, LBUSD**
 
-No attributed quote. LBUSD is the strongest case on the site and the only major
-one carrying no human voice — the education anchor runs on facts alone. Source
-material is currently locked behind an expired Google Workspace account. Two
-routes: reactivate the subscription long enough to export the mail (Google holds
-the data for a period after expiry rather than deleting it immediately), or ask
-the district contact for a fresh line, which a client who commissioned four
-films will usually give. Needs the exact words, name, title and permission.
+> I am speechless. Both our Principal and I are so happy with this movie. In 6
+> minutes you told the CAMS story.
+
+Source: email to David, 29 May 2019, subject "Re: [Video Link] CAMS Campus
+Introduction Video", on delivery of the film. Published in full on `/education`
+inside the LBUSD anchor case, directly under the film grid.
+
+**Consent is not on record for this one, and it is different in kind from the
+others.** Eileen Ringwald and Jessica Fletcher each submitted a testimonial form
+and ticked "share my testimony and my name". This is a private email, and it
+names a serving public-school administrator with his title and district. The
+content is warm and nothing about it is sensitive, but the ordinary courtesy —
+and the thing that protects the relationship — is to ask. A one-line note to
+Chris Thompson saying where it appears would settle it. Until then, treat this
+as published at David's direction rather than with recorded permission.
 
 ## videos.json
 
