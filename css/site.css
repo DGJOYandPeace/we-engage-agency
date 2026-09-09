@@ -1250,3 +1250,7 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 /* A second lede that answers the question the form itself provokes —
    "am I even the right size for this?" — without another heading. */
 .lede--soft { color: var(--bone-faint); max-width: 46ch; margin-top: 0.9rem; }
+
+/* Anchor targets must clear the fixed masthead, or a jump lands with the
+   section heading tucked under the bar. */
+:target, #offer, [id^="tier-"], .case[id], .section[id] { scroll-margin-top: clamp(84px, 12vh, 120px); }

@@ -189,22 +189,28 @@ in use on About.
 Written down because the first version of this page carried invented
 biography. Nothing here should be embellished again without David confirming it.
 
-- **Max Vitz is a woman.** She owns Village Treasures, an African art store in
-  downtown Long Beach. Earlier copy called her "a man" throughout and built a
-  backstory about her holding a neighbourhood together for decades. None of that
-  came from David. It is gone.
+- **Max Viltz is a woman.** She owns Village Treasures, an African import
+  boutique and gallery in downtown Long Beach. Earlier copy called her "a man"
+  throughout, built a backstory about her holding a neighbourhood together for
+  decades, and misspelled her surname as "Vitz". All corrected.
 - **The film is fiction, not a portrait.** Coming-of-age with a turn into magical
   realism: Stevi, a screen-absorbed teenager, finds a Kalimba in the store and
-  every play of it fills the room with dancers. The studio chose to lean into the
-  shop as a setting and write a story that could only happen there.
-- **The City Council honours were hers, not the film's.** Long Beach City Council
-  honoured Max Vitz in chambers with recognition from Mayor Rex Richardson and
-  Congressman Robert Garcia. The film's own recognition was *part of* those
-  ceremonial honours — it did not cause them.
+  every play of it fills the room with spirit dancers. The studio chose to lean
+  into the shop as a setting and write a story around it — an adventurous
+  approach to brand storytelling rather than a promotional piece.
+- **The recognition was hers, and the film was part of the season, not its
+  cause.** February 2024, during Black History Month: Long Beach City Council
+  recognized Max Viltz in chambers, and Mayor Rex Richardson issued a formal
+  Certificate of Recognition. Village Treasures was marking seventeen years in
+  business.
+- **Congressman Robert Garcia** appeared in earlier copy, carried over from the
+  original brief. He is not in the source David supplied for the 2024
+  recognition, so the claim is removed rather than left standing unverified.
+  Restore it if David confirms.
 - **The season around it:** Official Selection at the Pan African Film Festival
   and the Micheaux Film Festival, press coverage, and festival screenings.
-- **Credits:** co-directed with Donovan Gardener; David edited and wrote and
-  performed the score, *I Call It Kalimba*.
+- **Credits:** co-directed with Donovan Gardener and Devan Renea; David edited
+  and wrote and performed the score, *I Call It Kalimba*.
 
 ## Testimonial source text
 
@@ -272,21 +278,18 @@ dropped, per David.
 > I am speechless. Both our Principal and I are so happy with this movie. In 6
 > minutes you told the CAMS story.
 
-Published as "I am speechless… In 6 minutes you told the CAMS story." — the middle
-sentence is dropped so the quote lands on the specific thing he said.
+Published in full. An ellipsis marks an omission, and with the Principal
+sentence restored there is nothing omitted, so the quote runs as written.
 
 Source: email to David, 29 May 2019, subject "Re: [Video Link] CAMS Campus
 Introduction Video", on delivery of the film. Published in full on `/education`
 inside the LBUSD anchor case, directly under the film grid.
 
-**Consent is not on record for this one, and it is different in kind from the
-others.** Eileen Ringwald and Jessica Fletcher each submitted a testimonial form
-and ticked "share my testimony and my name". This is a private email, and it
-names a serving public-school administrator with his title and district. The
-content is warm and nothing about it is sensitive, but the ordinary courtesy —
-and the thing that protects the relationship — is to ask. A one-line note to
-Chris Thompson saying where it appears would settle it. Until then, treat this
-as published at David's direction rather than with recorded permission.
+**Consent confirmed by David for every testimonial on the site**, this one
+included. Eileen Ringwald and Jessica Fletcher each ticked "share my testimony
+and my name" on the intake form; Chris Thompson's is sourced from a 2019 email
+and his permission is confirmed separately by David.
+
 
 ## videos.json
 
