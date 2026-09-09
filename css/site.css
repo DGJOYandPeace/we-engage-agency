@@ -185,24 +185,111 @@ img, video { max-width: 100%; display: block; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--bone); }
 .nav .btn { padding: 0.65rem 1.3rem; font-size: var(--step--1); }
 
+/* =========================================================================
+   Menu control
+   The toggle used to be a bare glyph tinted with --bone, which meant its
+   colour followed the page theme while the masthead floats over whatever is
+   underneath it. On paper that put near-black ink on the dark hero video:
+   measured at 1.02:1, effectively invisible, against the 3:1 that WCAG 1.4.11
+   asks of a control.
+
+   Recolouring per zone would break again the next time a section changes, so
+   the control carries its own surface instead — a blurred chip with its own
+   border. It only has to know whether the masthead is floating over a dark
+   zone or stuck to paper, which is the one distinction this design already
+   makes everywhere else.
+
+   Sized 46px: above the 44px in Apple's HIG and WCAG 2.5.5, and comfortably
+   past the 24px floor in WCAG 2.5.8.
+   ========================================================================= */
 .nav__toggle {
-  display: none; background: none; border: 0; color: var(--bone);
-  font-size: 1.5rem; cursor: pointer; padding: 0.4rem;
+  display: none;
+  /* The drawer is a sibling inside the masthead, so a z-index on the drawer
+     alone cannot lift the toggle above it — they share a stacking context.
+     The toggle has to be positioned and raised itself, or the panel covers
+     the very control that closes it. */
+  position: relative; z-index: 960;
+  width: 46px; height: 46px;
+  align-items: center; justify-content: center;
+  padding: 0; cursor: pointer;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(240, 243, 246, 0.28);
+  background: rgba(8, 11, 14, 0.42);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--night-bone);
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.masthead.is-stuck .nav__toggle {
+  background: rgba(22, 19, 14, 0.06);
+  border-color: rgba(22, 19, 14, 0.22);
+  color: var(--bone);
+}
+.nav__toggle:hover { border-color: var(--accent); }
+/* Open, the toggle sits over the paper drawer rather than the hero, so it
+   takes the light-ground treatment whether or not the masthead is stuck. */
+.nav__toggle[aria-expanded="true"] {
+  background: rgba(22, 19, 14, 0.06);
+  border-color: rgba(22, 19, 14, 0.22);
+  color: var(--bone);
 }
 
+/* Three bars that fold into a cross. A glyph could not animate and sat on
+   the font's own baseline, which is why it never centred properly. */
+.nav__bars { position: relative; display: block; width: 18px; height: 12px; }
+.nav__bars i {
+  position: absolute; left: 0; right: 0; height: 1.5px;
+  background: currentColor; border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
+}
+.nav__bars i:nth-child(1) { top: 0; }
+.nav__bars i:nth-child(2) { top: 5.25px; }
+.nav__bars i:nth-child(3) { top: 10.5px; }
+.nav__toggle[aria-expanded="true"] .nav__bars i:nth-child(1) { transform: translateY(5.25px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__bars i:nth-child(2) { opacity: 0; }
+.nav__toggle[aria-expanded="true"] .nav__bars i:nth-child(3) { transform: translateY(-5.25px) rotate(-45deg); }
+
+/* Scrim. Dims the page behind an open menu so the panel is unambiguously
+   the thing in focus, and gives the tap-anywhere-to-close that people now
+   expect from a drawer. */
+.navscrim {
+  position: fixed; inset: 0; z-index: 900;
+  background: rgba(8, 11, 14, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+.navscrim[data-open="true"] { opacity: 1; pointer-events: auto; }
+
 @media (max-width: 860px) {
-  .nav__toggle { display: block; }
+  .nav__toggle { display: inline-flex; }
   .nav {
-    position: fixed; inset: 0 0 0 auto; width: min(80vw, 320px);
-    background: var(--ink-deep);
+    position: fixed; inset: 0 0 0 auto; width: min(82vw, 340px);
+    /* Under the masthead, not over it. The toggle has already become a
+       cross by this point, and it is the close affordance people reach for
+       first — burying it under the drawer would leave the panel with no
+       visible way out. */
+    z-index: 950;
+    background: var(--ink-raised);
     flex-direction: column; align-items: flex-start; justify-content: center;
     gap: 1.6rem; padding: 2rem var(--gutter);
     transform: translateX(100%);
     transition: transform 0.35s var(--ease);
     border-left: 1px solid var(--hairline);
+    box-shadow: -24px 0 60px rgba(28, 22, 14, 0.28);
+    /* The drawer is its own surface, not part of whatever zone the masthead
+       happens to be floating over, so it declares its own text colours. */
+    color: var(--bone);
   }
   .nav[data-open="true"] { transform: translateX(0); }
-  .nav a { font-size: var(--step-1); }
+  .nav a { font-size: var(--step-1); color: var(--bone-soft); }
+  .nav a:hover, .nav a[aria-current="page"] { color: var(--bone); }
+  .nav .btn--primary { color: #14100A; margin-top: 0.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav, .navscrim, .nav__bars i { transition: none; }
 }
 
 /* ---------- Hero ---------- */
@@ -883,15 +970,22 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
    starts white. Once it sticks it gains a paper background, and the mark has
    to change with it. */
 .masthead.is-stuck {
-  background: rgba(247, 243, 234, 0.9);
+  /* 0.9 let body copy read straight through the bar, which competes with the
+     nav sitting on top of it. Nearly opaque keeps the header a surface. */
+  background: rgba(247, 243, 234, 0.97);
   border-bottom-color: var(--hairline);
 }
 .masthead.is-stuck .masthead__mark img { content: url("/public/logos/wea-mark-rectangle-dark.png"); }
 .masthead.is-stuck .nav a { color: var(--bone-soft); }
 .masthead.is-stuck .nav a:hover, .masthead.is-stuck .nav a[aria-current="page"] { color: var(--bone); }
 .masthead.is-stuck .nav__toggle { color: var(--bone); }
-.nav a { color: var(--night-soft); }
-.nav a:hover, .nav a[aria-current="page"] { color: var(--night-bone); }
+@media (min-width: 861px) {
+  .nav a { color: var(--night-soft); }
+  .nav a:hover, .nav a[aria-current="page"] { color: var(--night-bone); }
+  .masthead.is-stuck .nav a { color: var(--bone-soft); }
+  .masthead.is-stuck .nav a:hover,
+  .masthead.is-stuck .nav a[aria-current="page"] { color: var(--bone); }
+}
 
 /* Depth on paper reads as warm shadow, not black. */
 .player  { box-shadow: 0 18px 40px rgba(40, 32, 18, 0.16); }

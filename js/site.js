@@ -7,21 +7,54 @@
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  /* ---------- Mobile nav ---------- */
+  /* ---------- Mobile nav ----------
+     A drawer, held to what people now expect of one: a scrim that dims the
+     page and closes on tap, Escape to close, focus moved into the panel on
+     open and returned to the button on close, and the page behind it locked
+     so it cannot scroll away underneath. */
   var toggle = document.querySelector(".nav__toggle");
   var nav = document.getElementById("primary-nav");
+  var scrim = document.querySelector("[data-navscrim]");
   if (toggle && nav) {
+    var setNav = function (open) {
+      nav.setAttribute("data-open", String(open));
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      if (scrim) {
+        scrim.hidden = false;
+        scrim.setAttribute("data-open", String(open));
+      }
+      /* Locking the body rather than the html element keeps iOS from
+         jumping to the top when the drawer closes. */
+      document.body.style.overflow = open ? "hidden" : "";
+      if (open) {
+        var first = nav.querySelector("a");
+        if (first) first.focus({ preventScroll: true });
+      }
+    };
+
     toggle.addEventListener("click", function () {
-      var open = nav.getAttribute("data-open") === "true";
-      nav.setAttribute("data-open", String(!open));
-      toggle.setAttribute("aria-expanded", String(!open));
+      setNav(nav.getAttribute("data-open") !== "true");
     });
+
     nav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        nav.setAttribute("data-open", "false");
-        toggle.setAttribute("aria-expanded", "false");
+      if (e.target.tagName === "A") setNav(false);
+    });
+
+    if (scrim) scrim.addEventListener("click", function () { setNav(false); toggle.focus(); });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.getAttribute("data-open") === "true") {
+        setNav(false);
+        toggle.focus();
       }
     });
+
+    /* Growing past the drawer breakpoint with the menu open would otherwise
+       leave the page scroll-locked behind a panel that is no longer visible. */
+    var wide = window.matchMedia("(min-width: 861px)");
+    var onWide = function () { if (wide.matches && nav.getAttribute("data-open") === "true") setNav(false); };
+    if (wide.addEventListener) wide.addEventListener("change", onWide);
   }
 
   /* ---------- Sticky masthead ---------- */
