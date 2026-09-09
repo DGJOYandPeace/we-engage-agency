@@ -1236,3 +1236,17 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
   margin: clamp(2.5rem, 5vw, 3.5rem) auto clamp(1.25rem, 2.5vw, 1.75rem);
   color: var(--bone-soft);
 }
+
+/* The last line before the button. Its only job is to remove the final
+   hesitation, which is not price — it is being sold to. */
+.endcta__note {
+  margin: 0 auto;
+  max-width: 40ch;
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  color: var(--bone-faint);
+}
+
+/* A second lede that answers the question the form itself provokes —
+   "am I even the right size for this?" — without another heading. */
+.lede--soft { color: var(--bone-faint); max-width: 46ch; margin-top: 0.9rem; }
