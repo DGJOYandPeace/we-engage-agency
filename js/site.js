@@ -248,6 +248,32 @@
   var wrapped = closePlayer;
   closePlayer = function () { wrapped(); heroPause(false); };
 
+  /* ---------- Offer tiers ----------
+     Click and keyboard toggle the panel. On a pointer device CSS also opens
+     it on hover, which is a convenience rather than the mechanism: the
+     button carries the real state, so keyboard and touch reach exactly the
+     same thing. Only one open at a time — the point of the layer is to stop
+     the page reading as a price comparison. */
+  var tiers = document.querySelectorAll("[data-tier]");
+  if (tiers.length) {
+    tiers.forEach(function (tier) {
+      var btn = tier.querySelector(".tier__toggle");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var open = tier.getAttribute("data-open") === "true";
+        tiers.forEach(function (other) {
+          other.setAttribute("data-open", "false");
+          var b = other.querySelector(".tier__toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+        if (!open) {
+          tier.setAttribute("data-open", "true");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  }
+
   /* ---------- Intake form ----------
      Qualification gates the calendar: the scheduler stays hidden until the
      form validates, per the funnel in the brief.
@@ -263,6 +289,31 @@
      pre-filled into a mailto, so the lead survives a backend outage. */
   var intake = document.getElementById("intake");
   if (intake) {
+    /* A visitor who came from an offer card has already told us which
+       engagement they want. Carry it in, select it, and say so — asking the
+       question again would throw away the one piece of intent we have. */
+    var PACKAGES = {
+      "story-series": "Story Series — ready to start",
+      "signature-story": "Signature Story — ready to start",
+      "story-program": "Story Program — ready to start",
+      "producer-engagement": "Producer Engagement — ready to start"
+    };
+    try {
+      var picked = new URLSearchParams(window.location.search).get("package");
+      if (picked && PACKAGES[picked]) {
+        var sel = intake.querySelector('select[name="package"]');
+        if (sel) {
+          for (var i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].value === picked) { sel.selectedIndex = i; break; }
+          }
+        }
+        var flag = document.getElementById("intake-picked");
+        if (flag) {
+          flag.textContent = PACKAGES[picked].replace(" — ready to start", "");
+          flag.parentNode.hidden = false;
+        }
+      }
+    } catch (err) {}
     var booking = document.getElementById("booking");
     var FALLBACK_EMAIL = intake.getAttribute("data-fallback-email") || "hello@weengageagency.com";
 

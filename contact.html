@@ -54,6 +54,20 @@
             <!-- Honeypot. Hidden from people, irresistible to bots. -->
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
                    aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+            <p class="pickedbanner" hidden>You selected <strong id="intake-picked"></strong>. We'll open the call there.</p>
+            <div class="field">
+              <label for="package">Which engagement?</label>
+              <select id="package" name="package" required>
+                <option value="">Select one</option>
+                <option value="story-series">Story Series — from $15,000</option>
+                <option value="signature-story">Signature Story — from $6,500</option>
+                <option value="story-program">Story Program — from $24,000</option>
+                <option value="producer-engagement">Producer Engagement — from $2,500</option>
+                <option value="not-sure">Not sure yet — help me choose</option>
+              </select>
+              <p class="field__hint">Pick the closest fit. Scope is a conversation, not a checkout.</p>
+              <p class="field__error">Choose an engagement, or "not sure yet".</p>
+            </div>
             <div class="field">
               <label for="name">Your name</label>
               <input type="text" id="name" name="name" autocomplete="name" required>

@@ -46,7 +46,7 @@
       <h1>That's my story.<br>And it makes people <em>want to move.</em></h1>
       <p class="hero__sub">Interview-driven storytelling for organizations with something worth telling.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="/contact.html">Book a Discovery Call <span class="arr">→</span></a>
+        <a class="btn btn--primary" href="/contact.html">I'm ready to book a call <span class="arr">→</span></a>
       </div>
     </div>
     <div class="scrollhint">Scroll</div>
@@ -194,30 +194,84 @@
 
   <!-- =========================== OFFERS ============================ -->
   <!-- ===================== THE OFFER =====================
-       One priced card, not a menu. Signature Story and Story Program are
-       real and bookable, but as a downsell and an upsell in text — three
-       equal cards asked the visitor to shop rather than to buy. The panel
-       is the dark inversion on a paper page: the case is made above, this
-       is the ask. No price appears without its proof beside it. -->
+       A permission layer, not a price list. Collapsed, each engagement is a
+       name and one sentence — a menu line. The price and the detail come out
+       on hover, tap or keypress, so nobody is asked to compare four numbers
+       before they know what any of them buy. Story Series leads because it
+       is where most engagements start; the others are the honest ways down
+       and up from it.
+
+       Each card's action carries its own package into the intake form, so a
+       lead arrives already saying which engagement they want rather than
+       "interested". -->
   <section class="section section--paper">
     <div class="shell">
       <p class="eyebrow reveal">The offer</p>
       <h2 class="reveal" style="font-size:var(--step-3);max-width:24ch">One engagement, built to become a relationship.</h2>
-      <p class="lede reveal" data-delay="1" style="max-width:58ch">This is what LBUSD and the LA Master Chorale each started with before either became a multi-year partner. Strategy first, then two production days across a project arc. It's the full arc from brief to delivery, not a day of shooting handed off for someone else to cut.</p>
+      <p class="lede reveal" data-delay="1" style="max-width:58ch">Most engagements start as a Story Series: strategy first, then two production days across a project arc. It's the full arc from brief to delivery, not a day of shooting handed off for someone else to cut.</p>
 
-      <div class="offers offers--single">
-        <article class="offer offer--lead reveal">
-          <span class="offer__price">Starting at $15,000</span>
-          <h3>Story Series</h3>
-          <p>Producer-led from the first strategy call. Stakeholder interviews and narrative planning, two production days across a project arc, one anchor film plus six story pieces cut from the same capture. Full raw footage archive included.</p>
+      <div class="tiers">
+        <article class="tier tier--lead reveal" data-tier data-open="false">
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-story-series">
+            <h3 class="tier__name">Story Series</h3>
+            <p class="tier__over">The one most engagements start with. Strategy first, then two production days across a project arc.</p>
+            <span class="tier__cue" aria-hidden="true">Details</span>
+          </button>
+          <div class="tier__wrap"><div class="tier__body" id="tier-story-series">
+            <div class="tier__inner">
+              <span class="tier__price">Starting at $15,000</span>
+              <p class="tier__detail">Producer-led from the first strategy call. Stakeholder interviews and narrative planning, two production days across a project arc, one anchor film plus six story pieces cut from the same capture. Full raw footage archive included.</p>
+              <p class="tier__proof">This is what LBUSD and the LA Master Chorale each started with, before either became a multi-year partner.</p>
+              <a class="btn btn--primary tier__act" href="/contact.html?package=story-series">I'm ready to start this <span class="arr">→</span></a>
+            </div>
+          </div></div>
+        </article>
+        <article class="tier reveal" data-tier data-open="false">
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-signature-story">
+            <h3 class="tier__name">Signature Story</h3>
+            <p class="tier__over">A single production day, when the scope is one story told properly.</p>
+            <span class="tier__cue" aria-hidden="true">Details</span>
+          </button>
+          <div class="tier__wrap"><div class="tier__body" id="tier-signature-story">
+            <div class="tier__inner">
+              <span class="tier__price">Starting at $6,500</span>
+              <p class="tier__detail">One production day. One anchor film of two to four minutes, plus three short story pieces cut from the same capture. Full raw footage archive included.</p>
+              <p class="tier__proof">The right size when there is one thing to say and a date to say it by.</p>
+              <a class="btn btn--primary tier__act" href="/contact.html?package=signature-story">I'm ready to start this <span class="arr">→</span></a>
+            </div>
+          </div></div>
+        </article>
+        <article class="tier reveal" data-tier data-open="false">
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-story-program">
+            <h3 class="tier__name">Story Program</h3>
+            <p class="tier__over">An ongoing season, usually after a first project has landed.</p>
+            <span class="tier__cue" aria-hidden="true">Details</span>
+          </button>
+          <div class="tier__wrap"><div class="tier__body" id="tier-story-program">
+            <div class="tier__inner">
+              <span class="tier__price">Starting at $24,000</span>
+              <p class="tier__detail">Four production days across a season or a year. Anchor film, twelve story pieces, and Producer Engagement included, with the right crew brought in as scope grows. Built for annual budget cycles.</p>
+              <p class="tier__proof">Where a relationship goes once the first film has been through your review process.</p>
+              <a class="btn btn--primary tier__act" href="/contact.html?package=story-program">I'm ready to start this <span class="arr">→</span></a>
+            </div>
+          </div></div>
+        </article>
+        <article class="tier reveal" data-tier data-open="false">
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-producer-engagement">
+            <h3 class="tier__name">Producer Engagement</h3>
+            <p class="tier__over">Planning only, when someone else is holding the camera.</p>
+            <span class="tier__cue" aria-hidden="true">Details</span>
+          </button>
+          <div class="tier__wrap"><div class="tier__body" id="tier-producer-engagement">
+            <div class="tier__inner">
+              <span class="tier__price">From $2,500</span>
+              <p class="tier__detail">Strategy, narrative planning, shot-list architecture and stakeholder interviews — sold on its own, or folded into a Story Program. Per project, or $2,500–$3,500 monthly.</p>
+              <p class="tier__proof">A different buyer entirely: teams with a crew who need the thinking, not the kit.</p>
+              <a class="btn btn--primary tier__act" href="/contact.html?package=producer-engagement">I'm ready to start this <span class="arr">→</span></a>
+            </div>
+          </div></div>
         </article>
       </div>
-
-      <p class="reveal" data-delay="1" style="margin-top:1.75rem;max-width:58ch;color:var(--bone-soft)">
-        Smaller scope, one production day: ask about a <strong>Signature Story</strong> engagement, starting at $6,500.
-        Ready for an ongoing season after your first project: that becomes a <strong>Story Program</strong>, starting at $24,000, and brings in the right crew as scope grows.
-        Need planning only, with someone else holding the camera: <strong>Producer Engagement</strong> is available on its own, from $2,500.
-      </p>
     </div>
   </section>
 
@@ -248,7 +302,7 @@
       <h2 class="reveal">Tell us what you're trying to say.</h2>
       <p class="lede reveal" data-delay="1" style="max-width:52ch">A few questions about budget, timeline and who you need to reach — then we talk. It takes about two minutes.</p>
       <p class="reveal" data-delay="2" style="margin-top:2rem">
-        <a class="btn btn--primary" href="/contact.html">Book a Discovery Call <span class="arr">→</span></a>
+        <a class="btn btn--primary" href="/contact.html">I'm ready to book a call <span class="arr">→</span></a>
       </p>
     </div>
   </section>
