@@ -162,6 +162,22 @@ first two characters.
 
 Figures are the first 72 hours after posting. The run sold out.
 
+## Hero stills
+
+| File | Used at | Notes |
+| --- | --- | --- |
+| `public/video/hero-poster.jpg` | 768px and up | 1920x1080. Also the poster the hero video mounts over. |
+| `public/video/hero-poster-mobile.jpg` | below 768px | 1240x688, from `wea-mobile-hero5`. Same subject and setting as the desktop still, framed wider. |
+
+Swapped with a `<picture>` `source`, not JavaScript, so the browser only ever
+downloads the one it needs. The hero video still mounts at 768px and up only,
+so below that the still is what everyone sees.
+
+**Framing:** a 16:9 still in a 9:19 viewport crops to about a quarter of its
+width. Because the image is wider than the box and exactly as tall, only the
+horizontal half of `object-position` does anything — `53%` keeps her centred.
+The vertical half is inert here; changing it does nothing.
+
 ## Behind-the-scenes stills
 
 `public/images/bts/` — seven frames supplied by David for the homepage "what we

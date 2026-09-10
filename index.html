@@ -41,7 +41,10 @@
   <!-- ============================ HERO ============================ -->
   <section class="hero">
     <div class="hero__media" data-hero-video="/public/video/heroloop.mp4?v=6" data-hero-poster="/public/video/hero-poster.jpg?v=6">
-      <img src="/public/video/hero-poster.jpg?v=6" alt="" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 767px)" srcset="/public/video/hero-poster-mobile.jpg?v=1">
+        <img src="/public/video/hero-poster.jpg?v=6" alt="" aria-hidden="true">
+      </picture>
     </div>
     <div class="shell hero__inner">
       <p class="eyebrow">What people tell us after they see the cut</p>
