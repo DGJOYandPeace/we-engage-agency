@@ -80,31 +80,52 @@ Every colour, type step and spacing value is a custom property on `:root` in `cs
 
 ## Hosting
 
-The site is plain static HTML at the repo root with no build step, so it can be
+The site is plain static HTML at the repo root with no build step, so it is
 served straight from GitHub Pages: **repo → domain, no third service.**
 
-- `CNAME` holds `weengageagency.com`. GitHub Pages reads it and sets the custom
+- `CNAME` holds the live domain. GitHub Pages reads it and sets the custom
   domain automatically when Pages is enabled.
 - `.nojekyll` stops Pages running the files through Jekyll. Nothing here is
-  named with a leading underscore today, but Jekyll would be a silent
-  build step sitting between the repo and the live site for no benefit.
+  named with a leading underscore today, but Jekyll would be a silent build
+  step sitting between the repo and the live site for no benefit.
 
-**Enabling it:** Settings → Pages → Source: *Deploy from a branch* → `main`,
-folder `/ (root)`. Then tick **Enforce HTTPS** once the certificate issues.
+### Live now: agency.davidgeathers.com
 
-**DNS at Namecheap** (Advanced DNS, after the transfer completes — changing
-nameservers mid-transfer can stall it):
+A subdomain, chosen deliberately while `weengageagency.com` is mid-transfer.
+It puts the site at a domain root (so the root-absolute paths throughout the
+markup work unchanged), needs one DNS record instead of four, and leaves the
+apex `davidgeathers.com` — the artist page — completely untouched, in the
+search index as well as in DNS.
+
+**Enable Pages:** repo Settings → Pages → Source: *Deploy from a branch* →
+`main`, folder `/ (root)`. Tick **Enforce HTTPS** once the certificate issues
+(a few minutes after DNS resolves).
+
+**One DNS record**, wherever `davidgeathers.com` is managed. Add it; change
+nothing else, and in particular leave the existing apex records pointing at
+Canva alone:
 
 | Type | Host | Value |
 | --- | --- | --- |
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| CNAME | `www` | `dgjoyandpeace.github.io.` |
+| CNAME | `agency` | `dgjoyandpeace.github.io.` |
 
-Remove Namecheap's default parking/redirect records first, or they fight the
-A records.
+### Later: moving to weengageagency.com
+
+When the transfer completes, this is a three-step swap and **no link ever
+breaks**:
+
+1. Change `CNAME` in this repo to `weengageagency.com`.
+2. Point `weengageagency.com` at Pages — four `A` records on `@` to
+   `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`, plus a `CNAME` on
+   `www` to `dgjoyandpeace.github.io.` Remove the registrar's default parking
+   records first or they fight the A records.
+3. **Leave the `agency` CNAME record in place.** GitHub then permanently
+   redirects `agency.davidgeathers.com` → `weengageagency.com` on its own.
+
+That last step is the point: every link handed out in the meantime — in
+candidate applications, in email — keeps working and lands on the new domain.
+Do not run both live and separate without that redirect, or the two compete
+for the same search terms.
 
 ### What moving off Vercel costs
 
@@ -126,6 +147,13 @@ If those headers ever matter, Cloudflare Pages is the same repo-to-domain
 model and supports a `_headers` file. `vercel.json` is left in place: it is
 inert on GitHub Pages and keeps the existing Vercel deployment working during
 the switchover.
+
+**A note on Vercel storage.** Vercel retains every deployment permanently, so
+its storage figure climbs with each push whether or not anyone visits — about
+18 MB per deployment here, most of it the two video files. GitHub Pages does
+not work that way: it serves the current state of the branch, one copy, no
+accumulation. Old Vercel deployments can be deleted from the project's
+Deployments tab to reclaim the space.
 
 ## Before launch
 
