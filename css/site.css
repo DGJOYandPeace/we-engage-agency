@@ -1262,5 +1262,6 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
    pillarbox bars baked in, so the poster arrives with a black frame around
    the picture. A scale about the centre crops the bars off; the value is per
    player because how much bar there is depends on the source footage.
-   1.34 is the figure that removes 4:3 pillarboxing from a 16:9 thumbnail. */
+   1.34 would remove a full 4:3 pillarbox; a thin baked-in border needs far
+   less, and over-cropping costs more of the picture than the bar was worth. */
 .player__poster { transform: scale(var(--poster-zoom, 1)); transform-origin: center; }

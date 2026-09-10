@@ -139,7 +139,7 @@ Done and verified end to end:
 
 Still open:
 
-- [ ] **Check the Big Sing poster crop on the live site.** Both LA Master Chorale thumbnails carried the source footage's own black bars. They are cropped with `--poster-zoom: 1.34` on the `img` in `work.html` — the figure that removes 4:3 pillarboxing from a 16:9 thumbnail. This build environment cannot reach `i.ytimg.com`, so the value is reasoned rather than measured: if the frame still shows black, raise it; if the picture is now cropped too tight, lower it. One number per poster.
+- [ ] **Check the Big Sing poster crop on the live site.** Both LA Master Chorale thumbnails carried the source footage's own black bars. They are cropped with `--poster-zoom` on the `img` in `work.html`. First set to 1.34, which assumes a full 4:3 pillarbox; David reported that as too much, so the bars are a thin border and the value is now 1.08. This build environment cannot reach `i.ytimg.com`, so it stays reasoned rather than measured: if any black remains, nudge up; if the picture is tight, nudge down. One number per poster.
 
 - [ ] **Confirm the domain** — weengageagency.com vs. weengage.co. Neither is hardcoded anywhere yet.
 - [ ] **Magic Hair attribution.** Two videos are published on `/work` with attribution inferred from conversation, not confirmed: `wwP2EuyoHqk` (the commercial) and `aAeyGK0lGgg` (the client testimonial). Confirm both are Magic Hair Company work, that We Engage produced them, and that the 40% store-traffic lift is fairly attributed to those two campaigns.
