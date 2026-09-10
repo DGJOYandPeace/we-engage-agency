@@ -127,11 +127,11 @@ candidate applications, in email — keeps working and lands on the new domain.
 Do not run both live and separate without that redirect, or the two compete
 for the same search terms.
 
-### What moving off Vercel costs
+### Response headers: what Pages cannot do
 
-`vercel.json` set three response headers that **GitHub Pages cannot send**:
-`X-Content-Type-Options`, `X-Frame-Options`, and `Referrer-Policy`. Pages has
-no equivalent to a headers config.
+The old `vercel.json` set three response headers that **GitHub Pages cannot
+send**, because Pages has no headers configuration at all:
+`X-Content-Type-Options`, `X-Frame-Options`, and `Referrer-Policy`.
 
 - `Referrer-Policy` is carried in the markup instead — every page has
   `<meta name="referrer" content="strict-origin-when-cross-origin">`.
@@ -140,20 +140,29 @@ no equivalent to a headers config.
   `X-Frame-Options` only stops the site being framed by someone else, and
   `X-Content-Type-Options` only matters where a server might mis-type a file,
   which Pages does not.
-- The cache headers go too. Pages sets its own (roughly 10 minutes), which is
-  close to what `vercel.json` asked for anyway.
+- Cache headers go too. Pages sets its own, roughly ten minutes, which is
+  close to what `vercel.json` asked for anyway. Worth knowing when a change
+  looks like it has not landed: give it ten minutes and hard-refresh.
 
 If those headers ever matter, Cloudflare Pages is the same repo-to-domain
-model and supports a `_headers` file. `vercel.json` is left in place: it is
-inert on GitHub Pages and keeps the existing Vercel deployment working during
-the switchover.
+model and supports a `_headers` file.
 
-**A note on Vercel storage.** Vercel retains every deployment permanently, so
-its storage figure climbs with each push whether or not anyone visits — about
-18 MB per deployment here, most of it the two video files. GitHub Pages does
-not work that way: it serves the current state of the branch, one copy, no
-accumulation. Old Vercel deployments can be deleted from the project's
-Deployments tab to reclaim the space.
+Vercel is gone: the project is deleted and `vercel.json` removed. Nothing in
+this repo builds or deploys anywhere except GitHub Pages.
+
+### HTTPS
+
+GitHub issues a free certificate for the custom domain automatically once its
+DNS check passes. It is not instant — minutes, occasionally longer.
+
+Until **Settings → Pages → Enforce HTTPS** is ticked, Pages answers on plain
+`http` as well, and a browser will mark the site "Not secure". Ticking it makes
+GitHub permanently redirect every `http` request to `https`, so the padlock is
+there no matter how someone types or pastes the address.
+
+**This repeats once per domain.** When `weengageagency.com` is added, it gets
+its own certificate and its own Enforce HTTPS tick. It is a setup step, not a
+recurring problem.
 
 ## Before launch
 
