@@ -164,6 +164,22 @@ there no matter how someone types or pastes the address.
 its own certificate and its own Enforce HTTPS tick. It is a setup step, not a
 recurring problem.
 
+## Checking layout
+
+Overflow checks must run against a **warm image cache**. On a first load an
+image that has not decoded yet contributes no width, so a layout that
+overflows because of an image measures clean — and a returning visitor, whose
+cache is warm, sees the broken version the check missed.
+
+This is not hypothetical: a flat `max-width: 320px` on the Altadena client
+mark pushed `/work` 20px past a 320px viewport, and every cold-cache sweep
+called it clean. The method is to visit every page once to warm the cache,
+then measure on the second pass, and to exclude elements inside a
+`position: fixed` ancestor — the closed nav drawer sits off-screen by design
+and is not an overflow.
+
+Widths worth checking: 320, 360, 390, 430, 768, 1440.
+
 ## Before launch
 
 Done and verified end to end:
