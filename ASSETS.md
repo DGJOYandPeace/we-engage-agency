@@ -167,16 +167,23 @@ Figures are the first 72 hours after posting. The run sold out.
 | File | Used at | Notes |
 | --- | --- | --- |
 | `public/video/hero-poster.jpg` | 768px and up | 1920x1080. Also the poster the hero video mounts over. |
-| `public/video/hero-poster-mobile.jpg` | below 768px | 1240x688, from `wea-mobile-hero5`. Same subject and setting as the desktop still, framed wider. |
+| `public/video/hero-poster-mobile.jpg` | below 768px | 900x1117, cropped from `wea-mobile-hero5`. Same subject and setting as the desktop still. |
 
 Swapped with a `<picture>` `source`, not JavaScript, so the browser only ever
 downloads the one it needs. The hero video still mounts at 768px and up only,
 so below that the still is what everyone sees.
 
-**Framing:** a 16:9 still in a 9:19 viewport crops to about a quarter of its
-width. Because the image is wider than the box and exactly as tall, only the
-horizontal half of `object-position` does anything — `53%` keeps her centred.
-The vertical half is inert here; changing it does nothing.
+**Framing — the thing worth remembering:** a 16:9 source in a 9:19 viewport is
+always width-constrained under `object-fit: cover`, which means the vertical
+half of `object-position` is **inert**. No value moves the subject up or down,
+and the empty window above her head could not be cropped away in CSS at any
+setting. The fix was to crop the file: the mobile still is stored at roughly
+4:5, which removes the headroom, renders her larger, and lifts her face clear
+of the headline. `object-position` is then simply `center`.
+
+If a future mobile still looks badly framed, check the aspect ratio before
+reaching for `object-position` — if the source is wider than about 0.46, no
+vertical value will do anything.
 
 ## Behind-the-scenes stills
 

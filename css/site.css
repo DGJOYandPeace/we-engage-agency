@@ -213,8 +213,13 @@ img, video { max-width: 100%; display: block; }
   align-items: center; justify-content: center;
   padding: 0; cursor: pointer;
   border-radius: var(--r-pill);
-  border: 1px solid rgba(240, 243, 246, 0.28);
-  background: rgba(8, 11, 14, 0.42);
+  /* Strong enough to sit on a bright window as well as a dark wall. A 0.42
+     scrim went translucent-grey against the hero's blown-out glass and the
+     bars lost their edge; 0.66 plus a brighter rim keeps it a solid object
+     whatever is behind it. */
+  border: 1px solid rgba(240, 243, 246, 0.5);
+  background: rgba(8, 11, 14, 0.66);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: var(--night-bone);
@@ -1267,10 +1272,13 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 .player__poster { transform: scale(var(--poster-zoom, 1)); transform-origin: center; }
 
 /* Mobile hero
-   A 16:9 still in a 9:19 viewport crops to about a quarter of its width, so
-   which quarter survives is the whole decision. The image is wider than the
-   box and exactly as tall, which means only the horizontal half of
-   object-position does anything here — 53% keeps her centred in the frame.
+   The mobile still is now pre-cropped to roughly 4:5 rather than left at
+   16:9, which is what fixed the framing. A 16:9 source in a 9:19 viewport is
+   always width-constrained under object-fit: cover, so the vertical half of
+   object-position is inert — no value moves the subject up or down, and the
+   dead window above her head could not be cropped out in CSS. Cropping the
+   file removes that headroom, makes her larger, and lifts her face clear of
+   the copy. Centred is then correct.
 
    The desktop scrim is lightest at 38% down, which is deliberate: it lets the
    picture breathe above the copy. On a phone the headline wraps to two lines
@@ -1279,7 +1287,7 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
    whole block sits on a readable base, while the top stays open enough to
    keep her face and the window. */
 @media (max-width: 767px) {
-  .hero__media img { object-position: 53% center; }
+  .hero__media img { object-position: center center; }
   .hero::before {
     background:
       linear-gradient(180deg,
