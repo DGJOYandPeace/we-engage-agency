@@ -106,20 +106,54 @@
   }
 
   /* ---------- Hero video ----------
-     The brief is explicit: no video below 768px (cellular cost, iOS autoplay
-     quirks), and no video at all under reduced motion. The poster <img> is
-     the markup default, so we only ever *promote* to video when allowed. */
+     There are two cuts: a 16:9 loop for wide screens and a 4:5 loop for
+     phones, because cover-fitting the wide one into a tall viewport throws
+     away 70% of every frame it downloads. Narrow runs at ~670KB, which is
+     what makes it defensible on cellular at all — the original rule here was
+     "no video below 768px" purely on weight, and this is the version that
+     earns its way back in.
+
+     Still off entirely under reduced motion, and now also under Data Saver:
+     if the visitor has told their browser to economise, a decorative loop is
+     exactly what they meant. The poster <img> is the markup default, so we
+     only ever *promote* to video when allowed, and any refusal falls back to
+     it untouched. */
   var heroSlot = document.querySelector("[data-hero-video]");
   if (heroSlot) {
-    var wide = window.matchMedia("(min-width: 768px)");
+    var narrow = window.matchMedia("(max-width: 767px)");
+    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var thrifty = function () {
+      if (!conn) return false;
+      return !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "");
+    };
+    var srcFor = function () {
+      return heroSlot.getAttribute(narrow.matches ? "data-hero-video-narrow" : "data-hero-video");
+    };
+    var posterFor = function () {
+      return heroSlot.getAttribute(narrow.matches ? "data-hero-poster-narrow" : "data-hero-poster") || "";
+    };
     var mounted = false;
 
     var mount = function () {
-      if (mounted || !wide.matches || reduced.matches) return;
+      /* Already running: the breakpoint moved, so swap the cut rather than
+         leaving a phone playing the widescreen file after a rotation. */
+      if (mounted) {
+        var cur = heroSlot.querySelector("video");
+        var want = srcFor();
+        if (cur && want && cur.getAttribute("src") !== want) {
+          cur.setAttribute("src", want);
+          cur.poster = posterFor();
+          cur.load();
+          var r = cur.play();
+          if (r && r.catch) r.catch(function () {});
+        }
+        return;
+      }
+      if (reduced.matches || thrifty() || !srcFor()) return;
       mounted = true;
       var v = document.createElement("video");
-      v.src = heroSlot.getAttribute("data-hero-video");
-      v.poster = heroSlot.getAttribute("data-hero-poster") || "";
+      v.setAttribute("src", srcFor());
+      v.poster = posterFor();
       /* All three are required together or iOS Safari refuses to autoplay. */
       v.muted = true;
       v.autoplay = true;
@@ -147,7 +181,7 @@
     };
 
     mount();
-    if (wide.addEventListener) wide.addEventListener("change", mount);
+    if (narrow.addEventListener) narrow.addEventListener("change", mount);
   }
 
   /* ---------- YouTube poster fallback ----------

@@ -16,7 +16,7 @@ public/
 ├── logos/              — WEA brand marks + David's signature
 ├── thumbnails-posters/ — video cover art, laurels, posters, case-study stills
 ├── trusted-by-marks/   — homepage trust bar (curated subset of /clients)
-├── video/              — heroloop.mp4 + hero-poster.jpg
+├── video/              — heroloop.mp4, heroloop-mobile.mp4 + posters
 └── videos.json         — video catalog
 ```
 
@@ -166,12 +166,73 @@ Figures are the first 72 hours after posting. The run sold out.
 
 | File | Used at | Notes |
 | --- | --- | --- |
-| `public/video/hero-poster.jpg` | 768px and up | 1920x1080. Also the poster the hero video mounts over. |
-| `public/video/hero-poster-mobile.jpg` | below 768px | 900x1117, cropped from `wea-mobile-hero5`. Same subject and setting as the desktop still. |
+| `public/video/hero-poster.jpg` | 768px and up | 1920x1080. Also the poster the wide loop mounts over. |
+| `public/video/heroloop-mobile-poster.jpg` | below 768px | 768x960, frame one of the narrow loop. |
+| `public/video/hero-poster-mobile.jpg` | *unused* | 900x1117, cropped from `wea-mobile-hero5`. Kept so the art-directed still can go back in one line. |
 
 Swapped with a `<picture>` `source`, not JavaScript, so the browser only ever
-downloads the one it needs. The hero video still mounts at 768px and up only,
-so below that the still is what everyone sees.
+downloads the one it needs.
+
+The narrow poster is frame one of the narrow loop on purpose. Anything else
+means the hero visibly jump-cuts the moment the video reaches `canplay`, on
+every single mobile load. It is also what the `<video>` element carries as its
+own `poster`, so the still, the video's poster and the video's first frame are
+all the same image and the promotion is invisible.
+
+## Hero loops
+
+| File | Used at | Notes |
+| --- | --- | --- |
+| `public/video/heroloop.mp4` | 768px and up | 1920x1080, H.264, 23.3s, 4.5 MB, no audio. |
+| `public/video/heroloop-mobile.mp4` | below 768px | 768x960 (4:5), H.264, 8.93s, **667 KB**, no audio. |
+
+Both are silent and decorative. Neither mounts under `prefers-reduced-motion`,
+and as of the narrow cut neither mounts under Data Saver or a 2G
+`effectiveType` either — if someone has told their browser to economise, an
+ambient loop is exactly what they meant.
+
+**Why there are two cuts, and why the narrow one is 4:5.** Under
+`object-fit: cover` the phone viewport crops the horizontal axis, so the
+source aspect decides how much of every downloaded frame is ever rendered. On
+a 390px-wide hero: a 16:9 source displays 1315px wide and shows 390 — **70%
+of the bitrate is discarded**. At 4:3 it is 60%. At 4:5 it is 34%. Same file
+size, dramatically more visible detail, which is the only reason a hero video
+on cellular is defensible at all.
+
+**Encode recipe** (two-pass, so the size target is hit rather than
+approached):
+
+```
+ffmpeg -i SOURCE -map 0:v:0 -an -c:v libx264 -profile:v high -level 4.0 \
+  -pix_fmt yuv420p -b:v 610k -pass 1 -preset veryslow -g 48 -keyint_min 48 \
+  -sc_threshold 40 -f mp4 /dev/null
+ffmpeg -i SOURCE -map 0:v:0 -an -c:v libx264 -profile:v high -level 4.0 \
+  -pix_fmt yuv420p -b:v 610k -pass 2 -preset veryslow -g 48 -keyint_min 48 \
+  -sc_threshold 40 -movflags +faststart OUT.mp4
+```
+
+`-an` drops the audio the NLE exports by default; `-map 0:v:0` drops the
+MJPEG cover-art stream Premiere and Resolve attach. Together they were ~40 KB
+of a 700 KB budget. `+faststart` puts the moov atom first so playback can
+begin before the file finishes arriving. Result measured SSIM 0.979 against
+the 6.2 MB master — a 9x reduction that is visually transparent at phone size.
+
+H.264 only, no WebM second source. VP9 would save perhaps 30% on a file
+already under a megabyte, in exchange for a second asset to keep in sync and a
+codec whose iOS history is less certain. H.264 plays everywhere, no exceptions.
+
+**Contrast was measured, not assumed.** The loop's brightest frame (a white
+door and a blown-out window, frame 173) was composited under the real hero
+gradient at 390x740 and sampled behind each text element. The h1 reads
+**4.15:1** against that worst frame — better than the still it replaced, which
+read 4.05:1 — comfortably past the 3:1 that WCAG 1.4.3 asks of large text.
+The sub reads 8.72:1.
+
+**Open defect, pre-existing:** the hero eyebrow reads **1.49:1**. It fails on
+the still and the loop identically, so the video did not cause it, but amber
+`--accent-night` over a mid-tone composite is not legible at that size and
+WCAG wants 4.5:1. Fixing it means either a different eyebrow colour in the
+hero or a deeper top stop on the gradient — a design decision, not a bug fix.
 
 **Framing — the thing worth remembering:** a 16:9 source in a 9:19 viewport is
 always width-constrained under `object-fit: cover`, which means the vertical
