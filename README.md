@@ -111,7 +111,7 @@ Canva alone:
 
 ### Later: moving to weengageagency.com
 
-When the transfer completes, this is a three-step swap and **no link ever
+When the transfer completes, this is a four-step swap and **no link ever
 breaks**:
 
 1. Change `CNAME` in this repo to `weengageagency.com`.
@@ -121,6 +121,12 @@ breaks**:
    records first or they fight the A records.
 3. **Leave the `agency` CNAME record in place.** GitHub then permanently
    redirects `agency.davidgeathers.com` → `weengageagency.com` on its own.
+4. Swap the absolute domain in the `<head>` of every page. `canonical`,
+   `og:url` and `og:image` are absolute by necessity — a relative `og:image`
+   does not reliably unfurl — so they are the only place the domain is
+   hardcoded in the site itself. One find-and-replace of
+   `https://agency.davidgeathers.com` across `*.html` does it. Until that
+   runs, the 301 still resolves them, but every share points at the old host.
 
 That last step is the point: every link handed out in the meantime — in
 candidate applications, in email — keeps working and lands on the new domain.
