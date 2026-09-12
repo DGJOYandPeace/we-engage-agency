@@ -134,6 +134,31 @@
     };
     var mounted = false;
 
+    /* `canplay` only means the browser thinks it could start. It is not
+       evidence that anything was drawn, and it used to be what hid the
+       still — so a video that announced itself and then never painted took
+       the hero to black with it. Wait for a frame that has actually been
+       presented: requestVideoFrameCallback says so exactly, and the fallback
+       is a clock that has genuinely moved off zero. Anything that empties or
+       errors the element drops it back to the still. */
+    var arm = function (v) {
+      var reveal = function () { v.setAttribute("data-ready", "true"); };
+      if (typeof v.requestVideoFrameCallback === "function") {
+        v.requestVideoFrameCallback(reveal);
+      } else {
+        var tick = function () {
+          if (v.currentTime > 0) {
+            reveal();
+            v.removeEventListener("timeupdate", tick);
+          }
+        };
+        v.addEventListener("timeupdate", tick);
+      }
+      ["error", "emptied", "abort"].forEach(function (ev) {
+        v.addEventListener(ev, function () { v.removeAttribute("data-ready"); });
+      });
+    };
+
     var mount = function () {
       /* Already running: the breakpoint moved, so swap the cut rather than
          leaving a phone playing the widescreen file after a rotation. */
@@ -141,9 +166,11 @@
         var cur = heroSlot.querySelector("video");
         var want = srcFor();
         if (cur && want && cur.getAttribute("src") !== want) {
+          cur.removeAttribute("data-ready");
           cur.setAttribute("src", want);
           cur.poster = posterFor();
           cur.load();
+          arm(cur);
           var r = cur.play();
           if (r && r.catch) r.catch(function () {});
         }
@@ -163,19 +190,15 @@
       v.setAttribute("playsinline", "");
       v.loop = true;
       v.setAttribute("aria-hidden", "true");
-      v.addEventListener("canplay", function () {
-        var poster = heroSlot.querySelector("img");
-        if (poster) poster.style.display = "none";
-      });
+      arm(v);
       heroSlot.appendChild(v);
       var p = v.play();
       if (p && p.catch) {
         p.catch(function () {
-          /* Autoplay refused — the poster underneath is already correct. */
+          /* Autoplay refused. The still was never hidden, so there is
+             nothing to restore — just drop the element. */
           v.remove();
           mounted = false;
-          var poster = heroSlot.querySelector("img");
-          if (poster) poster.style.display = "";
         });
       }
     };
