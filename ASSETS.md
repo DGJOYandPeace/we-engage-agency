@@ -167,8 +167,7 @@ Figures are the first 72 hours after posting. The run sold out.
 | File | Used at | Notes |
 | --- | --- | --- |
 | `public/video/hero-poster.jpg` | 768px and up | 1920x1080. Also the poster the wide loop mounts over. |
-| `public/video/heroloop-mobile-poster.jpg` | below 768px | 768x960, frame one of the narrow loop. |
-| `public/video/hero-poster-mobile.jpg` | *unused* | 900x1117, cropped from `wea-mobile-hero5`. Kept so the art-directed still can go back in one line. |
+| `public/video/heroloop-mobile-poster.jpg` | below 768px | 768x960, frame one of the narrow loop. Regenerate it whenever the loop changes. |
 
 Swapped with a `<picture>` `source`, not JavaScript, so the browser only ever
 downloads the one it needs.
@@ -184,7 +183,7 @@ all the same image and the promotion is invisible.
 | File | Used at | Notes |
 | --- | --- | --- |
 | `public/video/heroloop.mp4` | 768px and up | 1920x1080, H.264, 23.3s, 4.5 MB, no audio. |
-| `public/video/heroloop-mobile.mp4` | below 768px | 768x960 (4:5), H.264, 8.93s, **667 KB**, no audio. |
+| `public/video/heroloop-mobile.mp4` | below 768px | 768x960 (4:5), H.264, 8.84s, **663 KB**, no audio. |
 
 Both are silent and decorative. Neither mounts under `prefers-reduced-motion`,
 and as of the narrow cut neither mounts under Data Saver or a 2G
@@ -214,19 +213,24 @@ ffmpeg -i SOURCE -map 0:v:0 -an -c:v libx264 -profile:v high -level 4.0 \
 `-an` drops the audio the NLE exports by default; `-map 0:v:0` drops the
 MJPEG cover-art stream Premiere and Resolve attach. Together they were ~40 KB
 of a 700 KB budget. `+faststart` puts the moov atom first so playback can
-begin before the file finishes arriving. Result measured SSIM 0.979 against
-the 6.2 MB master — a 9x reduction that is visually transparent at phone size.
+begin before the file finishes arriving. The current cut measured SSIM 0.983
+against its 6.1 MB master — a 9x reduction that is visually transparent at
+phone size.
+
+**Both `?v=` numbers move together.** Pages cannot send cache headers, so the
+query string is the only thing that expires either file. A new loop with a
+stale poster query means phones pair a new video with the previous first
+frame, which is the jump cut the matched poster exists to prevent.
 
 H.264 only, no WebM second source. VP9 would save perhaps 30% on a file
 already under a megabyte, in exchange for a second asset to keep in sync and a
 codec whose iOS history is less certain. H.264 plays everywhere, no exceptions.
 
-**Contrast was measured, not assumed.** The loop's brightest frame (a white
-door and a blown-out window, frame 173) was composited under the real hero
-gradient at 390x740 and sampled behind each text element. The h1 reads
-**4.15:1** against that worst frame — better than the still it replaced, which
-read 4.05:1 — comfortably past the 3:1 that WCAG 1.4.3 asks of large text.
-The sub reads 8.72:1.
+**Contrast is measured, not assumed, on every new cut.** Find the brightest
+frame in the headline band, composite it under the real hero gradient at
+390x740, and sample behind each text element. The current loop's worst frame
+gives the h1 **4.17:1** and the sub 8.69:1, comfortably past the 3:1 that
+WCAG 1.4.3 asks of large text. The narrow poster reads 4.09:1.
 
 **Open defect, pre-existing:** the hero eyebrow reads **1.49:1**. It fails on
 the still and the loop identically, so the video did not cause it, but amber

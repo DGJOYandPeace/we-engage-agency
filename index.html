@@ -50,13 +50,14 @@
     <div class="hero__media"
          data-hero-video="/public/video/heroloop.mp4?v=6"
          data-hero-poster="/public/video/hero-poster.jpg?v=6"
-         data-hero-video-narrow="/public/video/heroloop-mobile.mp4?v=1"
-         data-hero-poster-narrow="/public/video/heroloop-mobile-poster.jpg?v=1">
+         data-hero-video-narrow="/public/video/heroloop-mobile.mp4?v=2"
+         data-hero-poster-narrow="/public/video/heroloop-mobile-poster.jpg?v=2">
       <picture>
         <!-- The narrow poster is frame one of the narrow loop, so promoting
-             to video is not a cut. hero-poster-mobile.jpg is still in the
-             repo if we ever want the art-directed still back here. -->
-        <source media="(max-width: 767px)" srcset="/public/video/heroloop-mobile-poster.jpg?v=1">
+             to video is not a cut. Regenerate it whenever the loop changes,
+             and bump both ?v= together — Pages cannot send cache headers, so
+             the query string is the only thing that expires either file. -->
+        <source media="(max-width: 767px)" srcset="/public/video/heroloop-mobile-poster.jpg?v=2">
         <img src="/public/video/hero-poster.jpg?v=6" alt="" aria-hidden="true">
       </picture>
     </div>
