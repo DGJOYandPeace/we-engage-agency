@@ -143,17 +143,22 @@
        errors the element drops it back to the still. */
     var arm = function (v) {
       var reveal = function () { v.setAttribute("data-ready", "true"); };
+      /* Both, not either. requestVideoFrameCallback is the precise signal,
+         but Safari has shipped versions where it exists and does not fire
+         reliably — and an `else` would leave those browsers playing a video
+         at opacity 0 behind the still, which looks exactly like the video
+         not playing at all. The clock is the backstop; whichever arrives
+         first wins and the second is a no-op. */
       if (typeof v.requestVideoFrameCallback === "function") {
         v.requestVideoFrameCallback(reveal);
-      } else {
-        var tick = function () {
-          if (v.currentTime > 0) {
-            reveal();
-            v.removeEventListener("timeupdate", tick);
-          }
-        };
-        v.addEventListener("timeupdate", tick);
       }
+      var tick = function () {
+        if (v.currentTime > 0) {
+          reveal();
+          v.removeEventListener("timeupdate", tick);
+        }
+      };
+      v.addEventListener("timeupdate", tick);
       ["error", "emptied", "abort"].forEach(function (ev) {
         v.addEventListener(ev, function () { v.removeAttribute("data-ready"); });
       });

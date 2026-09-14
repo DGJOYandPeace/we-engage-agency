@@ -182,7 +182,7 @@ all the same image and the promotion is invisible.
 
 | File | Used at | Notes |
 | --- | --- | --- |
-| `public/video/heroloop.mp4` | 768px and up | 1920x1080, H.264, 23.3s, 4.5 MB, no audio. |
+| `public/video/heroloop.mp4` | 768px and up | 1920x1080, H.264 High **Level 4.0**, 23.3s, 4.2 MB, no audio. |
 | `public/video/heroloop-mobile.mp4` | below 768px | 768x960 (4:5), H.264, 8.84s, **663 KB**, no audio. |
 
 Both are silent and decorative. Neither mounts under `prefers-reduced-motion`,
@@ -221,6 +221,15 @@ phone size.
 query string is the only thing that expires either file. A new loop with a
 stale poster query means phones pair a new video with the previous first
 frame, which is the jump cut the matched poster exists to prevent.
+
+**Pin the level, not just the profile.** The first desktop loop was flagged
+**Level 5.0** — far above anything 1080p24 needs, which is Level 4.0. Chrome
+decodes it in software and never notices. Older Safari on older Mac hardware
+asks its hardware decoder, is told the level is unsupported, and declines to
+play at all: the exact "works in Chrome, not in Safari" report. Always pass
+`-level 4.0` explicitly for 1080p and below. It costs nothing and it is the
+difference between playing everywhere and playing on the machines you happen
+to own.
 
 H.264 only, no WebM second source. VP9 would save perhaps 30% on a file
 already under a megabyte, in exchange for a second asset to keep in sync and a

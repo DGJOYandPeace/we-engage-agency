@@ -138,10 +138,16 @@ This was a four-step swap and **no link ever breaks**:
    `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`, plus a `CNAME` on
    `www` to `dgjoyandpeace.github.io.` Remove the registrar's default parking
    records first or they fight the A records.
-3. **Leave the `agency` CNAME record in place — permanently.** GitHub
-   answers `agency.davidgeathers.com` with a 301 to `weengageagency.com` on
-   its own, for as long as that record resolves. Delete it and every link
-   handed out before the move dies. It costs nothing to keep.
+3. ~~Leave the `agency` CNAME record in place for the 301.~~ **Moot here,
+   and worth recording why.** GitHub's automatic redirect from a previous
+   custom domain is best-effort, not contractual: once `CNAME` named the new
+   domain, requests for the subdomain still reached GitHub — the DNS record
+   points there — but Pages no longer associated them with this site and
+   answered 404. The subdomain had only ever been used internally, so nothing
+   was lost. Delete the `agency` record rather than leave it resolving to a
+   GitHub 404. If a future move has to preserve circulated links, do not rely
+   on this step: keep the old domain as a second Pages site that redirects,
+   or serve the redirect somewhere you control.
 4. Swap the absolute domain in the `<head>` of every page. `canonical`,
    `og:url` and `og:image` are absolute by necessity — a relative `og:image`
    does not reliably unfurl — so they are the only place the domain is
