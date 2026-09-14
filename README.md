@@ -89,9 +89,26 @@ served straight from GitHub Pages: **repo → domain, no third service.**
   named with a leading underscore today, but Jekyll would be a silent build
   step sitting between the repo and the live site for no benefit.
 
-### Live now: agency.davidgeathers.com
+### Live now: weengageagency.com
 
-A subdomain, chosen deliberately while `weengageagency.com` is mid-transfer.
+Four `A` records on the apex plus a `CNAME` on `www`, both at Namecheap:
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `dgjoyandpeace.github.io.` |
+
+Namecheap's default parking records — the `CNAME` on `www` to
+`parkingpage.namecheap.com` and the URL Redirect on `@` — have to come out
+first or they fight these. The domain must also be on Namecheap **BasicDNS**;
+with third-party nameservers set, the Advanced DNS tab is decorative.
+
+### Previously: agency.davidgeathers.com
+
+A subdomain, used deliberately while `weengageagency.com` was mid-transfer.
 It puts the site at a domain root (so the root-absolute paths throughout the
 markup work unchanged), needs one DNS record instead of four, and leaves the
 apex `davidgeathers.com` — the artist page — completely untouched, in the
@@ -111,16 +128,20 @@ Canva alone:
 
 ### Later: moving to weengageagency.com
 
-When the transfer completes, this is a four-step swap and **no link ever
-breaks**:
+**Done.** Kept here because the reasoning outlives the move, and because
+step 3 is load-bearing for as long as the old links exist.
+
+This was a four-step swap and **no link ever breaks**:
 
 1. Change `CNAME` in this repo to `weengageagency.com`.
 2. Point `weengageagency.com` at Pages — four `A` records on `@` to
    `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`, plus a `CNAME` on
    `www` to `dgjoyandpeace.github.io.` Remove the registrar's default parking
    records first or they fight the A records.
-3. **Leave the `agency` CNAME record in place.** GitHub then permanently
-   redirects `agency.davidgeathers.com` → `weengageagency.com` on its own.
+3. **Leave the `agency` CNAME record in place — permanently.** GitHub
+   answers `agency.davidgeathers.com` with a 301 to `weengageagency.com` on
+   its own, for as long as that record resolves. Delete it and every link
+   handed out before the move dies. It costs nothing to keep.
 4. Swap the absolute domain in the `<head>` of every page. `canonical`,
    `og:url` and `og:image` are absolute by necessity — a relative `og:image`
    does not reliably unfurl — so they are the only place the domain is
