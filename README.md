@@ -65,7 +65,42 @@ git config user.email "davidgeathers@gmail.com"
 
 ## Design system
 
-Every colour, type step and spacing value is a custom property on `:root` in `css/site.css`. **Retheme there, not in the rules.** The ground is a cool near-black; coral is the primary accent, teal the secondary; Cormorant Garamond display against Outfit body.
+Every colour, type step and spacing value is a custom property on `:root` in
+`css/site.css`. **Retheme there, not in the rules.** The ground is warm paper;
+brass is the primary accent, slate blue the secondary; Cormorant Garamond
+display against Outfit body. A parallel `--night*` set lets any zone borrow the
+dark register by re-declaring tokens, which is how the hero, the page heads and
+the offer panel invert without a second set of component rules.
+
+### Tier tones
+
+The four engagements in `#offer` each carry a `--tone`, and every coloured
+surface on the card reads that one property — the left rule, the wash behind
+the expanded body, the price, the cue. Re-tinting a tier is one line.
+
+| Tier | Tone | | Why |
+| --- | --- | --- | --- |
+| Story Series | `#86BD97` | green | Start here. The entry point in a sequence a buyer already knows how to read. |
+| Signature Story | `#92B6CF` | blue | The focused single. Contained, considered, one thing done properly. |
+| Story Program | `#E0A85C` | gold | The premium. This is `--accent-night` itself, unchanged, which is what keeps the set inside the palette rather than beside it. |
+| Producer Engagement | `#BCA9D8` | violet | Deliberately **off** the green-blue-gold ladder. This tier is not a bigger or smaller version of the others, and a colour that refuses to rank is the honest signal for that. |
+
+All four are matched on perceptual lightness — CIE **L\* 72.0–72.6** — so no
+tier shouts louder than another, and each reads **8.05–8.20:1** on the card
+ground, well past the 4.5:1 WCAG asks of text. Matching on L\* rather than on
+contrast ratio is the point: two colours can share a contrast ratio and still
+look unequal, because contrast ratio is not a perceptual scale.
+
+Nothing is tinted at rest. The section is meant to open quiet, and the tone
+arrives as the panel expands: a rule wipes down the left edge, a wash of the
+same hue at 7% settles into the top of the body, and the price takes the
+colour. Three signals at low volume read as designed; one loud signal reads as
+decoration. The CTA stays brass on every tier on purpose — the action should be
+one constant thing, not a fifth colour to decode.
+
+`--tone-wash` and `--tone-edge` are spelled out as `rgba` rather than derived
+with `color-mix`. This site has already lost an afternoon to assuming a Safari
+feature was present.
 
 ## Conventions worth knowing
 
@@ -74,7 +109,9 @@ Every colour, type step and spacing value is a custom property on `:root` in `cs
 - **Career credits are not clients.** Academy Museum, Warner Bros., Alcon and Machinima are places David has worked. They live in their own directory and their own page section so they are never mistaken for agency engagements by anyone doing diligence.
 - **Video embeds are click-to-load.** Nothing is requested from YouTube or Vimeo until a visitor asks, so third-party cookies are not set on arrival.
 - **Village Treasures is an unlisted Vimeo video.** Its hash (`235dd7ccb8`) must travel with every embed or playback fails. It is stored as a separate `vimeoHash` field in `videos.json` so URL construction cannot silently drop it.
-- **The hero video never loads below 768px** or under `prefers-reduced-motion`. The poster still is the markup default and video is only ever promoted in, so a blocked autoplay falls back cleanly rather than showing a blank frame.
+- **There are two hero loops** — a 16:9 cut above 768px and a 4:5 cut below, because a phone crops the horizontal axis and a widescreen source spends 70% of its bitrate on pixels nobody sees. Neither mounts under `prefers-reduced-motion` or Data Saver.
+- **The hero still is never hidden.** The loop is positioned over it and fades in only once a frame has actually been presented. Hiding the still on `canplay` — which only means the browser believes it could start — is how the hero went black for a day.
+- **Pin the H.264 level, not just the profile.** `-level 4.0` for 1080p and below. A file flagged Level 5.0 plays in Chrome, which decodes in software, and is refused by older Safari, which asks a hardware decoder that caps lower.
 
 ---
 

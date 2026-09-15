@@ -1165,8 +1165,74 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
   overflow: hidden;
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.tier[data-open="true"], .tier:hover { border-color: var(--accent); }
-.tier--lead { border-color: rgba(224,168,92,0.45); }
+
+/* =========================================================================
+   Tier tones
+   Four engagements opened in sequence all looked alike, and closing one to
+   open another gave no signal that the content had changed — open Producer
+   Engagement, scroll, and Story Program reads as the same card again. Colour
+   fixes that, but only if it says something.
+
+   Green, blue, gold is a sequence a buyer already knows how to read: start
+   here, the focused single, the premium. Violet is deliberately NOT on that
+   ladder, because Producer Engagement is not a bigger or smaller version of
+   the others — it is a different kind of engagement, and a colour that
+   refuses to rank is the honest signal for it.
+
+   All four are matched on perceptual lightness (CIE L* 72.0-72.6) against
+   the card, so no tier shouts louder than another; the gold is the site's
+   own --accent-night, unchanged, which is what keeps the set inside the
+   palette rather than beside it. Each reads 8.05-8.20:1 on the card ground,
+   well past the 4.5:1 WCAG asks of text.
+
+   One property does the work. Everything coloured downstream reads --tone,
+   so re-tinting a tier is one line. --tone-wash and --tone-edge are spelled
+   out as rgba rather than derived with color-mix: this site has already been
+   bitten once by assuming a Safari feature was present.
+   ========================================================================= */
+.tier {
+  --tone:      var(--accent-night);
+  --tone-wash: rgba(224, 168, 92, 0.07);
+  --tone-edge: rgba(224, 168, 92, 0.42);
+}
+.tier--series   { --tone: #86BD97; --tone-wash: rgba(134, 189, 151, 0.07); --tone-edge: rgba(134, 189, 151, 0.42); }
+.tier--single   { --tone: #92B6CF; --tone-wash: rgba(146, 182, 207, 0.07); --tone-edge: rgba(146, 182, 207, 0.42); }
+.tier--program  { --tone: #E0A85C; --tone-wash: rgba(224, 168, 92, 0.07);  --tone-edge: rgba(224, 168, 92, 0.42); }
+.tier--producer { --tone: #BCA9D8; --tone-wash: rgba(188, 169, 216, 0.07); --tone-edge: rgba(188, 169, 216, 0.42); }
+
+.tier[data-open="true"], .tier:hover { border-color: var(--tone-edge); }
+/* The lead card keeps its resting distinction, in its own tone now. Gold at
+   rest on the green tier would have signalled Story Program on the wrong
+   card. */
+.tier--lead { border-color: rgba(134, 189, 151, 0.38); }
+
+/* The reveal. Nothing is tinted at rest — the section is meant to open
+   quiet. A rule wipes down the left edge as the panel expands, a wash of the
+   same hue at 7% settles into the top of the body, and the price takes the
+   tone. Three signals at low volume read as designed; one loud one reads as
+   decoration. */
+.tier { position: relative; }
+.tier::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--tone);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.45s var(--ease);
+  border-radius: var(--r-lg) 0 0 var(--r-lg);
+  pointer-events: none;
+}
+.tier[data-open="true"]::before { transform: scaleY(1); }
+.tier__inner { background: linear-gradient(180deg, var(--tone-wash), transparent 62%); }
+.tier[data-open="true"] .tier__price,
+.tier[data-open="true"] .tier__cue { color: var(--tone); }
+
+@media (hover: hover) and (pointer: fine) {
+  .tier:hover::before, .tier:focus-within::before { transform: scaleY(1); }
+  .tier:hover .tier__price, .tier:focus-within .tier__price,
+  .tier:hover .tier__cue, .tier:focus-within .tier__cue { color: var(--tone); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tier::before { transition: none; }
+}
 
 .tier__toggle {
   display: flex; align-items: baseline; gap: 1rem 1.5rem; flex-wrap: wrap;
