@@ -255,7 +255,7 @@ Widths worth checking: 320, 360, 390, 430, 768, 1440.
 Done and verified end to end:
 
 - [x] **Intake form wired to Basin.** `data-endpoint` on `#intake` posts form-encoded to `https://usebasin.com/f/d407cce43edb`. Confirmed by David: a test submission reaches the inbox with every answer broken out as a named field. Form-encoded rather than JSON — Basin treats it as native and maps the fields, and it is a "simple" request so the browser skips the CORS preflight.
-- [x] **Calendly wired.** `data-calendly` on `#booking` points at `https://calendly.com/davidgeathers/30min`, themed to the site and pre-filled with the name and email the visitor just typed. Confirmed landing in David's email.
+- [x] **Calendly wired.** `data-calendly` on `#booking` points at `https://calendly.com/weengageagencycalls/30min`, themed to the site and pre-filled with the name and email the visitor just typed. The handle is deliberately the agency's, not a personal one: it is visible in the iframe URL and on every confirmation the invitee receives.
 - [x] **Hero loop replaced.** Current cut is at `public/video/heroloop.mp4`, cache-busted with `?v=6`.
 - [x] **Real contact email set.** `data-fallback-email` is David's Gmail, rendered as a button and never as printed text.
 - [x] **Video embeds clicked through.** Confirmed working by David.
