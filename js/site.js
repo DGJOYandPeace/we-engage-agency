@@ -410,7 +410,7 @@
       }
     } catch (err) {}
     var booking = document.getElementById("booking");
-    var FALLBACK_EMAIL = intake.getAttribute("data-fallback-email") || "hello@weengageagency.com";
+    var FALLBACK_EMAIL = intake.getAttribute("data-fallback-email") || "hi@weengageagency.com";
 
     /* The honeypot is a visible-to-bots text input that must stay empty, so
        it can never be run through the "required and non-empty" check below. */
