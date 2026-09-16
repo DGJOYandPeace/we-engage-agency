@@ -151,11 +151,15 @@
             <p class="lede">Thanks — your answers are with us. Choose a slot below and we'll come prepared.</p>
             <div class="booking__frame" id="calendly">
               <div class="booking__placeholder">
-                <p class="formnote">Loading the calendar…
-                  <a href="https://calendly.com/weengageagencycalls/30min" target="_blank" rel="noopener" style="color:var(--accent-lit)">Open it in a new tab</a>
-                  if it doesn't appear.</p>
+                <p class="formnote">Loading the calendar…</p>
               </div>
             </div>
+            <!-- Outside #calendly on purpose. That element's contents are
+                 replaced wholesale by the iframe, so an escape hatch living
+                 inside it is destroyed at exactly the moment a blocked
+                 iframe would make someone need it. -->
+            <p class="formnote" style="margin-top:1rem">Calendar not showing?
+              <a href="https://calendly.com/weengageagencycalls/30min" target="_blank" rel="noopener" style="color:var(--accent-lit)" data-calendly-fallback>Open it in a new tab</a>.</p>
           </div>
         </div>
 

@@ -450,6 +450,16 @@
     var revealBooking = function (data) {
       var url = booking && booking.getAttribute("data-calendly");
       if (url) {
+        /* The escape hatch gets the same treatment as the embed. Calendly's
+           own Branding panel has no colour field on this plan — the theming
+           lives entirely in these URL parameters — so a bare href would drop
+           anyone whose browser blocks the iframe onto a default white
+           Calendly page, having just come from a dark one. That is the most
+           locked-down corporate browsers, which is to say the institutional
+           buyers. Built from the same function as the embed so the two
+           cannot drift apart. */
+        var esc = document.querySelector("[data-calendly-fallback]");
+        if (esc) esc.href = calendlyUrl(url, data);
         var slot = document.getElementById("calendly");
         if (slot) {
           var f = document.createElement("iframe");
