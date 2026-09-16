@@ -131,6 +131,11 @@ img, video { max-width: 100%; display: block; }
 .shell { width: min(100% - (var(--gutter) * 2), var(--shell)); margin-inline: auto; }
 .section { padding-block: clamp(4.5rem, 10vw, 9rem); position: relative; }
 .section--tight { padding-block: clamp(3rem, 6vw, 5rem); }
+/* The bio and the client band read as one thought now — his credits, then the
+   agency's — so they close up instead of sitting as two full sections with
+   128px of padding each meeting in the middle. */
+.section--closes { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.section--follows { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
 
 .eyebrow {
   font-size: var(--step--1);
@@ -740,7 +745,29 @@ img, video { max-width: 100%; display: block; }
 .prose--airy p { font-size: var(--step-1); line-height: 1.62; color: var(--bone-soft); }
 
 /* ---------- Credit rows (About) ---------- */
+/* Career credits used to be a full-width band of its own between the bio and
+   the agency's client roster. Two problems at once: the bio column ran out of
+   copy 157px before the portrait ended, and then two sections stacked their
+   padding — 128 + 128 at desktop — so 285px separated the last line of the
+   bio from the next thing worth reading.
+
+   Moving the block into the column solves both. It fills the run the portrait
+   creates, it deletes a whole section's stacked padding, and it fixes the
+   information architecture: these are David's credits, so they belong with
+   David's biography. The agency's own clients stay a band, alone, which is
+   what makes the distinction read without a paragraph explaining it. */
+.credits-block {
+  margin-top: clamp(2.25rem, 4vw, 3rem);
+  padding-top: clamp(1.75rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--hairline);
+}
+.credits-block .eyebrow { margin-bottom: 0.9rem; }
+.credits-note { margin: 0; color: var(--bone-faint); font-size: var(--step--1); max-width: 46ch; }
 .credits { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(1.75rem, 4.5vw, 3.5rem); margin-top: 2rem; }
+/* Narrower home than the old full-width band, so the marks come down to suit
+   the column rather than dominating it. */
+.credits-block .credits { margin-top: 1.5rem; gap: clamp(1.4rem, 3.2vw, 2.4rem); }
+.credits-block .credits img { max-height: 32px; max-width: 124px; }
 .credits img { height: auto; width: auto; max-height: 40px; max-width: 150px; object-fit: contain; opacity: 0.62; }
 
 /* =========================================================================
