@@ -212,6 +212,103 @@
     if (narrow.addEventListener) narrow.addEventListener("change", mount);
   }
 
+  /* ---------- Qualification survey (qualify.html) ----------
+     A flowchart, not a calculator. It resolves to a shape — a tier name, day
+     counts, two flags — and never to a figure, because a prospect who can
+     back-calculate a rate from a survey has been handed the other side of
+     the negotiation. No price constant exists on this page to leak.
+
+     Every field is optional on purpose. A blank answer is a real answer: it
+     becomes a question on the call rather than a required field someone
+     guesses at to get past. Which means the scoring has to tolerate an
+     entirely empty form, and does — it lands on Signature Story, the
+     smallest commitment, which is the right thing to assume about someone
+     who told us nothing. */
+  var qualify = document.getElementById("qualify");
+  if (qualify) {
+    var q4 = qualify.querySelector('[name="q4"]');
+    var q4aField = document.getElementById("q4a-field");
+    var syncQ4a = function () {
+      if (!q4 || !q4aField) return;
+      var on = q4.value === "yes";
+      q4aField.hidden = !on;
+      if (!on) { var f = q4aField.querySelector("input"); if (f) f.value = ""; }
+    };
+    if (q4) q4.addEventListener("change", syncQ4a);
+    syncQ4a();
+
+    var shapeOf = function (a) {
+      var signature = 0, series = 0;
+      if (a.q1 === "one")           signature++;
+      if (a.q1 === "two_or_more")   series++;
+      if (a.q2 === "already_have")  signature++;
+      if (a.q2 === "needs_dev")     series++;
+      if (a.q3 === "one_moment")    signature++;
+      if (a.q3 === "ongoing")       series++;
+
+      var tier = series > signature ? "Story Series" : "Signature Story";
+      var program = a.q4 === "yes";
+      var producer = a.q5 === "yes";
+
+      /* Producer Engagement is not a larger or smaller production tier, so
+         it replaces the recommendation rather than ranking against it. */
+      if (producer) tier = "Producer Engagement";
+      else if (program) tier = tier + " (Program track)";
+
+      return {
+        recommended_tier: tier,
+        program_track: program ? "yes" : "no",
+        /* Named to line up with the Scenario Builder's own inputs, so these
+           can be typed straight in during the call without translation. */
+        est_interview_days: a.q1 === "two_or_more" ? "2" : (a.q1 === "one" ? "1" : "not given"),
+        est_coverage_days: a.q3 === "ongoing" ? "1" : "0",
+        narrative_development: a.q2 === "needs_dev" ? "yes" : "no",
+        recurring_occasions: a.q4a || "not given",
+        shoot_environment: a.q6 || "none given"
+      };
+    };
+
+    qualify.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var trap = qualify.querySelector('input[name="_gotcha"]');
+      if (trap && trap.value) return;
+
+      var a = {};
+      new FormData(qualify).forEach(function (v, k) {
+        if (k !== "_gotcha") a[k] = String(v).trim();
+      });
+
+      var body = new URLSearchParams();
+      body.append("_subject", "New qualification survey response");
+      var shape = shapeOf(a);
+      Object.keys(shape).forEach(function (k) { body.append(k, shape[k]); });
+      ["q1", "q2", "q3", "q4", "q4a", "q5", "q6"].forEach(function (k) {
+        body.append("raw_" + k, a[k] || "blank");
+      });
+      ["name", "email", "organization"].forEach(function (k) {
+        body.append(k, a[k] || "not given");
+      });
+
+      var done = document.getElementById("qualify-done");
+      var finish = function () {
+        qualify.hidden = true;
+        if (done) { done.hidden = false; done.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "center" }); }
+      };
+
+      var endpoint = qualify.getAttribute("data-endpoint");
+      if (!endpoint) { finish(); return; }
+
+      var btn = qualify.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = "Sending\u2026"; }
+
+      /* Form-encoded, same as the intake form: Basin breaks the keys out as
+         named fields, and it skips the CORS preflight. */
+      fetch(endpoint, { method: "POST", headers: { "Accept": "application/json" }, body: body })
+        .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); finish(); })
+        .catch(function () { finish(); });
+    });
+  }
+
   /* ---------- YouTube poster fallback ----------
      Not every video has a maxresdefault.jpg. When one is missing YouTube
      does NOT 404 — it answers 200 with a 120x90 grey placeholder, so an

@@ -48,9 +48,9 @@ here can be diffed against what is shipped.
 | Slot | Current |
 | --- | --- |
 | Name | Story Program |
-| Overline | Built for the budget cycle you're already planning around. |
-| Price | Starting at $24,000 |
-| Detail | Four production days across the budget cycle you're already planning for. Anchor film, four 60-second highlight videos, and Producer Engagement included, with the right crew brought in as scope grows. |
+| Overline | A 12-month partnership, billed in two payments across the year. |
+| Price | $14,000 twice a year |
+| Detail | Four production days across your budget cycle. Anchor film, four 60-second highlight videos, and a review point built into every renewal. Producer Engagement is available alongside it as its own line, not folded in. |
 | Proof | *(none)* |
 | Action | I'm ready to start this → |
 
@@ -60,8 +60,8 @@ here can be diffed against what is shipped.
 | --- | --- |
 | Name | Producer Engagement |
 | Overline | Strategy, planning and production supervision. |
-| Price | From $2,500 monthly |
-| Detail | Strategy, narrative planning, shot-list architecture and stakeholder interviews. Retained monthly, starting at $2,500 and scaling with production demand — or folded into a Story Program, where it is already included. |
+| Price | $4,800 monthly |
+| Detail | Two dedicated days a week, strategy, narrative planning, shot-list architecture and stakeholder interviews, with a standing window held for questions. A standalone relationship, or run alongside a Story Program as its own line. |
 | Proof | The buyer? Teams with a crew who need a producer with creative vision and a talent for production efficiency. |
 | Action | I'm ready to start this → |
 
@@ -130,8 +130,12 @@ conversation from qualification to scope.
 These are settled. Re-open them deliberately, not by accident during a copy
 pass.
 
-1. **Prices are floors, never menus.** "Starting at" and "From". No itemised
-   line-item breakdown on the site, ever.
+1. **No itemised breakdown on the site, ever.** Two framings now coexist on
+   purpose: production tiers are floors ("Starting at $15,000", "Starting at
+   $6,500") because scope moves, while the recurring lines are set figures
+   ($14,000 twice a year, $4,800 monthly) because a retainer that reads as a
+   floor invites a negotiation downward. Do not "fix" the inconsistency by
+   flattening one into the other.
 2. **Internal costing units never appear.** Per-unit rates are a private
    pricing tool, not public copy. They are not in this repo and must not enter
    it.
@@ -172,8 +176,17 @@ than a leftover.
 the card's framing line came out. Check they have not drifted back together on
 the next edit.
 
-**`contact.html` mirrors the prices and can drift.** The select options and the
-budget bands repeat the numbers from this section. One known inconsistency
-today: the card reads **"From $2,500 monthly"** and the select reads
-**"Producer Engagement — from $2,500"**, dropping the word that resolves the
-ambiguity. Any price edit here is an edit in two files.
+**`contact.html` mirrors the prices and can drift.** The select options and
+the budget bands repeat the numbers from this section, so any price edit here
+is an edit in two files. Currently in sync; a scripted check of both files
+runs with the QA suite.
+
+**Nothing above the four cards is priced.** The line beneath the grid — *"Some
+relationships grow past a Program"* — is deliberately not a fifth card and
+carries no figure. A number there is a ceiling handed to the other side of a
+negotiation before it starts.
+
+**`qualify.html` must never show a figure.** It resolves to a shape — tier
+name, day counts, two flags — and the page contains no price constant to
+leak. A prospect who can back-calculate a rate from a qualification survey has
+been handed the negotiation.

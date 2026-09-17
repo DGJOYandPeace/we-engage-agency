@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Scoping questions — We Engage Agency</title>
+<meta name="description" content="A few questions to shape the conversation before our call.">
+<!-- Unlisted by design. Sent as a direct link after a call is booked, never
+     linked from the nav and never indexed. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/public/logos/wea-mark-round.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="navscrim" data-navscrim hidden></div>
+<header class="masthead">
+  <a class="masthead__mark" href="/" aria-label="We Engage Agency — home">
+    <img src="/public/logos/wea-mark-rectangle-transparent.png" alt="We Engage Agency">
+  </a>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span class="nav__bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <nav class="nav" id="primary-nav" data-open="false">
+    <a href="/">Home</a>
+    <a href="/education.html">Education</a>
+    <a href="/healthcare.html">Healthcare</a>
+    <a href="/work.html">Work</a>
+    <a href="/#offer">Offer</a>
+    <a href="/about.html">About</a>
+    <a class="btn btn--primary" href="/contact.html">Book a Discovery Call</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="pagehead">
+    <div class="shell">
+      <p class="eyebrow">Before we talk</p>
+      <h1 style="font-size:var(--step-4)">A few scoping questions.</h1>
+      <p class="lede">Six questions about the shape of the work. There are no wrong answers and nothing here is binding — it just means the call starts further along.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="split" style="align-items:start">
+        <div class="split__text">
+
+          <!-- Same Basin endpoint as the intake form. No pricing logic lives
+               on this page at all: it resolves to a shape — a tier name, day
+               counts, two flags — and never to a figure. A prospect who could
+               back-calculate a rate from a qualification survey has been
+               handed the other side of the negotiation. -->
+          <form class="form" id="qualify" novalidate
+                data-endpoint="https://usebasin.com/f/d407cce43edb">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                   aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+            <div class="field">
+              <label for="q1">How many people need to speak on camera for this?</label>
+              <select id="q1" name="q1">
+                <option value="">Leave blank if unsure</option>
+                <option value="one">One</option>
+                <option value="two_or_more">Two or more</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="q2">Is the story or script already worked out, or does it need to be developed together before shooting?</label>
+              <select id="q2" name="q2">
+                <option value="">Leave blank if unsure</option>
+                <option value="already_have">Already worked out</option>
+                <option value="needs_dev">Needs development together</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="q3">Is this for one specific moment, or part of something with a timeline, phases, or multiple moments over time?</label>
+              <select id="q3" name="q3">
+                <option value="">Leave blank if unsure</option>
+                <option value="one_moment">One moment</option>
+                <option value="ongoing">Part of something ongoing</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="q4">Will something like this be needed again on a recurring basis, tied to your own budget or program cycle?</label>
+              <select id="q4" name="q4">
+                <option value="">Leave blank if unsure</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+
+            <!-- Revealed only on "yes". A follow-up that appears before its
+                 condition is met reads as a question you failed to answer. -->
+            <div class="field" id="q4a-field" hidden>
+              <label for="q4a">Roughly how many occasions across that cycle?</label>
+              <input type="number" id="q4a" name="q4a" min="1" max="99" inputmode="numeric" placeholder="A rough number is fine">
+            </div>
+
+            <div class="field">
+              <label for="q5">Do you already have your own crew or videographer, and mainly need strategy and producer oversight?</label>
+              <select id="q5" name="q5">
+                <option value="">Leave blank if unsure</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="q6">Anything about the shoot environment worth knowing in advance?</label>
+              <textarea id="q6" name="q6" rows="3" placeholder="Outdoors, at night, a loud room, a tight corridor — anything logistical."></textarea>
+            </div>
+
+            <hr style="border:0;border-top:1px solid var(--hairline);margin:2rem 0">
+
+            <div class="field">
+              <label for="qname">Your name</label>
+              <input type="text" id="qname" name="name" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="qemail">Email</label>
+              <input type="email" id="qemail" name="email" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="qorg">Organization</label>
+              <input type="text" id="qorg" name="organization" autocomplete="organization">
+            </div>
+
+            <p class="formnote">Every question here can be left blank. Anything you skip becomes something we talk about instead.</p>
+            <button class="btn btn--primary" type="submit">Send this ahead <span class="arr">&rarr;</span></button>
+          </form>
+
+          <!-- The result names a shape, never a number. -->
+          <div class="callout" id="qualify-done" hidden style="margin-top:2rem">
+            <p><strong>Thank you — that's with us.</strong> We'll come to the call with a draft shape for the work already sketched, so the time goes on the story rather than on scoping.</p>
+          </div>
+
+        </div>
+
+        <div class="split__media">
+          <div class="callout">
+            <p>None of this is a commitment, and none of it prices the work. It tells us how many voices carry the story, whether the narrative needs building with you, and whether this is one moment or a season — which is most of what shapes an engagement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__grid">
+      <div class="foot__sig">
+        <p style="margin:0">We Engage Agency<br>Altadena, California</p>
+      </div>
+      <nav class="foot__links" aria-label="Footer">
+        <a href="/education.html">Education</a>
+        <a href="/healthcare.html">Healthcare</a>
+        <a href="/work.html">Work</a>
+        <a href="/village-treasures.html">Village Treasures</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="foot__bottom">
+      <p style="margin:0">&copy; <span id="year">2026</span> We Engage Agency. Founded 2015.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+</body>
+</html>
