@@ -29,7 +29,7 @@ here can be diffed against what is shipped.
 | Overline | Strategy first, then two production days across a project arc. |
 | Price | Starting at $15,000 |
 | Detail | Producer-led from the first strategy call. Stakeholder interviews and narrative planning, two production days across a project arc, one anchor film plus two 60-second highlight videos from the same capture. Full raw footage archive included. |
-| Proof | *(none)* |
+| Proof | The right size when the story has more than one voice, and more than one place it needs to land. |
 | Action | I'm ready to start this → |
 
 ### Signature Story — the downsell
@@ -51,7 +51,7 @@ here can be diffed against what is shipped.
 | Overline | A 12-month partnership, billed in two payments across the year. |
 | Price | $14,000 twice a year |
 | Detail | Four production days across your budget cycle. Anchor film, four 60-second highlight videos, and a review point built into every renewal. Producer Engagement is available alongside it as its own line, not folded in. |
-| Proof | *(none)* |
+| Proof | The right size when the work recurs, and you would rather review it once a year than re-scope it every time. |
 | Action | I'm ready to start this → |
 
 ### Producer Engagement — the separate line
@@ -61,7 +61,7 @@ here can be diffed against what is shipped.
 | Name | Producer Engagement |
 | Overline | Strategy, planning and production supervision. |
 | Price | $4,800 monthly |
-| Detail | Two dedicated days a week, strategy, narrative planning, shot-list architecture and stakeholder interviews, with a standing window held for questions. A standalone relationship, or run alongside a Story Program as its own line. |
+| Detail | Strategy, narrative planning, shot-list architecture and stakeholder interviews, with a standing window held for questions. A standalone relationship, or run alongside a Story Program as its own line. |
 | Proof | The buyer? Teams with a crew who need a producer with creative vision and a talent for production efficiency. |
 | Action | I'm ready to start this → |
 
@@ -150,6 +150,12 @@ pass.
    the distinction.
 6. **A named length is a scope fence.** "60-second" and "two to four minutes"
    are doing commercial work, not decoration. "Short" gets negotiated.
+7. **The second row is a fit test, not a feature.** Every tier's proof line
+   answers one question — *when is this the right choice* — and the three
+   production tiers answer it in the same shape, "The right size when…", so
+   they read as one question asked three ways. A feature belongs in the
+   detail line above it. A count of days or hours is a line item and belongs
+   in neither.
 
 ---
 
@@ -166,11 +172,16 @@ where it is a genuine commitment. On Producer Engagement — a monthly retainer 
 label should vary by tier or stay constant for the same reason the colour
 doesn't.
 
-**Two tiers have a proof line and two don't.** Signature Story and Producer
-Engagement carry one; Story Series and Story Program do not, both having lost
-theirs to Rule 4. The asymmetry is currently invisible because only one card
-opens at a time — but it is unintentional, and worth making a decision rather
-than a leftover.
+**Producer Engagement's second row is the odd one out, and now visibly so.**
+The three production tiers open "The right size when…". Producer Engagement
+opens "The buyer?", which points at a category of company rather than a
+moment of fit — the copy explaining the tier instead of placing the reader in
+it. Matching the shape would finish the set:
+
+> The right size when the crew is already yours, and what's missing is the
+> person shaping what they shoot.
+
+Not applied. The line is doing a job; this is a proposal for the next pass.
 
 **The lede and the lead card no longer overlap** — the lede was trimmed when
 the card's framing line came out. Check they have not drifted back together on
