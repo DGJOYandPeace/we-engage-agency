@@ -192,10 +192,12 @@ the budget bands repeat the numbers from this section, so any price edit here
 is an edit in two files. Currently in sync; a scripted check of both files
 runs with the QA suite.
 
-**Nothing above the four cards is priced.** The line beneath the grid — *"Some
-relationships grow past a Program"* — is deliberately not a fifth card and
-carries no figure. A number there is a ceiling handed to the other side of a
-negotiation before it starts.
+**The section ends at four cards.** A line was briefly added beneath the grid
+pointing at the relationship that grows past a Program. It is gone, by
+decision, and should not come back in another form. The offer is four
+engagements; anything larger is a conversation that starts somewhere other
+than this page, and naming it here invites the reader to measure the four
+against something they cannot see.
 
 **`qualify.html` must never show a figure.** It resolves to a shape — tier
 name, day counts, two flags — and the page contains no price constant to
