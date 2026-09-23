@@ -39,8 +39,8 @@
   <section class="pagehead">
     <div class="shell">
       <p class="eyebrow">Before we talk</p>
-      <h1 style="font-size:var(--step-4)">A few scoping questions.</h1>
-      <p class="lede">Six questions about the shape of the work. There are no wrong answers and nothing here is binding — it just means the call starts further along.</p>
+      <h1 style="font-size:var(--step-4)">A few notes before we talk.</h1>
+      <p class="lede">Four questions, all optional. Nothing here is binding. It just means the call starts further along.</p>
     </div>
   </section>
 
@@ -60,60 +60,23 @@
                    aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
             <div class="field">
-              <label for="q1">How many people need to speak on camera for this?</label>
-              <select id="q1" name="q1">
-                <option value="">Leave blank if unsure</option>
-                <option value="one">One</option>
-                <option value="two_or_more">Two or more</option>
-              </select>
+              <label for="happening">What's happening?</label>
+              <textarea id="happening" name="happening" rows="3" placeholder="A launch, an opening, a campaign, a season. However you'd describe it."></textarea>
             </div>
 
             <div class="field">
-              <label for="q2">Is the story or script already worked out, or does it need to be developed together before shooting?</label>
-              <select id="q2" name="q2">
-                <option value="">Leave blank if unsure</option>
-                <option value="already_have">Already worked out</option>
-                <option value="needs_dev">Needs development together</option>
-              </select>
+              <label for="involved">Who's involved?</label>
+              <textarea id="involved" name="involved" rows="3" placeholder="Who would speak on camera, and anyone whose sign-off you'd need."></textarea>
             </div>
 
             <div class="field">
-              <label for="q3">Is this for one specific moment, or part of something with a timeline, phases, or multiple moments over time?</label>
-              <select id="q3" name="q3">
-                <option value="">Leave blank if unsure</option>
-                <option value="one_moment">One moment</option>
-                <option value="ongoing">Part of something ongoing</option>
-              </select>
+              <label for="needed">Is there a date you need it by?</label>
+              <input type="text" id="needed" name="needed" placeholder="A month is fine. So is not yet.">
             </div>
 
             <div class="field">
-              <label for="q4">Will something like this be needed again on a recurring basis, tied to your own budget or program cycle?</label>
-              <select id="q4" name="q4">
-                <option value="">Leave blank if unsure</option>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-              </select>
-            </div>
-
-            <!-- Revealed only on "yes". A follow-up that appears before its
-                 condition is met reads as a question you failed to answer. -->
-            <div class="field" id="q4a-field" hidden>
-              <label for="q4a">Roughly how many occasions across that cycle?</label>
-              <input type="number" id="q4a" name="q4a" min="1" max="99" inputmode="numeric" placeholder="A rough number is fine">
-            </div>
-
-            <div class="field">
-              <label for="q5">Do you already have your own crew or videographer, and mainly need strategy and producer oversight?</label>
-              <select id="q5" name="q5">
-                <option value="">Leave blank if unsure</option>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="q6">Anything about the shoot environment worth knowing in advance?</label>
-              <textarea id="q6" name="q6" rows="3" placeholder="Outdoors, at night, a loud room, a tight corridor — anything logistical."></textarea>
+              <label for="anything">Anything we should know?</label>
+              <textarea id="anything" name="anything" rows="3" placeholder="Locations, access, a tight window, something that went wrong last time."></textarea>
             </div>
 
             <hr style="border:0;border-top:1px solid var(--hairline);margin:2rem 0">
@@ -131,12 +94,11 @@
               <input type="text" id="qorg" name="organization" autocomplete="organization">
             </div>
 
-            <p class="formnote">Every question here can be left blank. Anything you skip becomes something we talk about instead.</p>
+            <p class="formnote">Leave anything blank. What you skip becomes something we talk about instead.</p>
             <button class="btn btn--primary" type="submit">Send this ahead <span class="arr">&rarr;</span></button>
           </form>
 
-          <!-- The result names a shape, never a number. -->
-          <div class="callout" id="qualify-done" hidden style="margin-top:2rem">
+                    <div class="callout" id="qualify-done" hidden style="margin-top:2rem">
             <p><strong>Thank you — that's with us.</strong> We'll come to the call with a draft shape for the work already sketched, so the time goes on the story rather than on scoping.</p>
           </div>
 
@@ -144,7 +106,7 @@
 
         <div class="split__media">
           <div class="callout">
-            <p>None of this is a commitment, and none of it prices the work. It tells us how many voices carry the story, whether the narrative needs building with you, and whether this is one moment or a season — which is most of what shapes an engagement.</p>
+            <p>None of this is a commitment and none of it prices the work. It means David arrives knowing who you are and what you are trying to do, so the call can start on the story instead of the basics.</p>
           </div>
         </div>
       </div>

@@ -208,86 +208,211 @@
     </div>
   </section>
 
-  <!-- =========================== OFFERS ============================ -->
-  <!-- ===================== THE OFFER =====================
-       A permission layer, not a price list. Collapsed, each engagement is a
-       name and one sentence — a menu line. The price and the detail come out
-       on hover, tap or keypress, so nobody is asked to compare four numbers
-       before they know what any of them buy. Story Series leads because it
-       is where most engagements start; the others are the honest ways down
-       and up from it.
+  <!-- =========================== THE OFFER ===========================
+       Two paths, one destination. Every card carries one primary action to
+       the proposal builder and one quiet text link to a call, because the
+       people who want a number now and the people who want to talk first
+       are different buyers and neither should have to use the other's door.
 
-       Each card's action carries its own package into the intake form, so a
-       lead arrives already saying which engagement they want rather than
-       "interested". -->
+       The experience block above the cards is load-bearing, not decoration.
+       It puts what it feels like to work here in front of what it costs,
+       so the price is read by someone who already knows what they are
+       buying.
+
+       Copy of record for this whole section is OFFER.md. Prices here are
+       the only figures allowed in site code; everything else that carries
+       a number lives in the Worker's private config. -->
   <section class="section section--paper" id="offer">
     <div class="shell">
-      <p class="eyebrow reveal">The offer</p>
-      <h2 class="reveal" style="font-size:var(--step-3);max-width:24ch">One engagement, built to become a relationship.</h2>
-      <p class="lede reveal" data-delay="1" style="max-width:58ch">Most engagements start as a Story Series. It's the full system from brief to delivery.</p>
+
+      <div class="experience">
+        <p class="eyebrow reveal">What saying yes looks like</p>
+        <h2 class="reveal" style="font-size:var(--step-3);max-width:22ch">More than footage. A production you never have to manage.</h2>
+        <p class="lede reveal" data-delay="1" style="max-width:62ch">Anyone can hand over video files. What you get with us is the part nobody sees: the planning call that finds the real story, the schedule built around your people, the releases handled, the crew that shows up already knowing who they are filming and why. Your team walks off set glad they said yes. You walk away with a film you are proud to put your name on, delivered the right way the first time.</p>
+
+        <ol class="steps reveal" data-delay="2">
+          <li class="step"><span class="step__n">1</span><h3>We plan it together.</h3><p>One call to find the story and who needs to tell it.</p></li>
+          <li class="step"><span class="step__n">2</span><h3>We handle the day.</h3><p>Crew, lighting, sound, releases, schedule. You show up and speak.</p></li>
+          <li class="step"><span class="step__n">3</span><h3>You see the cut.</h3><p>Your film in 14 business days, with two rounds of revisions.</p></li>
+          <li class="step"><span class="step__n">4</span><h3>It opens doors.</h3><p>A film built to recruit, raise money, sell, and be shared for years.</p></li>
+        </ol>
+        <p class="experience__close reveal" data-delay="3">Clients talk about the films. They also talk about how easy we made it.</p>
+      </div>
+
+      <div class="offerhead">
+        <p class="eyebrow reveal">The offer</p>
+        <h2 class="reveal" style="font-size:var(--step-3);max-width:24ch">One engagement, built to become a relationship.</h2>
+        <p class="lede reveal" data-delay="1" style="max-width:58ch">Start with one film for the moment that matters. Grow into a series or a year-long program when the story does.</p>
+        <p class="aiLine reveal" data-delay="2">Real people, real places, a real crew. We use smart tools to keep records and move faster, never to replace the conversation in front of the camera.</p>
+      </div>
 
       <div class="tiers">
-        <article class="tier tier--lead tier--series reveal" data-tier data-open="false">
+        <article class="tier tier--single tier--lead reveal" data-tier data-open="false">
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-single-story">
+            <h3 class="tier__name">Single Story</h3>
+            <p class="tier__over">Your hero film for the moment that matters.</p>
+            <span class="tier__cue" aria-hidden="true">Details</span>
+          </button>
+          <div class="tier__wrap"><div class="tier__body" id="tier-single-story">
+            <div class="tier__inner">
+              <span class="tier__price">Starting at $8,750</span>
+              <p class="tier__detail">For a launch, an opening, a milestone. We spend a day with you and the people who built it, and deliver a film you'll be proud to put your name on.</p>
+              <dl class="specs">
+                <div class="spec"><dt>Film days</dt><dd>One</dd></div>
+                <div class="spec"><dt>You receive</dt><dd>One hero film, two to four minutes, plus your full raw footage archive</dd></div>
+                <div class="spec"><dt>Delivery</dt><dd>14 business days after your film day. Rush in 7.</dd></div>
+                <div class="spec"><dt>Revisions</dt><dd>Two rounds</dd></div>
+                <div class="spec"><dt>Your time</dt><dd>A planning call, the film day, and quick digital check-ins between</dd></div>
+                <div class="spec"><dt>Where it runs</dt><dd>Your website, social, email, events and paid digital ads</dd></div>
+              </dl>
+              <p class="tier__note"><strong>Hero film:</strong> your main film, the one that leads your website, launch or event.</p>
+              <p class="tier__note">We put the budget where it counts: the film. Social Cutdowns can be added anytime.</p>
+              <p class="tier__moves"><b>What moves the price:</b> Number of locations, crew size, travel, and rush delivery.</p>
+              <figure class="tier__proof"><blockquote>Within two weeks, and within budget, he and his team created a gorgeous and effective promotional video.</blockquote><cite><b>Dr. Theresa Wong</b>W Geriatrics</cite></figure>
+              <div class="tier__acts">
+                <a class="btn btn--primary tier__act" href="/proposal.html?package=single-story">I'm ready to start this <span class="arr">&rarr;</span></a>
+                <a class="tier__alt" href="/contact.html?package=single-story">Rather talk first? Book a call</a>
+              </div>
+            </div>
+          </div></div>
+        </article>
+        <article class="tier tier--series reveal" data-tier data-open="false">
           <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-story-series">
             <h3 class="tier__name">Story Series</h3>
-            <p class="tier__over">Strategy first, then two production days across a project arc.</p>
+            <p class="tier__over">Strategy first, then two film days across a project arc.</p>
             <span class="tier__cue" aria-hidden="true">Details</span>
           </button>
           <div class="tier__wrap"><div class="tier__body" id="tier-story-series">
             <div class="tier__inner">
-              <span class="tier__price">Starting at $15,000</span>
-              <p class="tier__detail">Producer-led from the first strategy call. Stakeholder interviews and narrative planning, two production days across a project arc, one anchor film plus two 60-second highlight videos from the same capture. Full raw footage archive included.</p>
-              <p class="tier__proof">The right size when the story has more than one voice, and more than one place it needs to land.</p>
-              <a class="btn btn--primary tier__act" href="/contact.html?package=story-series">I'm ready to start this <span class="arr">→</span></a>
-            </div>
-          </div></div>
-        </article>
-        <article class="tier tier--single reveal" data-tier data-open="false">
-          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-signature-story">
-            <h3 class="tier__name">Signature Story</h3>
-            <p class="tier__over">One production day, coordinated tightly enough to deliver the whole story.</p>
-            <span class="tier__cue" aria-hidden="true">Details</span>
-          </button>
-          <div class="tier__wrap"><div class="tier__body" id="tier-signature-story">
-            <div class="tier__inner">
-              <span class="tier__price">Starting at $6,500</span>
-              <p class="tier__detail">One production day. One anchor film of two to four minutes. Full raw footage archive included.</p>
-              <p class="tier__proof">The right size when there is one thing to say and a date to say it by.</p>
-              <a class="btn btn--primary tier__act" href="/contact.html?package=signature-story">I'm ready to start this <span class="arr">→</span></a>
+              <span class="tier__price">Starting at $20,000</span>
+              <p class="tier__detail">When the story has more than one voice and more than one place it needs to land. We start with strategy, talk to the people at the center of it, and build the story before we film it.</p>
+              <dl class="specs">
+                <div class="spec"><dt>Strategy</dt><dd>A strategy call, conversations with your key voices, and a narrative plan</dd></div>
+                <div class="spec"><dt>Film days</dt><dd>Two, across your project arc</dd></div>
+                <div class="spec"><dt>You receive</dt><dd>One hero film plus two 60-second Signature highlight videos from the same capture, and your full raw footage archive</dd></div>
+                <div class="spec"><dt>Delivery</dt><dd>14 business days after your final film day. Rush in 7.</dd></div>
+                <div class="spec"><dt>Revisions</dt><dd>Two rounds per film</dd></div>
+                <div class="spec"><dt>Your time</dt><dd>The strategy call, scheduling your voices, two film days, digital check-ins</dd></div>
+                <div class="spec"><dt>Where it runs</dt><dd>Web, social, email, events, paid digital. Broadcast Ready available for TV.</dd></div>
+              </dl>
+
+              <p class="tier__moves"><b>What moves the price:</b> Number of voices and locations, crew size, travel, rush delivery, Broadcast Ready.</p>
+              <p class="tier__proof"><a href="/work.html#magic-hair">Magic Hair: two television campaigns and a 40% lift in store traffic.</a></p>
+              <div class="tier__acts">
+                <a class="btn btn--primary tier__act" href="/proposal.html?package=story-series">I'm ready to start this <span class="arr">&rarr;</span></a>
+                <a class="tier__alt" href="/contact.html?package=story-series">Rather talk first? Book a call</a>
+              </div>
             </div>
           </div></div>
         </article>
         <article class="tier tier--program reveal" data-tier data-open="false">
-          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-story-program">
-            <h3 class="tier__name">Story Program</h3>
-            <p class="tier__over">A 12-month partnership, billed in two payments across the year.</p>
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-annual-partnership">
+            <h3 class="tier__name">Annual Partnership</h3>
+            <p class="tier__over">A year of attention, billed in two payments.</p>
             <span class="tier__cue" aria-hidden="true">Details</span>
           </button>
-          <div class="tier__wrap"><div class="tier__body" id="tier-story-program">
+          <div class="tier__wrap"><div class="tier__body" id="tier-annual-partnership">
             <div class="tier__inner">
-              <span class="tier__price">$14,000 twice a year</span>
-              <p class="tier__detail">Four production days across your budget cycle. Anchor film, four 60-second highlight videos, and a review point built into every renewal. Producer Engagement is available alongside it as its own line, not folded in.</p>
-              <p class="tier__proof">The right size when the work recurs, and you would rather review it once a year than re-scope it every time.</p>
-              <a class="btn btn--primary tier__act" href="/contact.html?package=story-program">I'm ready to start this <span class="arr">→</span></a>
+              <span class="tier__price">$19,000 twice a year</span>
+              <p class="tier__detail">For organizations whose story recurs with the calendar. We plan the year with you once, then deliver on schedule, with no re-scoping every time.</p>
+              <dl class="specs">
+                <div class="spec"><dt>Term</dt><dd>12 months, two payments, each at the start of a half</dd></div>
+                <div class="spec"><dt>Film days</dt><dd>Four, booked on your calendar at kickoff</dd></div>
+                <div class="spec"><dt>You receive</dt><dd>Two hero films, one each half, plus four 60-second Signature highlight videos and your full raw footage archive</dd></div>
+                <div class="spec"><dt>Planning</dt><dd>A narrative plan each half and a review point at renewal</dd></div>
+                <div class="spec"><dt>Delivery</dt><dd>14 business days after each film day. Rush in 7.</dd></div>
+                <div class="spec"><dt>Revisions</dt><dd>Two rounds per film</dd></div>
+              </dl>
+              <p class="tier__note">If your plans shift, a film day can move once within the term. Any day still unused at year end becomes Social Cutdowns credit, so nothing you paid for disappears.</p>
+              <p class="tier__lock"><strong>Renew and your rate holds.</strong> Our published prices rise over time. Yours stays where you started for as long as the partnership continues. Loyalty that shows up on the invoice.</p>
+              <p class="tier__proof"><a href="/education.html">Long Beach Unified: not one video, a relationship the district kept coming back to.</a></p>
+              <div class="tier__acts">
+                <a class="btn btn--primary tier__act" href="/proposal.html?package=annual-partnership">I'm ready to start this <span class="arr">&rarr;</span></a>
+                <a class="tier__alt" href="/contact.html?package=annual-partnership">Rather talk first? Book a call</a>
+              </div>
+            </div>
+          </div></div>
+        </article>
+        <article class="tier tier--partner reveal" data-tier data-open="false">
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-production-partner">
+            <h3 class="tier__name">Production Partner</h3>
+            <p class="tier__over">Your production team, on call.</p>
+            <span class="tier__cue" aria-hidden="true">Details</span>
+          </button>
+          <div class="tier__wrap"><div class="tier__body" id="tier-production-partner">
+            <div class="tier__inner">
+              <span class="tier__price">$12,500 monthly. Six-month minimum.</span>
+              <p class="tier__detail">A production day every month, a producer in your corner every week, and a crew that already knows your story. Built for the stretch when the story keeps moving: a launch, a campaign, a season of growth.</p>
+              <dl class="specs">
+                <div class="spec"><dt>Film days</dt><dd>One every month, with full crew, lighting and kit</dd></div>
+                <div class="spec"><dt>Producer</dt><dd>Weekly producer sessions, four a month</dd></div>
+                <div class="spec"><dt>You receive</dt><dd>A hero film every other month, two 60-second Signature highlight videos every month, and your full raw footage archive</dd></div>
+                <div class="spec"><dt>Priority</dt><dd>Held dates on our calendar and access to our vetted crew roster</dd></div>
+                <div class="spec"><dt>Delivery</dt><dd>14 business days after each film day. Rush in 7.</dd></div>
+              </dl>
+
+              <p class="tier__proof"><a href="/work.html#lamc">Los Angeles Master Chorale: five years of event and fundraising films.</a></p>
+              <div class="tier__acts">
+                <a class="btn btn--primary tier__act" href="/proposal.html?package=production-partner">I'm ready to start this <span class="arr">&rarr;</span></a>
+                <a class="tier__alt" href="/contact.html?package=production-partner">Rather talk first? Book a call</a>
+              </div>
             </div>
           </div></div>
         </article>
         <article class="tier tier--producer reveal" data-tier data-open="false">
-          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-producer-engagement">
-            <h3 class="tier__name">Producer Engagement</h3>
-            <p class="tier__over">Strategy, planning and production supervision.</p>
+          <button class="tier__toggle" type="button" aria-expanded="false" aria-controls="tier-fractional-producer">
+            <h3 class="tier__name">Fractional Producer</h3>
+            <p class="tier__over">Producer-level thinking for teams with their own crew.</p>
             <span class="tier__cue" aria-hidden="true">Details</span>
           </button>
-          <div class="tier__wrap"><div class="tier__body" id="tier-producer-engagement">
+          <div class="tier__wrap"><div class="tier__body" id="tier-fractional-producer">
             <div class="tier__inner">
-              <span class="tier__price">$4,800 monthly</span>
-              <p class="tier__detail">Strategy, narrative planning, shot-list architecture and stakeholder interviews, with a standing window held for questions. A standalone relationship, or run alongside a Story Program as its own line.</p>
-              <p class="tier__proof">The buyer? Teams with a crew who need a producer with creative vision and a talent for production efficiency.</p>
-              <a class="btn btn--primary tier__act" href="/contact.html?package=producer-engagement">I'm ready to start this <span class="arr">→</span></a>
+              <span class="tier__price">$6,500 monthly. Three-month minimum.</span>
+              <p class="tier__detail">Your team has the crew. You need a producer with creative vision and a talent for production efficiency.</p>
+              <dl class="specs">
+                <div class="spec"><dt>Rhythm</dt><dd>Two working sessions a week. Each ends with a deliverable by noon and a standing 12 to 3 PM window for your questions.</dd></div>
+                <div class="spec"><dt>Covers</dt><dd>Strategy, narrative planning, shot-list architecture and stakeholder interviews</dd></div>
+                <div class="spec"><dt>Add a shoot</dt><dd>Need our crew for a day? Add a film day as its own line, anytime.</dd></div>
+              </dl>
+              <p class="tier__note">Also available at one session a week, $3,500 monthly.</p>
+              <p class="tier__proof">Broadcast production background across Fox, CBS, ABC, BET and Comedy Central.</p>
+              <div class="tier__acts">
+                <a class="btn btn--primary tier__act" href="/proposal.html?package=fractional-producer">I'm ready to start this <span class="arr">&rarr;</span></a>
+                <a class="tier__alt" href="/contact.html?package=fractional-producer">Rather talk first? Book a call</a>
+              </div>
             </div>
           </div></div>
         </article>
       </div>
+
+      <div class="included reveal" data-delay="1">
+        <div>
+          <h3>Every engagement includes</h3>
+          <ul>
+            <li>Captions on every film</li>
+            <li>Two rounds of revisions</li>
+            <li>Your full raw footage archive</li>
+            <li>Releases and consent handled by us</li>
+            <li>Certificate of insurance on request</li>
+            <li>Rights to use your films on your website, social, email, events and paid digital ads</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Add to any engagement</h3>
+          <ul>
+            <li><b>Strategy Session, $1,500</b>, credited toward any engagement</li>
+            <li>Social Cutdowns</li>
+            <li>Additional 60-second Signature highlight videos</li>
+            <li>Rush delivery</li>
+            <li>Spanish subtitles or a full Spanish-language version</li>
+            <li>Accessibility package</li>
+            <li>Additional film days</li>
+            <li><b>Broadcast Ready</b> (Story Series and above)</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="offerfoot reveal" data-delay="2">Some relationships grow past a listed offer. If that's the shape of what you need, that's a conversation, not a price.</p>
     </div>
   </section>
 

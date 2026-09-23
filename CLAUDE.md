@@ -10,7 +10,7 @@ detail lives. Read this first; it points at the rest rather than repeating it.
 | --- | --- |
 | Hosting, DNS, the domain move, design tokens, verification method | `README.md` |
 | Every image and video, encode recipes, testimonial text + consent | `ASSETS.md` |
-| Offer copy of record, tier tones, pricing rules | `OFFER.md` |
+| Offer copy of record, tier tones, pricing rules, experience section | `OFFER.md` |
 | Internal costing, scenario builder | `.private/` — **gitignored, never commit** |
 
 ---
@@ -57,10 +57,18 @@ Posts form-encoded to Basin. The "open in a new tab" escape hatch lives
 **outside** `#calendly`, because that element's contents are replaced by the
 iframe.
 
-### `/qualify.html` — unlisted
-`noindex, nofollow`, no inbound links. Sent by direct link after a call is
-booked. Six optional questions resolving to a **shape** — tier, day counts,
-two flags. **Never a figure.**
+### `/qualify.html` — call prep, unlisted
+`noindex, nofollow`. Linked from the Calendly booking confirmation. Four
+optional questions that prepare David for a call already booked. **Never a
+figure, and not a proposal path** — tier resolution lives in the Worker.
+
+### `/proposal.html` — the proposal builder
+Public, `noindex`. Stepped form with a progress bar. Accepts `?package=` to
+preselect. Posts to the Worker. Ends on a confirmation screen, never a price.
+
+### `/worker/`
+Cloudflare Worker source. Pricing config is **not** committed; it is injected
+as an environment secret. See `worker/README.md`.
 
 ### `/404.html`
 Root-absolute asset paths, because Pages serves it at whatever URL was missed.
@@ -69,10 +77,18 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
 
 ## Rules that hold everywhere
 
-1. **One CTA per page.** Every page ends in the same module and funnels to the
-   intake form. Never a second, competing ask.
+1. **Two paths, one destination.** Every page ends in the same closing
+   module. Offer cards carry exactly one primary CTA ("I'm ready to start
+   this", to `/proposal.html?package=…`) and one secondary text link
+   ("Rather talk first? Book a call", to `/contact.html?package=…`). No
+   third ask competes with these anywhere.
 2. **No page dead-ends.**
-3. **No internal costing on the site, ever.** Unit rates live in `.private/`.
+3. **No pricing logic in the repo.** The only figures in site code are the
+   five card prices, the Fractional Producer one-session line, and the
+   Strategy Session price. Add-on prices, adders, tier logic and internal
+   unit rates live in the Worker's private config, sourced from
+   `.private/pricing.json`. Nothing in `public/`, any HTML or any
+   client-side JS can compute a quote.
 4. **A testimonial needs recorded consent.** Provenance goes in `ASSETS.md`
    beside the quote. A private message repeated publicly is not consent.
 5. **Career credits are not clients.** Networks David worked for are separate
@@ -87,6 +103,11 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
    that expires it. Bump paired assets together.
 10. **The domain is hardcoded in every `<head>`** — canonical, `og:url`,
     `og:image`. Absolute by necessity. A domain move is an edit in all of them.
+11. **A quote is only ever delivered by email.** `proposal.html` never renders
+    a figure on screen. The Worker computes it, emails David immediately, and
+    emails the prospect ten minutes later unless David holds it.
+12. **No em dashes in new copy.** House style. Existing copy still carries
+    them; quotes from clients are never restyled, whatever the house says.
 
 ---
 

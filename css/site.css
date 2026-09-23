@@ -1225,13 +1225,14 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 .tier--series   { --tone: #86BD97; --tone-wash: rgba(134, 189, 151, 0.07); --tone-edge: rgba(134, 189, 151, 0.42); }
 .tier--single   { --tone: #92B6CF; --tone-wash: rgba(146, 182, 207, 0.07); --tone-edge: rgba(146, 182, 207, 0.42); }
 .tier--program  { --tone: #E0A85C; --tone-wash: rgba(224, 168, 92, 0.07);  --tone-edge: rgba(224, 168, 92, 0.42); }
+.tier--partner  { --tone: #7FBFC4; --tone-wash: rgba(127, 191, 196, 0.07); --tone-edge: rgba(127, 191, 196, 0.42); }
 .tier--producer { --tone: #BCA9D8; --tone-wash: rgba(188, 169, 216, 0.07); --tone-edge: rgba(188, 169, 216, 0.42); }
 
 .tier[data-open="true"], .tier:hover { border-color: var(--tone-edge); }
 /* The lead card keeps its resting distinction, in its own tone now. Gold at
    rest on the green tier would have signalled Story Program on the wrong
    card. */
-.tier--lead { border-color: rgba(134, 189, 151, 0.38); }
+.tier--lead { border-color: rgba(146, 182, 207, 0.38); }
 
 /* The reveal. Nothing is tinted at rest — the section is meant to open
    quiet. A rule wipes down the left edge as the panel expands, a wash of the
@@ -1440,4 +1441,107 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 @media (max-width: 380px) {
   .stats, .feature .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: start; }
   .feature .stats { justify-items: center; }
+}
+
+
+/* =========================================================================
+   The offer, round 2
+   Five engagements now, an experience block above them, and a second action
+   on every card. The card is doing more work than it was, so the inside of
+   it needs structure rather than more paragraphs.
+   ========================================================================= */
+
+/* Experience block. This sits above the cards so the price is read by
+   someone who already knows what they are buying. */
+.experience { text-align: center; margin-bottom: clamp(3rem, 7vw, 5.5rem); }
+.experience > * { margin-inline: auto; }
+.steps {
+  list-style: none; margin: clamp(2rem, 4vw, 3rem) 0 0; padding: 0;
+  display: grid; gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(4, 1fr); text-align: left;
+}
+@media (max-width: 860px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+.step { border-top: 1px solid var(--hairline); padding-top: 1rem; }
+.step__n {
+  display: block; font-family: "Cormorant Garamond", serif;
+  font-size: var(--step-2); line-height: 1; color: var(--accent); margin-bottom: 0.5rem;
+}
+.step h3 { font-size: var(--step-0); margin: 0 0 0.35rem; font-weight: 600; }
+.step p { margin: 0; color: var(--bone-soft); font-size: var(--step--1); }
+.experience__close {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem); color: var(--bone-faint);
+  font-size: var(--step--1); max-width: 46ch;
+}
+.offerhead { margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+/* The AI line answers a question buyers now arrive with. It is deliberately
+   quiet: raising it louder than the offer would make it the subject. */
+.aiLine {
+  margin: 1.1rem 0 0; color: var(--bone-faint);
+  font-size: var(--step--1); max-width: 58ch;
+}
+
+/* Spec rows. A two-column list, no icons — the content is specific enough
+   that decoration would only get between it and the reader. */
+.specs { margin: 0; display: grid; gap: 0; }
+.spec {
+  display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr;
+  gap: 0.6rem 1.25rem; padding: 0.7rem 0; border-top: 1px solid var(--hairline);
+}
+.spec dt { color: var(--bone-faint); font-size: var(--step--1); }
+.spec dd { margin: 0; color: var(--bone-soft); }
+@media (max-width: 560px) { .spec { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+.tier__note { margin: 0; color: var(--bone-faint); font-size: var(--step--1); max-width: 58ch; }
+.tier__moves { margin: 0; color: var(--bone-soft); font-size: var(--step--1); max-width: 58ch; }
+.tier__moves b { color: var(--bone); }
+
+/* Rate lock. The one claim in the section a competitor cannot copy without
+   committing to it, so it gets a surface of its own. */
+.tier__lock {
+  margin: 0; padding: 0.9rem 1.1rem; border-radius: var(--r-md);
+  background: var(--tone-wash); border: 1px solid var(--tone-edge);
+  color: var(--bone-soft); font-size: var(--step--1); max-width: 62ch;
+}
+.tier__lock strong { color: var(--tone); }
+
+/* Two actions, one hierarchy. The text link has to be reachable and obvious
+   without competing: same row on desktop, stacked on a phone. */
+.tier__acts { display: flex; align-items: center; gap: 1rem 1.75rem; flex-wrap: wrap; }
+.tier__alt {
+  color: var(--bone-soft); font-size: var(--step--1);
+  text-underline-offset: 3px; text-decoration-thickness: 1px;
+}
+.tier__alt:hover { color: var(--tone); }
+
+.tier__proof blockquote {
+  margin: 0 0 0.5rem; font-family: "Cormorant Garamond", serif;
+  font-size: var(--step-1); line-height: 1.35; color: var(--bone);
+}
+.tier__proof cite { font-style: normal; font-size: var(--step--1); color: var(--bone-faint); display: block; }
+.tier__proof cite b { display: block; color: var(--bone-soft); font-weight: 500; }
+
+/* What every engagement includes. Two columns of plain lists: the reader is
+   scanning for one item, not reading prose. */
+.included {
+  /* The section centres its headings; a bulleted list inherits that and ends
+     up with ragged centred items hanging off their own markers. Lists are
+     scanned, not read, so they go back to left. */
+  text-align: left;
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--hairline);
+}
+@media (max-width: 720px) { .included { grid-template-columns: 1fr; } }
+.included h3 {
+  font-size: var(--step--1); letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 1rem; font-weight: 600;
+}
+.included ul { margin: 0; padding-left: 1.1rem; color: var(--bone-soft); }
+.included li { margin-bottom: 0.5rem; }
+.included li b { color: var(--bone); }
+.offerfoot {
+  text-align: left;
+  margin-top: clamp(2rem, 4vw, 3rem); color: var(--bone-faint);
+  font-size: var(--step--1); max-width: 56ch;
 }
