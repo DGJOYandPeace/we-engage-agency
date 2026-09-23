@@ -115,7 +115,12 @@ I'd recommend (a) or (c) now, with (b) as the upgrade. I can generate knockout v
 
 ### 2. Two logos still have no home in the IA
 - **Cubieverse** — Section 7 says don't feature it as a primary Work entry; allowed only in a lower "additional work" grid. Include at all?
-- **Shane Safir** — appears nowhere in the brief. Unknown sector, unknown whether case-study material exists.
+- **Shane Safir** — **retired, do not use.** A quote she sent privately on
+  receiving her edits was considered for the site and rejected: it was said to
+  David, not published by her, and reposting it on the agency's own feed is not
+  the same as her agreeing to appear here. The logo file remains in
+  `public/clients/` unreferenced and should be deleted, since anything in
+  `public/` is fetchable by URL whether or not a page links it.
 
 ### 3. Missing vs. the brief
 - **Micheaux Film Festival laurel** — Section 8 claims both Micheaux and PAFF selections, but only PAFF laurels were supplied. Micheaux is text-only credit unless a graphic arrives.
