@@ -75,24 +75,6 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Proof | Magic Hair: two television campaigns and a 40% lift in store traffic. |
 | Package | `story-series` |
 
-### Annual Partnership
-
-| Slot | Current |
-| --- | --- |
-| Tagline | A year of attention, billed in two payments. |
-| Price | $19,000 twice a year |
-| Plain sentence | For organizations whose story recurs with the calendar. We plan the year with you once, then deliver on schedule, with no re-scoping every time. |
-| Term | 12 months, two payments, each at the start of a half |
-| Film days | Four, booked on your calendar at kickoff |
-| You receive | Two hero films, one each half, plus four 60-second Signature highlight videos and your full raw footage archive |
-| Planning | A narrative plan each half and a review point at renewal |
-| Delivery | 14 business days after each film day. Rush in 7. |
-| Revisions | Two rounds per film |
-| Note | If your plans shift, a film day can move once within the term. Any day still unused at year end becomes Social Cutdowns credit, so nothing you paid for disappears. |
-| Rate lock | Renew and your rate holds. Our published prices rise over time. Yours stays where you started for as long as the partnership continues. Loyalty that shows up on the invoice. |
-| Proof | Long Beach Unified: not one video, a relationship the district kept coming back to. |
-| Package | `annual-partnership` |
-
 ### Production Partner
 
 | Slot | Current |
@@ -174,18 +156,17 @@ shape.
 | --- | --- | --- | --- |
 | Single Story | `#92B6CF` | blue | The focused single. Contained, one thing done properly. |
 | Story Series | `#86BD97` | green | Where most engagements start. The entry to the ladder. |
-| Annual Partnership | `#E0A85C` | gold | The premium. `--accent-night` itself, which keeps the set inside the palette. |
 | Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. The one region of the wheel the other four leave open. |
 | Fractional Producer | `#BCA9D8` | violet | Deliberately off the ladder. Not a bigger or smaller version of the others. |
 
-All five matched on perceptual lightness, **CIE L\* 72.0 to 73.4**, reading
+All four matched on perceptual lightness, **CIE L\* 72.0 to 73.4**, reading
 **8.05:1 to 8.39:1** on the card ground. Matched on L\* rather than contrast
 ratio, because two colours can share a ratio and still look unequal.
 
 Nothing is tinted at rest. The tone arrives as the panel expands: a rule wipes
 down the left edge, a 7% wash settles into the body, the price takes the
 colour. **The CTA stays brass on every tier** — the action is one constant
-thing, not a sixth colour to decode.
+thing, not a fifth colour to decode.
 
 ### Spec rows
 Two columns, no icons. The content is specific enough that decoration would
@@ -214,6 +195,31 @@ only get between it and the reader. They collapse to stacked pairs below 560px.
 7. **The second row is a fit test, not a feature.** Features belong in the
    spec rows.
 8. **No em dashes in new copy.** Client quotes are never restyled.
+
+---
+
+## Internal only: Annual Partnership
+
+**Not a public tier.** It is never a card, never a public price, never a
+`?package=` value a prospect can reach. It surfaces on a discovery call, as a
+flag on a proposal that signals a recurring cadence, or as David's manual
+override before sending.
+
+It was pulled from the public grid because, shown beside Production Partner, a
+first-time institutional visitor read the two as competing tiers rather than
+as two different kinds of support. Production Partner's standing producer
+relationship wins for nearly every first-time buyer at a similar commitment.
+
+The public page hints at it exactly once, and only here: **Production
+Partner's secondary link reads "Need a different cadence? Book a call"** where
+every other card reads "Rather talk first? Book a call". No fifth card, no
+third link.
+
+**Its copy, price, internal package value and the proposal-override logic live
+in `.private/ops-reference.md`, not in this file.** The handoff asked for them
+here; this repo is public, and a price documented as "never public" does not
+belong in it. The retired card's markup is kept verbatim at
+`.private/ap-card.html` for the manual-proposal path.
 
 ---
 

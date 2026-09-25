@@ -23,8 +23,10 @@ feature → Village Treasures teaser → **`#offer`** → testimonials → CTA.
 
 - Hero is two loops: 16:9 above 768px, 4:5 below. The still is never hidden —
   the loop fades in over it only once a frame has painted.
-- `#offer` is the permission layer. Four cards, one open at a time. **Its copy
-  is governed by `OFFER.md`, not by this file.**
+- `#offer` is the permission layer. Four public cards, one open at a time.
+  **Its copy is governed by `OFFER.md`, not by this file.** A fifth
+  engagement, Annual Partnership, exists but is never public: no card, no
+  price, no reachable `?package=`. It lives in `.private/ops-reference.md`.
 - BTS mosaic replaced a portrait of David. The section claims people finish a
   shoot glad they said yes; the frames are that claim as evidence.
 

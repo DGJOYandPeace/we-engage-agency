@@ -433,7 +433,6 @@
     var PACKAGES = {
       "single-story":        "Single Story, ready to start",
       "story-series":        "Story Series, ready to start",
-      "annual-partnership":  "Annual Partnership, ready to start",
       "production-partner":  "Production Partner, ready to start",
       "fractional-producer": "Fractional Producer, ready to start"
     };
