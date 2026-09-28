@@ -1514,12 +1514,28 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 }
 .tier__alt:hover { color: var(--tone); }
 
-.tier__proof blockquote {
-  margin: 0 0 0.5rem; font-family: "Cormorant Garamond", serif;
+/* Two kinds of proof, two treatments. A client's own words are set apart and
+   italicised so they read as a quote before they are read as a sentence; a
+   stat or a career credit is a statement of fact in our voice and would look
+   like a misattributed quote given the same styling. The element already
+   differs, figure versus p, so the selector does too and no extra class is
+   needed to carry the distinction. */
+figure.tier__proof {
+  margin: 0; padding-left: 1.1rem; border-left: 2px solid var(--tone-edge);
+}
+figure.tier__proof blockquote {
+  margin: 0 0 0.5rem; font-family: "Cormorant Garamond", serif; font-style: italic;
   font-size: var(--step-1); line-height: 1.35; color: var(--bone);
 }
-.tier__proof cite { font-style: normal; font-size: var(--step--1); color: var(--bone-faint); display: block; }
-.tier__proof cite b { display: block; color: var(--bone-soft); font-weight: 500; }
+figure.tier__proof cite { font-style: normal; font-size: var(--step--1); color: var(--bone-faint); display: block; }
+figure.tier__proof cite b { display: block; color: var(--bone-soft); font-weight: 500; }
+
+p.tier__proof {
+  margin: 0; color: var(--bone-soft); font-size: var(--step--1);
+  font-weight: 500; max-width: 62ch;
+}
+p.tier__proof a { color: var(--bone-soft); text-underline-offset: 3px; }
+p.tier__proof a:hover { color: var(--tone); }
 
 /* What every engagement includes. Two columns of plain lists: the reader is
    scanning for one item, not reading prose. */

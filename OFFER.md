@@ -11,6 +11,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 - **Behaviour** `js/site.js` — tier toggle, and the `PACKAGES` handoff
 - **Mirrored in** `contact.html` — the `package` select and the budget bands
 - **Priced in** `.private/pricing.json` — never committed
+- **The fifth engagement** is in `.private/ops-reference.md` — never public
 
 ---
 
@@ -22,10 +23,10 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | --- | --- |
 | Overline | What saying yes looks like |
 | Headline | More than footage. A production you never have to manage. |
-| Body | Anyone can hand over video files. What you get with us is the part nobody sees: the planning call that finds the real story, the schedule built around your people, the releases handled, the crew that shows up already knowing who they are filming and why. Your team walks off set glad they said yes. You walk away with a film you are proud to put your name on, delivered the right way the first time. |
-| Step 1 | **We plan it together.** One call to find the story and who needs to tell it. |
+| Body | What you get with us is a planning session that brings clarity to your message and gets you excited for what's ahead, because we're shaping what becomes your calling card. We find the real story, build the schedule around your team, handle every release, and bring a crew that shows up knowing who they're filming and why. Your team walks off set with an experience, glad they said yes. You walk away with a film people know exactly how to act on. |
+| Step 1 | **We plan it together.** A planning conversation to find the story and who needs to tell it. |
 | Step 2 | **We handle the day.** Crew, lighting, sound, releases, schedule. You show up and speak. |
-| Step 3 | **You see the cut.** Your film in 14 business days, with two rounds of revisions. |
+| Step 3 | **You see the cut.** Your film in 14 business days, revisions included. |
 | Step 4 | **It opens doors.** A film built to recruit, raise money, sell, and be shared for years. |
 | Closing |  |
 
@@ -46,15 +47,16 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Price | Starting at $8,750 |
 | Plain sentence | For a launch, an opening, a milestone. We spend a day with you and the people who built it, and deliver a film you'll be proud to put your name on. |
 | Film days | One |
-| You receive | One hero film, two to four minutes, plus your full raw footage archive |
+| You receive | One hero film, right around three minutes, plus your full raw footage archive |
 | Delivery | 14 business days after your film day. Rush in 7. |
-| Revisions | Two rounds |
-| Your time | A planning call, the film day, and quick digital check-ins between |
+| Revisions | Revisions included. Additional rounds available if you'd like them. |
+| Your time | A planning conversation, the film day, and virtual check-ins along the way |
 | Where it runs | Your website, social, email, events and paid digital ads |
 | Note | Hero film: your main film, the one that leads your website, launch or event. |
 | Note | We put the budget where it counts: the film. Social Cutdowns can be added anytime. |
 | What moves the price | Number of locations, crew size, travel, and rush delivery. |
-| Proof | Within two weeks, and within budget, he and his team created a gorgeous and effective promotional video. Dr. Theresa Wong W Geriatrics |
+| Proof (quote) | Within two weeks, and within budget, he and his team created a gorgeous and effective promotional video. Dr. Theresa Wong W Geriatrics |
+| Secondary link | Rather talk first? Book a call |
 | Package | `single-story` |
 
 ### Story Series
@@ -63,16 +65,17 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | --- | --- |
 | Tagline | Strategy first, then two film days across a project arc. |
 | Price | Starting at $20,000 |
-| Plain sentence | When the story has more than one voice and more than one place it needs to land. We start with strategy, talk to the people at the center of it, and build the story before we film it. |
+| Plain sentence | When the story has more than one voice and more than one place to film. We start with strategy, talk to the people at the center of it, and build the story before we film it. |
 | Strategy | A strategy call, conversations with your key voices, and a narrative plan |
 | Film days | Two, across your project arc |
-| You receive | One hero film plus two 60-second Signature highlight videos from the same capture, and your full raw footage archive |
+| You receive | One hero film plus two Signature highlight videos from the same capture, and your full raw footage archive |
 | Delivery | 14 business days after your final film day. Rush in 7. |
-| Revisions | Two rounds per film |
-| Your time | The strategy call, scheduling your voices, two film days, digital check-ins |
+| Revisions | Revisions included. Additional rounds available if you'd like them. |
+| Your time | The strategy call, scheduling your voices, two film days, virtual check-ins |
 | Where it runs | Web, social, email, events, paid digital. Broadcast Ready available for TV. |
 | What moves the price | Number of voices and locations, crew size, travel, rush delivery, Broadcast Ready. |
-| Proof | Magic Hair: two television campaigns and a 40% lift in store traffic. |
+| Proof (stat) | Magic Hair: two television campaigns and a 40% lift in store traffic. |
+| Secondary link | Rather talk first? Book a call |
 | Package | `story-series` |
 
 ### Production Partner
@@ -81,13 +84,14 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | --- | --- |
 | Tagline | Your production team, on call. |
 | Price | $12,500 monthly. Six-month minimum. |
-| Plain sentence | A production day every month, a producer in your corner every week, and a crew that already knows your story. Built for the stretch when the story keeps moving: a launch, a campaign, a season of growth. |
-| Film days | One every month, with full crew, lighting and kit |
+| Plain sentence | A production day every month, a producer in your corner every week, and a crew that will know your story. Built for the stretch when the story keeps moving: a launch, a campaign, a season of growth. |
+| Film days | One every month, with ready crew, lighting and kit |
 | Producer | Weekly producer sessions, four a month |
-| You receive | A hero film every other month, two 60-second Signature highlight videos every month, and your full raw footage archive |
+| You receive | A hero film every other month, two Signature highlight videos every month, and your full raw footage archive |
 | Priority | Held dates on our calendar and access to our vetted crew roster |
 | Delivery | 14 business days after each film day. Rush in 7. |
-| Proof | Los Angeles Master Chorale: five years of event and fundraising films. |
+| Proof (stat) | Los Angeles Master Chorale: five years of event and fundraising films. |
+| Secondary link | Need a different cadence? Book a call |
 | Package | `production-partner` |
 
 ### Fractional Producer
@@ -97,19 +101,22 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Tagline | Producer-level thinking for teams with their own crew. |
 | Price | $6,500 monthly. Three-month minimum. |
 | Plain sentence | Your team has the crew. You need a producer with creative vision and a talent for production efficiency. |
-| Rhythm | Two working sessions a week. Each ends with a deliverable by noon and a standing 12 to 3 PM window for your questions. |
+| Rhythm | Two working sessions a week, built around your calendar. |
 | Covers | Strategy, narrative planning, shot-list architecture and stakeholder interviews |
 | Add a shoot | Need our crew for a day? Add a film day as its own line, anytime. |
-| Note | Also available at one session a week, $3,500 monthly. |
-| Proof | Broadcast production background across Fox, CBS, ABC, BET and Comedy Central. |
+| Note | Prefer a lighter cadence? One session a week, at half the rate: $3,500 monthly. |
+| Note | A standing rhythm always runs at a better rate than booking sessions one at a time. |
+| Proof (stat) | Broadcast production background across Fox, CBS, ABC, BET and Comedy Central. |
+| Secondary link | Rather talk first? Book a call |
 | Package | `fractional-producer` |
 
 ### Shared band
 
 **Every engagement includes**
 
-- Captions on every film
-- Two rounds of revisions
+- On-screen titles, brand look carried through the edit
+- Captions when you need them, at no extra cost
+- Revisions included. Additional rounds available if you'd like them.
 - Your full raw footage archive
 - Releases and consent handled by us
 - Certificate of insurance on request
@@ -119,7 +126,8 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 
 - Strategy Session, $1,500, credited toward any engagement
 - Social Cutdowns
-- Additional 60-second Signature highlight videos
+- Additional Signature highlight videos
+- Additional round of revisions
 - Rush delivery
 - Spanish subtitles or a full Spanish-language version
 - Accessibility package
@@ -168,6 +176,13 @@ down the left edge, a 7% wash settles into the body, the price takes the
 colour. **The CTA stays brass on every tier** — the action is one constant
 thing, not a fifth colour to decode.
 
+### Two kinds of proof
+A client's own words are set apart and italicised behind a rule in the tier's
+own tone, so they read as a quote before they are read as a sentence. A stat
+or a career credit is a statement of fact in our voice and would look like a
+misattributed quote given the same treatment. The element carries the
+distinction, `figure` against `p`, so no extra class is needed.
+
 ### Spec rows
 Two columns, no icons. The content is specific enough that decoration would
 only get between it and the reader. They collapse to stacked pairs below 560px.
@@ -190,8 +205,12 @@ only get between it and the reader. They collapse to stacked pairs below 560px.
 4. **No tier tells a first-time client it is not for them.**
 5. **No disclaimers.** State what a thing is; let the structure carry the
    distinction.
-6. **A named length is a scope fence.** "60-second" and "two to four minutes"
-   are commercial work, not decoration.
+6. **Lengths and counts are warm now, not fenced.** Round 3 traded precision
+   for tone on purpose: the hero film is "right around three minutes" rather
+   than "two to four", the highlight video dropped "60-second", and revisions
+   became "included, additional rounds available" rather than a count of two.
+   Each was a fence an earlier round put up deliberately, so if scope
+   conversations start drifting, this is the rule that moved.
 7. **The second row is a fit test, not a feature.** Features belong in the
    spec rows.
 8. **No em dashes in new copy.** Client quotes are never restyled.
@@ -225,6 +244,14 @@ belong in it. The retired card's markup is kept verbatim at
 
 ## Open questions
 
+**Three scope fences came down in Round 3.** "Right around three minutes" is
+softer than "two to four minutes", "Signature highlight video" no longer
+states a length at all, and "revisions included" no longer states a number.
+That is a deliberate trade of precision for warmth and it reads better on the
+page. It does mean the proposal and the engagement letter are now the only
+places a client agrees to a specific length or a specific number of rounds.
+Worth watching whether scope conversations get longer.
+
 **The Magic Hair 40% figure now leads a card.** It has moved from a case study
 deep in the site to the offer section, where it is one of five proof lines and
 carries far more weight. It has never been independently verified. Stand it up
@@ -236,6 +263,12 @@ resurfacing in new copy.
 
 **Payment terms are still open** (decision 4 of the round 1 handoff). Nothing
 on the site states them; the proposal email will need a line.
+
+**Fractional Producer Lite nudge, still unconfirmed** (Round 3, section 0).
+Should the proposal builder flag a move toward the $3,500 one-session-a-week
+cadence when a prospect's answers suggest a third or fourth ad hoc Strategy
+Session in a short window? Same mechanism as the Annual Partnership signal.
+**Confirm before the Worker's flagging logic is built.**
 
 **`contact.html` mirrors the prices and can drift.** The select options and
 budget bands repeat the card figures, so a price edit is an edit in two files.
