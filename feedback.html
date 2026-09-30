@@ -64,7 +64,7 @@
             </div>
 
             <div class="field">
-              <label for="better">Is there anything we could have done better, or any way we could improve for future projects?</label>
+              <label for="better">Is there any way we could improve for future projects?</label>
               <textarea id="better" name="could_be_better" rows="4"></textarea>
             </div>
 
@@ -73,29 +73,31 @@
               <textarea id="tell-someone" name="tell_someone" rows="4"></textarea>
             </div>
 
-            <!-- Consent is only a record if it is attributable. Ticking this
-                 makes the name field required, because a quote nobody can be
-                 named as the author of is not one that can be published. -->
-            <div class="permission">
-              <label class="check" for="may-share">
-                <input type="checkbox" id="may-share" name="may_share" value="yes">
-                <span>I'm open to We Engage Agency sharing my response, in part or full, as a testimonial.</span>
-              </label>
-            </div>
-
             <div class="field" id="name-field">
-              <label for="who">Your name <span class="opt" data-opt>(optional)</span></label>
-              <input type="text" id="who" name="name" autocomplete="name">
-              <span class="field__hint" id="who-hint">Only so we know who we're thanking.</span>
-              <span class="field__error">Please add your name so we can attribute the quote.</span>
+              <label for="who">Your name</label>
+              <input type="text" id="who" name="name" autocomplete="name" required>
+              <span class="field__error">Please add your name.</span>
             </div>
 
-            <div class="field">
-              <label for="org">Organization <span class="opt">(optional)</span></label>
-              <input type="text" id="org" name="organization" autocomplete="organization">
+            <div class="field" id="org-field">
+              <label for="org">Organization</label>
+              <input type="text" id="org" name="organization" autocomplete="organization" required>
+              <span class="field__error">Please add your organization.</span>
             </div>
 
-            <p class="formnote">Every question is optional. Say as much or as little as you like.</p>
+            <!-- A question, not a checkbox. An untouched box cannot tell a no
+                 apart from a did-not-see-it, and the answer is the point of
+                 asking: it is what makes the consent record real. -->
+            <fieldset class="permission" id="permission">
+              <legend>May we share your response, in part or full, as a testimonial?</legend>
+              <div class="permission__box">
+                <label class="check"><input type="radio" name="may_share" value="yes" required><span>Yes, you can share this</span></label>
+                <label class="check"><input type="radio" name="may_share" value="no" required><span>No, this one is just for you</span></label>
+                <span class="field__error">Please choose one.</span>
+              </div>
+            </fieldset>
+
+            <p class="formnote">The three questions above are optional. Say as much or as little as you like.</p>
             <button class="btn btn--primary" type="submit">Send this <span class="arr">&rarr;</span></button>
           </form>
 
@@ -107,7 +109,7 @@
 
         <div class="split__media">
           <div class="callout">
-            <p>Three questions, a few minutes. The second one is the one we most want an honest answer to. Telling us what was harder than it should have been is how the next project gets better, and we would rather hear it than not.</p>
+            <p>Three short questions. The second one is constructive, helping the next project get better. We aim to deliver exceptional service, and your feedback helps us grow.</p>
           </div>
         </div>
       </div>

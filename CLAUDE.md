@@ -65,12 +65,15 @@ optional questions that prepare David for a call already booked. **Never a
 figure, and not a proposal path** — tier resolution lives in the Worker.
 
 ### `/feedback.html` — client reflection, unlisted
-`noindex, nofollow`. Sent as a direct link to past clients. Three optional
-questions and one testimonial-permission checkbox. **Ticking permission makes
-the name required** — consent that cannot be attributed cannot be published,
-logged against a quote, or checked by anyone later. Every submission records
-`may_share` explicitly as yes or no, plus the date, so Rule 4's consent trail
-starts at the source.
+`noindex, nofollow`. Sent as a direct link to past clients. **The three
+questions are optional and send blank. Name, organization and the testimonial
+permission are required.** Permission is a yes/no question, not a checkbox: an
+untouched box cannot tell a no apart from a did-not-see-it, and consent that
+cannot be attributed cannot be published, logged against a quote, or checked
+by anyone later. Every submission records `may_share` spelled out, plus the
+date, so Rule 4's consent trail starts at the source. Validation is in
+`js/site.js`, not the browser — the form carries `novalidate` and the handler
+marks every gap at once.
 
 ### `/proposal.html` — the proposal builder
 Public, `noindex`. Stepped form with a progress bar. Accepts `?package=` to

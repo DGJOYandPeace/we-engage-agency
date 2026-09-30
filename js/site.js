@@ -256,43 +256,66 @@
   }
 
   /* ---------- Client feedback (feedback.html) ----------
-     Everything here is optional, with one exception that is the point of the
-     page: ticking the testimonial permission makes the name required.
+     The three questions are optional and send blank. Three things are not:
+     name, organization, and the answer to whether the response may be
+     shared. David wants to know who he is speaking to, and a consent record
+     that cannot be attributed is not one anybody can act on later.
 
-     Consent is only a record if it is attributable. An anonymous "yes, you
-     can quote me" cannot be published, cannot be logged against a quote in
-     ASSETS.md, and cannot be checked by anyone later. So the field is
-     optional right up until the moment it stops being optional, and the
-     label says so rather than the form failing silently. */
+     Permission is a two-way question rather than a checkbox because an
+     untouched box cannot tell a no apart from a did-not-see-it, and the "no"
+     is the answer that matters most when a quote is being considered months
+     from now.
+
+     The checking is ours rather than the browser's: this handler calls
+     preventDefault before anything else, so a native :invalid bubble would
+     never get the chance to surface. */
   var feedback = document.getElementById("feedback");
   if (feedback) {
-    var share = document.getElementById("may-share");
-    var who = document.getElementById("who");
-    var whoField = document.getElementById("name-field");
-    var whoHint = document.getElementById("who-hint");
-    var optTag = whoField && whoField.querySelector("[data-opt]");
+    /* Each entry pairs the input with the wrapper that carries the mark. */
+    var mustAnswer = [
+      { el: document.getElementById("who"), box: document.getElementById("name-field") },
+      { el: document.getElementById("org"), box: document.getElementById("org-field") }
+    ].filter(function (f) { return f.el && f.box; });
+    var permission = document.getElementById("permission");
+    var shares = feedback.querySelectorAll('input[name="may_share"]');
 
-    var syncName = function () {
-      var needed = !!(share && share.checked);
-      if (optTag) optTag.hidden = needed;
-      if (whoHint) {
-        whoHint.textContent = needed
-          ? "Needed so we can attribute anything we quote."
-          : "Only so we know who we're thanking.";
-      }
-      if (!needed && whoField) whoField.removeAttribute("data-invalid");
-    };
-    if (share) share.addEventListener("change", syncName);
-    syncName();
+    /* Clear each mark the moment it stops being true, so the form is not
+       still scolding someone who has already fixed it. */
+    mustAnswer.forEach(function (f) {
+      f.el.addEventListener("input", function () {
+        if (String(f.el.value).trim()) f.box.removeAttribute("data-invalid");
+      });
+    });
+    shares.forEach(function (r) {
+      r.addEventListener("change", function () {
+        if (permission) permission.removeAttribute("data-invalid");
+      });
+    });
 
     feedback.addEventListener("submit", function (e) {
       e.preventDefault();
       var trap = feedback.querySelector('input[name="_gotcha"]');
       if (trap && trap.value) return;
 
-      if (share && share.checked && !String(who.value).trim()) {
-        whoField.setAttribute("data-invalid", "true");
-        who.focus();
+      /* Mark every gap, then focus the first. Reporting one at a time sends
+         someone with two blanks back through the form twice. */
+      var first = null;
+      mustAnswer.forEach(function (f) {
+        if (String(f.el.value).trim()) { f.box.removeAttribute("data-invalid"); return; }
+        f.box.setAttribute("data-invalid", "true");
+        if (!first) first = f.el;
+      });
+      if (permission) {
+        if (feedback.querySelector('input[name="may_share"]:checked')) {
+          permission.removeAttribute("data-invalid");
+        } else {
+          permission.setAttribute("data-invalid", "true");
+          if (!first) first = shares[0];
+        }
+      }
+      if (first) {
+        first.focus();
+        first.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "center" });
         return;
       }
 
@@ -305,9 +328,10 @@
       ["stood_out", "could_be_better", "tell_someone", "name", "organization"].forEach(function (k) {
         body.append(k, data[k] || "blank");
       });
-      /* Recorded either way. An absent checkbox reads the same as a form
-         that never had one, and "no" is the answer that matters most later. */
-      body.append("may_share", data.may_share === "yes" ? "YES, may be published" : "no");
+      /* Spelled out rather than passed through. This line is the consent
+         record, and it gets read by someone deciding whether a quote can go
+         on the site, so it should not rest on reading a bare "no" correctly. */
+      body.append("may_share", data.may_share === "yes" ? "YES, may be published" : "NO, private");
       body.append("consent_recorded", new Date().toISOString().slice(0, 10));
 
       var done = document.getElementById("feedback-done");
