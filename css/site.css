@@ -1601,6 +1601,9 @@ p.tier__proof a:hover { color: var(--tone); }
   accent-color: var(--accent-lit); cursor: pointer;
 }
 .check span { color: var(--bone-soft); font-size: var(--step--1); line-height: 1.5; }
+/* Set in lower case against an upper-case label, so it reads as an aside
+   rather than another shouted word in the question. */
+.opt { text-transform: none; letter-spacing: 0.02em; color: var(--bone-faint); opacity: 0.75; font-weight: 400; }
 .permission:focus-within .permission__box { border-color: var(--accent); }
 .permission[data-invalid="true"] .permission__box { border-color: var(--accent); }
 .permission[data-invalid="true"] .field__error { display: block; margin-top: 0.7rem; }
