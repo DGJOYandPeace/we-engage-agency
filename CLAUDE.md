@@ -64,6 +64,14 @@ iframe.
 optional questions that prepare David for a call already booked. **Never a
 figure, and not a proposal path** — tier resolution lives in the Worker.
 
+### `/feedback.html` — client reflection, unlisted
+`noindex, nofollow`. Sent as a direct link to past clients. Three optional
+questions and one testimonial-permission checkbox. **Ticking permission makes
+the name required** — consent that cannot be attributed cannot be published,
+logged against a quote, or checked by anyone later. Every submission records
+`may_share` explicitly as yes or no, plus the date, so Rule 4's consent trail
+starts at the source.
+
 ### `/proposal.html` — the proposal builder
 Public, `noindex`. Stepped form with a progress bar. Accepts `?package=` to
 preselect. Posts to the Worker. Ends on a confirmation screen, never a price.

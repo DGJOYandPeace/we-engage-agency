@@ -255,6 +255,81 @@
     });
   }
 
+  /* ---------- Client feedback (feedback.html) ----------
+     Everything here is optional, with one exception that is the point of the
+     page: ticking the testimonial permission makes the name required.
+
+     Consent is only a record if it is attributable. An anonymous "yes, you
+     can quote me" cannot be published, cannot be logged against a quote in
+     ASSETS.md, and cannot be checked by anyone later. So the field is
+     optional right up until the moment it stops being optional, and the
+     label says so rather than the form failing silently. */
+  var feedback = document.getElementById("feedback");
+  if (feedback) {
+    var share = document.getElementById("may-share");
+    var who = document.getElementById("who");
+    var whoField = document.getElementById("name-field");
+    var whoHint = document.getElementById("who-hint");
+    var optTag = whoField && whoField.querySelector("[data-opt]");
+
+    var syncName = function () {
+      var needed = !!(share && share.checked);
+      if (optTag) optTag.hidden = needed;
+      if (whoHint) {
+        whoHint.textContent = needed
+          ? "Needed so we can attribute anything we quote."
+          : "Only so we know who we're thanking.";
+      }
+      if (!needed && whoField) whoField.removeAttribute("data-invalid");
+    };
+    if (share) share.addEventListener("change", syncName);
+    syncName();
+
+    feedback.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var trap = feedback.querySelector('input[name="_gotcha"]');
+      if (trap && trap.value) return;
+
+      if (share && share.checked && !String(who.value).trim()) {
+        whoField.setAttribute("data-invalid", "true");
+        who.focus();
+        return;
+      }
+
+      var body = new URLSearchParams();
+      body.append("_subject", "Client reflection");
+      var data = {};
+      new FormData(feedback).forEach(function (v, k) {
+        if (k !== "_gotcha") data[k] = String(v).trim();
+      });
+      ["stood_out", "could_be_better", "tell_someone", "name", "organization"].forEach(function (k) {
+        body.append(k, data[k] || "blank");
+      });
+      /* Recorded either way. An absent checkbox reads the same as a form
+         that never had one, and "no" is the answer that matters most later. */
+      body.append("may_share", data.may_share === "yes" ? "YES, may be published" : "no");
+      body.append("consent_recorded", new Date().toISOString().slice(0, 10));
+
+      var done = document.getElementById("feedback-done");
+      var finish = function () {
+        feedback.hidden = true;
+        if (done) {
+          done.hidden = false;
+          done.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "center" });
+        }
+      };
+
+      var endpoint = feedback.getAttribute("data-endpoint");
+      if (!endpoint) { finish(); return; }
+      var btn = feedback.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = "Sending\u2026"; }
+
+      fetch(endpoint, { method: "POST", headers: { "Accept": "application/json" }, body: body })
+        .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); finish(); })
+        .catch(function () { finish(); });
+    });
+  }
+
   /* ---------- YouTube poster fallback ----------
      Not every video has a maxresdefault.jpg. When one is missing YouTube
      does NOT 404 — it answers 200 with a 120x90 grey placeholder, so an

@@ -314,6 +314,18 @@ biography. Nothing here should be embellished again without David confirming it.
 - **Credits:** co-directed with Donovan Gardener and Devan Renea; David edited
   and wrote and performed the score, *I Call It Kalimba*.
 
+## Where new testimonials come from
+
+`/feedback.html`, unlisted, sent by direct link to past clients. Three
+questions and a permission checkbox. A submission arrives at Basin carrying
+`may_share` as an explicit **yes or no**, the respondent's name, and the date
+consent was given.
+
+**Only publish from a submission that reads YES.** When one does, add the full
+text below with the name, the organization and that date, the same as every
+entry already here. An absent answer is a no, and a yes with no name attached
+cannot happen: the form refuses it.
+
 ## Testimonial source text
 
 Full text as supplied, so a future pull can be re-cut without hunting for the
