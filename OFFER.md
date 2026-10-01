@@ -22,13 +22,13 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Slot | Current |
 | --- | --- |
 | Overline | What saying yes looks like |
-| Headline | More than footage. A production you never have to manage. |
-| Body | What you get with us is a planning session that brings clarity to your message and gets you excited for what's ahead, because we're shaping what becomes your calling card. We find the real story, build the schedule around your team, handle every release, and bring a crew that shows up knowing who they're filming and why. Your team walks off set with an experience, glad they said yes. You walk away with a film people know exactly how to act on. |
+| Headline | Concierge production, from the first call to the final frame. |
+| Body | Confidence that visitors saw everything they needed to understand your value. A stronger personal connection with the community already searching for what you offer. |
 | Step 1 | **We plan it together.** A planning conversation to find the story and who needs to tell it. |
 | Step 2 | **We handle the day.** Crew, lighting, sound, releases, schedule. You show up and speak. |
 | Step 3 | **You see the cut.** Your film in 14 business days, revisions included. |
 | Step 4 | **It opens doors.** A film built to recruit, raise money, sell, and be shared for years. |
-| Closing |  |
+| Closing | Clients talk about the films. They also talk about how effective we made it. |
 
 ### Section header
 
@@ -104,7 +104,6 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Rhythm | Two working sessions a week, built around your calendar. |
 | Covers | Strategy, narrative planning, shot-list architecture and stakeholder interviews |
 | Add a shoot | Need our crew for a day? Add a film day as its own line, anytime. |
-| Note | Prefer a lighter cadence? One session a week, at half the rate: $3,500 monthly. |
 | Note | A standing rhythm always runs at a better rate than booking sessions one at a time. |
 | Proof (stat) | Broadcast production background across Fox, CBS, ABC, BET and Comedy Central. |
 | Secondary link | Rather talk first? Book a call |
@@ -264,8 +263,12 @@ resurfacing in new copy.
 **Payment terms are still open** (decision 4 of the round 1 handoff). Nothing
 on the site states them; the proposal email will need a line.
 
-**Fractional Producer Lite nudge, still unconfirmed** (Round 3, section 0).
-Should the proposal builder flag a move toward the $3,500 one-session-a-week
+**The lighter Fractional cadence came off the card.** The one-session-a-week
+rate is no longer public: it is a concession to offer in conversation or to
+surface through the proposal builder, not a discount a stranger reads before
+deciding they want the engagement. The figure and the rule for when to reach
+for it live in `.private/ops-reference.md`. The open question is unchanged in
+substance and now entirely internal: should the builder flag the lighter
 cadence when a prospect's answers suggest a third or fourth ad hoc Strategy
 Session in a short window? Same mechanism as the Annual Partnership signal.
 **Confirm before the Worker's flagging logic is built.**

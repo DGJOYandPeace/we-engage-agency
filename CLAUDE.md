@@ -97,11 +97,12 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
    third ask competes with these anywhere.
 2. **No page dead-ends.**
 3. **No pricing logic in the repo.** The only figures in site code are the
-   five card prices, the Fractional Producer one-session line, and the
-   Strategy Session price. Add-on prices, adders, tier logic and internal
-   unit rates live in the Worker's private config, sourced from
-   `.private/pricing.json`. Nothing in `public/`, any HTML or any
-   client-side JS can compute a quote.
+   four card prices ($8,750 / $20,000 / $12,500 / $6,500) and the Strategy
+   Session price ($1,500). The Fractional Producer's lighter one-session
+   cadence came off the card and is internal now, like the Annual
+   Partnership. Add-on prices, adders, tier logic and internal unit rates
+   live in the Worker's private config, sourced from `.private/pricing.json`.
+   Nothing in `public/`, any HTML or any client-side JS can compute a quote.
 4. **A testimonial needs recorded consent.** Provenance goes in `ASSETS.md`
    beside the quote. A private message repeated publicly is not consent.
 5. **Career credits are not clients.** Networks David worked for are separate
