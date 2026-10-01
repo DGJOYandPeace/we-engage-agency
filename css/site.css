@@ -1462,6 +1462,18 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 }
 @media (max-width: 860px) { .steps { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+/* Labels the four steps rather than heading the block. Quieter than an
+   eyebrow on purpose: the overline above already carries the accent, and two
+   coloured micro-labels in one centred block compete for the same job. */
+.steps__label {
+  /* `auto` inline, not 0: the shorthand would otherwise cancel the
+     `margin-inline: auto` every child of .experience gets, leaving a
+     centre-aligned line inside a flush-left box, which reads as neither. */
+  margin: clamp(2.25rem, 4.5vw, 3.25rem) auto 0;
+  font-size: var(--step--1); letter-spacing: 0.19em;
+  text-transform: uppercase; color: var(--bone-faint); font-weight: 500;
+}
+.steps__label + .steps { margin-top: clamp(1rem, 2vw, 1.5rem); }
 .step { border-top: 1px solid var(--hairline); padding-top: 1rem; }
 .step__n {
   display: block; font-family: "Cormorant Garamond", serif;

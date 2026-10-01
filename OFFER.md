@@ -22,8 +22,9 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Slot | Current |
 | --- | --- |
 | Overline | What saying yes looks like |
-| Headline | A premium production, carried end to end. |
+| Headline | You stop explaining. The film does it for you. |
 | Body | Confidence that everyone who finds you saw everything they needed to understand your value. A stronger personal connection with the community already searching for what you offer. |
+| Steps label | A premium production, carried end to end |
 | Step 1 | **We plan it together.** A planning conversation to find the story and who needs to tell it. |
 | Step 2 | **We handle the day.** Crew, lighting, sound, releases, schedule. You show up and speak. |
 | Step 3 | **You see the cut.** Your film in 14 business days, revisions included. |
@@ -56,7 +57,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Note | We put the budget where it counts: the film. Social Cutdowns can be added anytime. |
 | What moves the price | Number of locations, crew size, travel, and rush delivery. |
 | Proof (quote) | Within two weeks, and within budget, he and his team created a gorgeous and effective promotional video. Dr. Theresa Wong W Geriatrics |
-| Secondary link | Rather talk first? Book a call |
+| Call CTA | Book a call about this |
 | Package | `single-story` |
 
 ### Story Series
@@ -75,7 +76,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Where it runs | Web, social, email, events, paid digital. Broadcast Ready available for TV. |
 | What moves the price | Number of voices and locations, crew size, travel, rush delivery, Broadcast Ready. |
 | Proof (stat) | Magic Hair: two television campaigns and a 40% lift in store traffic. |
-| Secondary link | Rather talk first? Book a call |
+| Call CTA | Book a call about this |
 | Package | `story-series` |
 
 ### Production Partner
@@ -91,7 +92,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Priority | Held dates on our calendar and access to our vetted crew roster |
 | Delivery | 14 business days after each film day. Rush in 7. |
 | Proof (stat) | Los Angeles Master Chorale: five years of event and fundraising films. |
-| Secondary link | Need a different cadence? Book a call |
+| Call CTA | Book a call about this |
 | Package | `production-partner` |
 
 ### Fractional Producer
@@ -106,7 +107,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Add a shoot | Need our crew for a day? Add a film day as its own line, anytime. |
 | Note | A standing rhythm always runs at a better rate than booking sessions one at a time. |
 | Proof (stat) | Broadcast production background across Fox, CBS, ABC, BET and Comedy Central. |
-| Secondary link | Rather talk first? Book a call |
+| Call CTA | Book a call about this |
 | Package | `fractional-producer` |
 
 ### Shared band
@@ -141,11 +142,21 @@ Beneath the band:
 
 ## Design notes
 
-### Two paths, one destination
-Every card carries one primary action to the proposal builder and one quiet
-text link to a call. The person who wants a number now and the person who
+### One path, for now
+Every card carries a single action: **Book a call about this**, to
+`/contact.html?package=…`.
+
+The design is two paths. The person who wants a number now and the person who
 wants to talk first are different buyers, and neither should have to use the
-other's door. Nothing else on the page competes with these two.
+other's door. But the proposal builder does not exist, so the primary action
+on all four cards pointed at a 404. A dead primary button costs more than a
+missing one: it is the loudest thing on the card, and the person most ready to
+buy is the one who hits it.
+
+So the proposal path is withheld rather than redesigned. The retired markup is
+in `.private/proposal-cta.html` verbatim, including each card's own secondary
+wording, which is not identical across the four. Restore it the day
+`/proposal.html` ships and this note goes back to reading "two paths".
 
 ### The experience block earns its position
 It sits above the cards so the price is read by someone who already knows what
@@ -251,6 +262,12 @@ page. It does mean the proposal and the engagement letter are now the only
 places a client agrees to a specific length or a specific number of rounds.
 Worth watching whether scope conversations get longer.
 
+**`/proposal.html` is the one thing the offer section is still missing.**
+Until it exists the cards have one door instead of two, and every prospect
+arrives through a call. That is a working funnel, not a broken one, but it
+asks a buyer who is ready to commit to slow down and schedule, which is the
+conversion the second path existed to protect.
+
 **The Magic Hair 40% figure now leads a card.** It has moved from a case study
 deep in the site to the offer section, where it is one of five proof lines and
 carries far more weight. It has never been independently verified. Stand it up
@@ -260,13 +277,11 @@ or soften it.
 "Signature" now names a deliverable only. Watch for the old meaning
 resurfacing in new copy.
 
-**Payment terms, partly decided** (decision 4 of the round 1 handoff). Single
-Story is paid in full on booking; Story Series is 50% on booking and 50% at
-wrap of production. The two monthly retainers and the Strategy Session are
-still open. Terms are a condition of business rather than a rate, so there is
-no reason they could not appear on the site, but nothing on the site states
-them today and that is a separate decision. The record lives in
-`.private/ops-reference.md`.
+**Payment terms are decided** (decision 4 of the round 1 handoff), for all
+five price points. Terms are a condition of business rather than a rate, so
+there is no reason they could not appear on the site, but nothing on the site
+states them today and whether they should is a separate decision. The record
+lives in `.private/ops-reference.md`.
 
 **The lighter Fractional cadence came off the card.** The one-session-a-week
 rate is no longer public: it is a concession to offer in conversation or to

@@ -90,11 +90,15 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
 
 ## Rules that hold everywhere
 
-1. **Two paths, one destination.** Every page ends in the same closing
-   module. Offer cards carry exactly one primary CTA ("I'm ready to start
-   this", to `/proposal.html?package=…`) and one secondary text link
-   ("Rather talk first? Book a call", to `/contact.html?package=…`). No
-   third ask competes with these anywhere.
+1. **One path per card, until the builder ships.** Every page ends in the
+   same closing module. Offer cards currently carry exactly one CTA ("Book a
+   call about this", to `/contact.html?package=…`). The designed state is two
+   — a primary to `/proposal.html?package=…` and a quiet text link to the
+   call — but `/proposal.html` does not exist, so that primary is withheld
+   rather than left pointing at a 404. The markup is parked verbatim in
+   `.private/proposal-cta.html`; restore it when the page ships. **Never add
+   a link to `/proposal.html` until it exists.** No third ask competes
+   anywhere.
 2. **No page dead-ends.**
 3. **No pricing logic in the repo.** The only figures in site code are the
    four card prices ($8,750 / $20,000 / $12,500 / $6,500) and the Strategy
