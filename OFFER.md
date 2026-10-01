@@ -22,8 +22,8 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Slot | Current |
 | --- | --- |
 | Overline | What saying yes looks like |
-| Headline | Concierge production, from the first call to the final frame. |
-| Body | Confidence that visitors saw everything they needed to understand your value. A stronger personal connection with the community already searching for what you offer. |
+| Headline | A premium production, carried end to end. |
+| Body | Confidence that everyone who finds you saw everything they needed to understand your value. A stronger personal connection with the community already searching for what you offer. |
 | Step 1 | **We plan it together.** A planning conversation to find the story and who needs to tell it. |
 | Step 2 | **We handle the day.** Crew, lighting, sound, releases, schedule. You show up and speak. |
 | Step 3 | **You see the cut.** Your film in 14 business days, revisions included. |
