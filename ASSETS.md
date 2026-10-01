@@ -172,16 +172,33 @@ Figures are the first 72 hours after posting. The run sold out.
 | File | Used at | Notes |
 | --- | --- | --- |
 | `public/video/hero-poster.jpg` | 768px and up | 1920x1080. Also the poster the wide loop mounts over. |
-| `public/video/heroloop-mobile-poster.jpg` | below 768px | 768x960, frame one of the narrow loop. Regenerate it whenever the loop changes. |
+| `public/video/heroloop-mobile-poster.jpg` | below 768px | 768x960, **frame 17** of the narrow loop. Regenerate it whenever the loop changes, and pick the frame by eye. |
 
 Swapped with a `<picture>` `source`, not JavaScript, so the browser only ever
 downloads the one it needs.
 
-The narrow poster is frame one of the narrow loop on purpose. Anything else
-means the hero visibly jump-cuts the moment the video reaches `canplay`, on
-every single mobile load. It is also what the `<video>` element carries as its
-own `poster`, so the still, the video's poster and the video's first frame are
-all the same image and the promotion is invisible.
+**The narrow poster used to be frame one, and no longer is.** That rule was
+written when the still was *hidden* the moment the video said `canplay`: a
+hard swap, where any difference between the two images is a visible jump cut
+on every mobile load. Matching them was the only way to hide the seam.
+
+The black-hero fix changed the mechanism. The loop now sits *over* the still
+and fades in across 0.6s once a frame has actually been presented, so a
+difference between the two reads as a dissolve rather than a cut. The poster
+is free to be the best frame in the loop instead of whichever one happens to
+be first.
+
+It needed to be. The narrow loop opens on the subject mid-blink, eyes down,
+mid-sentence — a tenth of a second that is invisible in motion and unforgiving
+as a photograph. And a photograph is exactly what it is on any phone that
+declines to play the video: **Low Power Mode blocks autoplay outright**, so
+that frame is the permanent hero for anyone running low on battery, which on a
+phone is most people by the evening. Frame 17 is the same shot about
+two-thirds of a second later, eyes open, mid-smile.
+
+Pick the replacement by eye whenever the loop is recut, and remember the
+`<video>` element's own `poster` attribute is now decorative: the element is
+at `opacity: 0` until it has painted, so nothing it carries is ever seen.
 
 ## Hero loops
 

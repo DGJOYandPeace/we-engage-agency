@@ -29,7 +29,6 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Step 2 | **We handle the day.** Crew, lighting, sound, releases, schedule. You show up and speak. |
 | Step 3 | **You see the cut.** Your film in 14 business days, revisions included. |
 | Step 4 | **It opens doors.** A film built to recruit, raise money, sell, and be shared for years. |
-| Closing | Clients talk about the films. They also talk about how effective we made it. |
 
 ### Section header
 

@@ -51,13 +51,17 @@
          data-hero-video="/public/video/heroloop.mp4?v=7"
          data-hero-poster="/public/video/hero-poster.jpg?v=6"
          data-hero-video-narrow="/public/video/heroloop-mobile.mp4?v=2"
-         data-hero-poster-narrow="/public/video/heroloop-mobile-poster.jpg?v=2">
+         data-hero-poster-narrow="/public/video/heroloop-mobile-poster.jpg?v=3">
       <picture>
-        <!-- The narrow poster is frame one of the narrow loop, so promoting
-             to video is not a cut. Regenerate it whenever the loop changes,
-             and bump both ?v= together — Pages cannot send cache headers, so
-             the query string is the only thing that expires either file. -->
-        <source media="(max-width: 767px)" srcset="/public/video/heroloop-mobile-poster.jpg?v=2">
+        <!-- The narrow poster is frame 17 of the narrow loop, not frame one:
+             the loop opens on the subject mid-blink, looking down, and that
+             still is what every phone in Low Power Mode shows permanently.
+             It no longer has to match frame one, because the loop now fades
+             in OVER the still rather than replacing it, so any difference
+             reads as a dissolve instead of a cut. Bump ?v= here and in
+             data-hero-poster-narrow together — Pages cannot send cache
+             headers, so the query string is the only thing that expires it. -->
+        <source media="(max-width: 767px)" srcset="/public/video/heroloop-mobile-poster.jpg?v=3">
         <img src="/public/video/hero-poster.jpg?v=6" alt="" aria-hidden="true">
       </picture>
     </div>
@@ -240,7 +244,6 @@
           <li class="step"><span class="step__n">3</span><h3>You see the cut.</h3><p>Your film in 14 business days, revisions included.</p></li>
           <li class="step"><span class="step__n">4</span><h3>It opens doors.</h3><p>A film built to recruit, raise money, sell, and be shared for years.</p></li>
         </ol>
-        <p class="experience__close reveal" data-delay="3">Clients talk about the films. They also talk about how effective we made it.</p>
       </div>
 
       <div class="offerhead">
