@@ -260,8 +260,13 @@ or soften it.
 "Signature" now names a deliverable only. Watch for the old meaning
 resurfacing in new copy.
 
-**Payment terms are still open** (decision 4 of the round 1 handoff). Nothing
-on the site states them; the proposal email will need a line.
+**Payment terms, partly decided** (decision 4 of the round 1 handoff). Single
+Story is paid in full on booking; Story Series is 50% on booking and 50% at
+wrap of production. The two monthly retainers and the Strategy Session are
+still open. Terms are a condition of business rather than a rate, so there is
+no reason they could not appear on the site, but nothing on the site states
+them today and that is a separate decision. The record lives in
+`.private/ops-reference.md`.
 
 **The lighter Fractional cadence came off the card.** The one-session-a-week
 rate is no longer public: it is a concession to offer in conversation or to
