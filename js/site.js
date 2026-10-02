@@ -118,14 +118,66 @@
      exactly what they meant. The poster <img> is the markup default, so we
      only ever *promote* to video when allowed, and any refusal falls back to
      it untouched. */
+  /* Shared by every silent decorative loop on the site: the hero, and the
+     full-bleed reel on /work. Both answer to the same two gates and reveal
+     on the same signal, so they live out here rather than once each. */
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var thrifty = function () {
+    if (!conn) return false;
+    return !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "");
+  };
+
+  /* `canplay` only means the browser thinks it could start. It is not
+     evidence that anything was drawn, and it used to be what hid the
+     still — so a video that announced itself and then never painted took
+     the hero to black with it. Wait for a frame that has actually been
+     presented: requestVideoFrameCallback says so exactly, and the fallback
+     is a clock that has genuinely moved off zero. Anything that empties or
+     errors the element drops it back to the still. */
+  var arm = function (v) {
+    var reveal = function () { v.setAttribute("data-ready", "true"); };
+    /* Both, not either. requestVideoFrameCallback is the precise signal,
+       but Safari has shipped versions where it exists and does not fire
+       reliably — and an `else` would leave those browsers playing a video
+       at opacity 0 behind the still, which looks exactly like the video
+       not playing at all. The clock is the backstop; whichever arrives
+       first wins and the second is a no-op. */
+    if (typeof v.requestVideoFrameCallback === "function") {
+      v.requestVideoFrameCallback(reveal);
+    }
+    var tick = function () {
+      if (v.currentTime > 0) {
+        reveal();
+        v.removeEventListener("timeupdate", tick);
+      }
+    };
+    v.addEventListener("timeupdate", tick);
+    ["error", "emptied", "abort"].forEach(function (ev) {
+      v.addEventListener(ev, function () { v.removeAttribute("data-ready"); });
+    });
+  };
+
+  /* Everything iOS Safari insists on before it will autoplay anything, set
+     as both property and attribute because the two are checked in different
+     places by different versions. */
+  var silentLoop = function (src, poster) {
+    var v = document.createElement("video");
+    v.setAttribute("src", src);
+    if (poster) v.poster = poster;
+    v.muted = true;
+    v.autoplay = true;
+    v.playsInline = true;
+    v.setAttribute("muted", "");
+    v.setAttribute("autoplay", "");
+    v.setAttribute("playsinline", "");
+    v.loop = true;
+    v.setAttribute("aria-hidden", "true");
+    return v;
+  };
+
   var heroSlot = document.querySelector("[data-hero-video]");
   if (heroSlot) {
     var narrow = window.matchMedia("(max-width: 767px)");
-    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    var thrifty = function () {
-      if (!conn) return false;
-      return !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "");
-    };
     var srcFor = function () {
       return heroSlot.getAttribute(narrow.matches ? "data-hero-video-narrow" : "data-hero-video");
     };
@@ -134,35 +186,6 @@
     };
     var mounted = false;
 
-    /* `canplay` only means the browser thinks it could start. It is not
-       evidence that anything was drawn, and it used to be what hid the
-       still — so a video that announced itself and then never painted took
-       the hero to black with it. Wait for a frame that has actually been
-       presented: requestVideoFrameCallback says so exactly, and the fallback
-       is a clock that has genuinely moved off zero. Anything that empties or
-       errors the element drops it back to the still. */
-    var arm = function (v) {
-      var reveal = function () { v.setAttribute("data-ready", "true"); };
-      /* Both, not either. requestVideoFrameCallback is the precise signal,
-         but Safari has shipped versions where it exists and does not fire
-         reliably — and an `else` would leave those browsers playing a video
-         at opacity 0 behind the still, which looks exactly like the video
-         not playing at all. The clock is the backstop; whichever arrives
-         first wins and the second is a no-op. */
-      if (typeof v.requestVideoFrameCallback === "function") {
-        v.requestVideoFrameCallback(reveal);
-      }
-      var tick = function () {
-        if (v.currentTime > 0) {
-          reveal();
-          v.removeEventListener("timeupdate", tick);
-        }
-      };
-      v.addEventListener("timeupdate", tick);
-      ["error", "emptied", "abort"].forEach(function (ev) {
-        v.addEventListener(ev, function () { v.removeAttribute("data-ready"); });
-      });
-    };
 
     var mount = function () {
       /* Already running: the breakpoint moved, so swap the cut rather than
@@ -183,18 +206,7 @@
       }
       if (reduced.matches || thrifty() || !srcFor()) return;
       mounted = true;
-      var v = document.createElement("video");
-      v.setAttribute("src", srcFor());
-      v.poster = posterFor();
-      /* All three are required together or iOS Safari refuses to autoplay. */
-      v.muted = true;
-      v.autoplay = true;
-      v.playsInline = true;
-      v.setAttribute("muted", "");
-      v.setAttribute("autoplay", "");
-      v.setAttribute("playsinline", "");
-      v.loop = true;
-      v.setAttribute("aria-hidden", "true");
+      var v = silentLoop(srcFor(), posterFor());
       arm(v);
       heroSlot.appendChild(v);
       var p = v.play();
@@ -211,6 +223,42 @@
     mount();
     if (narrow.addEventListener) narrow.addEventListener("change", mount);
   }
+
+  /* ---------- Full-bleed reels ----------
+     Same contract as the hero: a still in the markup, promoted to a silent
+     loop only when the visitor has not asked us not to, and revealed only
+     once a frame has genuinely painted. Any refusal leaves the photograph.
+
+     The one difference is weight and position. A reel is 1.8MB and sits far
+     down a long page, so it is not fetched on load — an IntersectionObserver
+     waits until it is roughly a screen away. Without the observer every
+     visitor to /work pays for a file most of them scroll past. Browsers
+     without IntersectionObserver get the still, which is the correct answer
+     for a decorative band. */
+  document.querySelectorAll("[data-loop]").forEach(function (slot) {
+    var src = slot.getAttribute("data-loop");
+    if (!src || reduced.matches || thrifty()) return;
+    if (typeof IntersectionObserver !== "function") return;
+
+    var mount = function () {
+      var v = silentLoop(src, "");
+      arm(v);
+      slot.appendChild(v);
+      var p = v.play();
+      if (p && p.catch) {
+        /* Autoplay refused — Low Power Mode is the usual reason. The still
+           was never hidden, so drop the element and leave the photograph. */
+        p.catch(function () { v.remove(); });
+      }
+    };
+
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      mount();
+    }, { rootMargin: "100% 0px" });
+    io.observe(slot);
+  });
 
   /* ---------- Call prep (qualify.html) ----------
      This used to score answers into a recommended tier. That logic has moved

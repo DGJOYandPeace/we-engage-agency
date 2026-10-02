@@ -22,7 +22,6 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Slot | Current |
 | --- | --- |
 | Overline | What saying yes looks like |
-| Headline | You stop explaining. The film does it for you. |
 | Body | Confidence that everyone who finds you saw everything they needed to understand your value. A stronger personal connection with the community already searching for what you offer. |
 | Steps label | A premium production, carried end to end |
 | Step 1 | **We plan it together.** A planning conversation to find the story and who needs to tell it. |

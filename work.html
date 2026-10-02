@@ -303,43 +303,46 @@
     <div class="shell">
       <p class="eyebrow reveal">Brand &amp; commercial</p>
       <h2 class="reveal" style="font-size:var(--step-3);max-width:24ch">Magic Hair Company</h2>
-      <div class="split" style="margin-top:1.5rem;align-items:start">
+    </div>
+
+    <!-- The commercial, silent and full bleed, the way the hero loop runs.
+         It carries no sound and asks for no click: the work plays as soon as
+         you reach it, which is what a television campaign is supposed to do.
+         The still is the markup default and the loop is only ever a
+         promotion on top of it. -->
+    <div class="reel reveal" data-loop="/public/video/mhc-reel.mp4?v=1">
+      <img class="reel__still" src="/public/video/mhc-reel-poster.jpg?v=1" alt="Inside the Magic Hair Company storefront in Culver City" loading="lazy">
+    </div>
+
+    <div class="shell">
+      <div class="split" style="margin-top:clamp(2rem, 4vw, 3rem);align-items:start">
         <div class="split__text reveal">
           <p>A four-year relationship, 2015 to 2019, through the move from e-commerce to a Culver City storefront — rebrand support, product and model photography, and two television campaigns.</p>
           <div class="callout">
             <p><strong>Two TV ad campaigns increased store traffic by 40%.</strong></p>
           </div>
-          <p>The client went on camera about the work themselves. That testimonial and the commercial it refers to are both below.</p>
+          <p>The client went on camera about the work themselves.</p>
         </div>
         <div class="split__media reveal" data-delay="1">
           <img src="/public/thumbnails-posters/mhc-model-banner-with-logo.jpg" alt="Magic Hair Company campaign imagery" loading="lazy" style="border:1px solid var(--hairline)">
         </div>
       </div>
 
-      <div class="workgrid">
-        <figure class="workcard reveal">
-          <div class="player" data-embed="https://www.youtube-nocookie.com/embed/wwP2EuyoHqk" data-title="Magic Hair Company — Commercial" role="button" tabindex="0" aria-label="Play: Magic Hair Company commercial">
-            <img class="player__poster" src="https://i.ytimg.com/vi/wwP2EuyoHqk/maxresdefault.jpg" alt="" loading="lazy">
-            <span class="player__play" aria-hidden="true">▶</span>
-          </div>
-          <figcaption class="workcard__body">
-            <p class="workcard__client">Magic Hair Company</p>
-            <h3>The commercial</h3>
-            <p>The second of the two television campaigns — the one behind the 40% figure.</p>
-          </figcaption>
-        </figure>
-        <figure class="workcard reveal" data-delay="1">
-          <div class="player" data-video="/public/video/mhc-testimonial.mp4" data-poster="/public/thumbnails-posters/mhc-model-banner-with-logo.jpg" data-title="Magic Hair Company — Client Testimonial" role="button" tabindex="0" aria-label="Play: Magic Hair Company client testimonial">
-            <img class="player__poster" src="/public/thumbnails-posters/mhc-model-banner-with-logo.jpg" alt="" loading="lazy">
-            <span class="player__play" aria-hidden="true">▶</span>
-          </div>
-          <figcaption class="workcard__body">
-            <p class="workcard__client">Magic Hair Company</p>
-            <h3>The client, on the work</h3>
-            <p>A named client vouching on camera, from the original master rather than a reposted copy.</p>
-          </figcaption>
-        </figure>
-      </div>
+      <figure class="workcard reveal" style="margin-top:clamp(2.5rem, 5vw, 3.75rem)">
+        <!-- Its own frame, pulled from the testimonial itself. It used to
+             reuse the model banner above, which put the same photograph on
+             screen three times in one section and told nobody what they were
+             about to watch. -->
+        <div class="player player--wide" data-video="/public/video/mhc-testimonial.mp4" data-poster="/public/thumbnails-posters/mhc-testimonial-poster.jpg" data-title="Magic Hair Company — Client Testimonial" role="button" tabindex="0" aria-label="Play: Magic Hair Company client testimonial">
+          <img class="player__poster" src="/public/thumbnails-posters/mhc-testimonial-poster.jpg" alt="" loading="lazy">
+          <span class="player__play" aria-hidden="true">▶</span>
+        </div>
+        <figcaption class="workcard__body">
+          <p class="workcard__client">Magic Hair Company</p>
+          <h3>The client, on the work</h3>
+          <p>A named client vouching on camera, with the sound on.</p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 

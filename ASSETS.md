@@ -206,8 +206,16 @@ at `opacity: 0` until it has painted, so nothing it carries is ever seen.
 | --- | --- | --- |
 | `public/video/heroloop.mp4` | 768px and up | 1920x1080, H.264 High **Level 4.0**, 23.3s, 4.2 MB, no audio. |
 | `public/video/heroloop-mobile.mp4` | below 768px | 768x960 (4:5), H.264, 8.84s, **663 KB**, no audio. |
+| `public/video/mhc-reel.mp4` | `/work` `#magic-hair`, all widths | 1920x1080, H.264 High **Level 4.0**, 14.14s, **1.80 MB**, no audio. The Magic Hair commercial, cut silent for the full-bleed band. Two-pass at 1000k from an 18.4 MB master: a 10x reduction at SSIM 0.973. Its still is `mhc-reel-poster.jpg`, frame 2.4s, chosen for the wide crop rather than taken from the top. |
 
-Both are silent and decorative. Neither mounts under `prefers-reduced-motion`,
+**The reel is lazy, the hero loops are not.** The hero is the first thing on
+the page and is fetched on load. The reel is 1.8 MB sitting most of the way
+down a long page, so an IntersectionObserver holds it until it is about one
+screen away: without that, every visitor to `/work` pays for a file most of
+them never scroll to. Browsers with no IntersectionObserver keep the still,
+which is the right answer for a decorative band.
+
+All three are silent and decorative. None mounts under `prefers-reduced-motion`,
 and as of the narrow cut neither mounts under Data Saver or a 2G
 `effectiveType` either — if someone has told their browser to economise, an
 ambient loop is exactly what they meant.

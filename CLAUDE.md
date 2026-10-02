@@ -43,6 +43,11 @@ testimonial with her logo carried large.
 LA Master Chorale (`#lamc`, five years) → Altadena Music Theatre
 (`#altadena-music-theatre`) → Magic Hair (`#magic-hair`) → archive.
 Brand and founder work lives here and does **not** compete for top billing.
+Magic Hair carries the site's one **full-bleed reel** (`.reel`, `[data-loop]`):
+the commercial, silent and self-hosted, autoplaying edge to edge the way the
+hero loop does. It is lazy — nothing downloads until it is about a screen
+away — and it answers to the same gates as the hero (reduced motion, Data
+Saver, autoplay refusal), always falling back to its still.
 
 ### `/village-treasures.html` — the flagship
 A client assignment that became a festival film. Proof of range, linked from

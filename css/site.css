@@ -726,9 +726,41 @@ img, video { max-width: 100%; display: block; }
 .booking__placeholder { padding: clamp(2rem, 5vw, 3.5rem); }
 
 /* ---------- Work index grid ---------- */
+/* ---------- Full-bleed reel ----------
+   Edge to edge, outside the shell, with the height capped so a 16:9 source
+   does not swallow a desktop screen whole: aspect-ratio sets the shape, the
+   cap overrides it, and `cover` crops the difference off the top and bottom
+   rather than letterboxing. On a phone the natural 16:9 band is already
+   shorter than the cap, so nothing is thrown away there — the same reasoning
+   that picked 4:5 for the narrow hero cut, in the other direction.
+
+   The video stacks OVER the still and fades in once it has painted, exactly
+   as the hero does, so a refusal to autoplay leaves a photograph rather than
+   a hole. */
+.reel {
+  position: relative; overflow: hidden;
+  background: var(--night-deep);
+  /* Height, not aspect-ratio. `aspect-ratio` with a `max-height` cap keeps
+     the ratio by shrinking the WIDTH too, which quietly un-full-bleeds the
+     band on a wide screen. 56.25vw is 16:9 of the viewport; the min() caps
+     it. Width stays 100% and `cover` crops the overflow. */
+  width: 100%; height: min(56.25vw, 600px);
+  margin-block: clamp(2rem, 4vw, 3rem);
+}
+.reel__still, .reel video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel video {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity 0.6s var(--ease);
+}
+.reel video[data-ready="true"] { opacity: 1; }
+
 .workgrid { display: grid; gap: clamp(1.5rem, 3.5vw, 2.5rem); margin-top: 3rem; }
 @media (min-width: 780px)  { .workgrid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1080px) { .workgrid--three { grid-template-columns: repeat(3, 1fr); } }
+/* A <figure> carries a browser default of `1em 40px`, and nothing here had
+   ever overridden it. Every card on /work was losing 80px of width to a
+   margin nobody wrote — on a 350px shell that is 23% of the card. */
+.workcard { margin: 0; }
 .workcard__body { padding-top: 1rem; }
 .workcard__client {
   font-size: var(--step--1); letter-spacing: 0.14em; text-transform: uppercase;
