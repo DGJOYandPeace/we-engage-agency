@@ -1513,13 +1513,21 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 }
 .step h3 { font-size: var(--step-0); margin: 0 0 0.35rem; font-weight: 600; }
 .step p { margin: 0; color: var(--bone-soft); font-size: var(--step--1); }
+/* `.section--paper .shell > *` centres the blocks, not what is inside them,
+   and it only reaches one level down. Anything here with its own max-width —
+   the headline at 24ch, the lede at 58ch — was a narrow box sitting flush
+   left with its text centred inside it, which reads as neither centred nor
+   aligned. `.experience` has carried the same rule for this reason. */
 .offerhead { margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+.offerhead > * { margin-inline: auto; }
 /* `.aiLine` by history: it used to carry a sentence about where AI does and
    does not sit in the work. That sentence is cut and the line is down to
    "Real people, real places, a real crew." Still deliberately quiet — raised
    any louder it would read as a defence rather than a statement. */
 .aiLine {
-  margin: 1.1rem 0 0; color: var(--bone-faint);
+  /* `auto` inline, not 0 — the shorthand would cancel the centring its
+     parent just handed it, which is how this line ended up flush left. */
+  margin: 1.1rem auto 0; color: var(--bone-faint);
   font-size: var(--step--1); max-width: 58ch;
 }
 
