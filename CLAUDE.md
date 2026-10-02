@@ -131,6 +131,13 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
     emails the prospect ten minutes later unless David holds it.
 12. **No em dashes in new copy.** House style. Existing copy still carries
     them; quotes from clients are never restyled, whatever the house says.
+13. **Do not frame the client as struggling to say it, or film as only
+    something said.** Not "what you're trying to say", not "tell us what needs
+    to be said". They already have the story; the film is what lets people
+    understand it, feel it and act on it. It is the catalyst, not the
+    transcript. Existing copy on `/work` ("Have something worth telling?") and
+    `/about` ("Let's talk about your story") predates this and has not been
+    revisited.
 
 ---
 
