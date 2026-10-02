@@ -36,7 +36,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Overline | The offer |
 | Headline | One engagement, built to become a relationship. |
 | Subline | Start with one film for the moment that matters. Grow into a series or a year-long program when the story does. |
-| AI line | Real people, real places, a real crew. We use smart tools to keep records and move faster, never to replace the conversation in front of the camera. |
+| Craft line | Real people, real places, a real crew. |
 
 ### Single Story
 
