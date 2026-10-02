@@ -352,12 +352,21 @@ img, video { max-width: 100%; display: block; }
     linear-gradient(180deg, rgba(14,18,22,0.70) 0%, rgba(14,18,22,0.26) 38%, rgba(14,18,22,0.88) 82%, var(--ink) 100%),
     radial-gradient(120% 80% at 12% 88%, rgba(14,18,22,0.78), transparent 62%);
 }
-.hero__inner { padding-block: clamp(5rem, 14vh, 9rem); }
+/* The bottom padding is deliberately thin. The block is anchored to the foot
+   of the hero, and the lower it sits the more of the picture stays clear
+   above it: her face, her hands and the window. At the old 9rem the headline
+   climbed across her chest. */
+.hero__inner { padding-block: clamp(5rem, 14vh, 9rem) clamp(2.5rem, 6vh, 4.5rem); }
+/* Fluid between a phone and a wide desktop, landing on 2.6rem at 390 and 5rem
+   from 1440 up, the two sizes picked by eye from the mockups. The cap is 16ch
+   below 1024 because the line wraps to three there, and 22ch above it, where
+   it holds at two: "Let's make the film that / moves everyone forward." */
 .hero h1 {
-  font-size: var(--step-5);
+  font-size: clamp(2.6rem, 1.4rem + 4vw, 5rem);
   max-width: 16ch;
   margin-bottom: 0.35em;
 }
+@media (min-width: 1024px) { .hero h1 { max-width: 22ch; } }
 .hero h1 em { font-style: italic; color: var(--accent-lit); }
 .hero__sub { font-size: var(--step-1); color: var(--bone-soft); max-width: 46ch; margin-bottom: 2.2rem; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
@@ -1438,12 +1447,15 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
    the copy. Centred is then correct.
 
    The desktop scrim is lightest at 38% down, which is deliberate: it lets the
-   picture breathe above the copy. On a phone the headline wraps to two lines
-   and the sub to three, so the text block starts higher and the eyebrow lands
-   in that light band and disappears. The mobile ramp darkens earlier so the
+   picture breathe above the copy. On a phone the headline wraps to three
+   lines and the sub to three, so the text block starts higher and its first
+   line lands in that light band. The mobile ramp darkens earlier so the
    whole block sits on a readable base, while the top stays open enough to
-   keep her face and the window. */
+   keep her face and the window. (The hero once opened on a small brass
+   eyebrow, which was the first thing to vanish in that band; it is gone, but
+   the reasoning holds for whatever comes first.) */
 @media (max-width: 767px) {
+  .hero__inner { padding-bottom: 3.25rem; }
   .hero__media img { object-position: center center; }
   .hero::before {
     background:

@@ -22,7 +22,11 @@ The whole argument in one scroll. Hero → what we do → BTS mosaic → LBUSD
 feature → Village Treasures teaser → **`#offer`** → testimonials → CTA.
 
 - Hero is two loops: 16:9 above 768px, 4:5 below. The still is never hidden —
-  the loop fades in over it only once a frame has painted.
+  the loop fades in over it only once a frame has painted. Its headline is the
+  site's thesis, "Let's make the film that moves everyone forward.", set low
+  and fluid (2.6rem at 390, 5rem from 1440) so the picture above it stays
+  clear. There is no eyebrow. The same sentence is currently also the closing
+  headline on `/`, so change one of them if the repeat stops earning its place.
 - `#offer` is the permission layer. Four public cards, one open at a time.
   **Its copy is governed by `OFFER.md`, not by this file.** A fifth
   engagement, Annual Partnership, exists but is never public: no card, no
