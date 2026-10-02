@@ -25,8 +25,10 @@ feature → Village Treasures teaser → **`#offer`** → testimonials → CTA.
   the loop fades in over it only once a frame has painted. Its headline is the
   site's thesis, "Let's make the film that moves everyone forward.", set low
   and fluid (2.6rem at 390, 5rem from 1440) so the picture above it stays
-  clear. There is no eyebrow. The same sentence is currently also the closing
-  headline on `/`, so change one of them if the repeat stops earning its place.
+  clear. There is no eyebrow. The closing block does a different job from the
+  hero: the hero makes the promise, the close sets up the form ("Let us hear
+  from you. We'll take it from there.") and answers the questions someone has
+  before they start it. Keep the two from repeating each other.
 - `#offer` is the permission layer. Four public cards, one open at a time.
   **Its copy is governed by `OFFER.md`, not by this file.** A fifth
   engagement, Annual Partnership, exists but is never public: no card, no

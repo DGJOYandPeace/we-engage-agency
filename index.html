@@ -415,8 +415,12 @@
   <!-- ========================== FINAL CTA ========================== -->
   <section class="section endcta">
     <div class="shell">
-      <h2 class="reveal" style="max-width:24ch">Let's make the film that moves everyone forward.</h2>
-      <p class="lede reveal" data-delay="1" style="max-width:52ch">The form takes about two minutes.</p>
+      <!-- Each sentence is kept whole on its own line. The size follows the width
+           on a phone, because "We'll take it from there." measures about 9.1em
+           and at the stock heading size it does not fit a 350px shell, which
+           broke it mid-sentence into four lines. -->
+      <h2 class="reveal" style="max-width:24ch;font-size:min(var(--step-4), calc((100vw - var(--gutter) * 2) / 9.2))"><span style="display:inline-block">Let us hear from you.</span> <span style="display:inline-block">We'll take it from there.</span></h2>
+      <p class="lede reveal" data-delay="1" style="max-width:52ch">The first step is a short form, about two minutes.</p>
       <p class="reveal" data-delay="2" style="max-width:52ch">These few questions about budget, timeline and who you need to reach prepare the rest of our work for success. Then we talk on a call, not a pitch.</p>
       <p class="reveal" data-delay="2" style="margin-top:2rem">
         <a class="btn btn--primary" href="/contact.html">I'm ready to book a call <span class="arr">→</span></a>
