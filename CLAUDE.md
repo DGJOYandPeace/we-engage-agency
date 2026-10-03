@@ -144,6 +144,10 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
     transcript. Existing copy on `/work` ("Have something worth telling?") and
     `/about` ("Let's talk about your story") predates this and has not been
     revisited.
+14. **American spelling.** Program, honor, center, traveled. The site had
+    drifted into British forms ("programme", "honour", "centrepiece"). The
+    exception is **Theatre** in "Altadena Music Theatre", a proper name, and
+    "musical theatre", the art form.
 
 ---
 
