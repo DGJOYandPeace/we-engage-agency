@@ -360,7 +360,7 @@ img, video { max-width: 100%; display: block; }
 /* Fluid between a phone and a wide desktop, landing on 2.6rem at 390 and 5rem
    from 1440 up, the two sizes picked by eye from the mockups. The cap is 16ch
    below 1024 because the line wraps to three there, and 22ch above it, where
-   it holds at two: "Let's make the film that / moves everyone forward." */
+   it holds at two: "Let's make the film that / moves people forward." */
 .hero h1 {
   font-size: clamp(2.6rem, 1.4rem + 4vw, 5rem);
   max-width: 16ch;

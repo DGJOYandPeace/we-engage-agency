@@ -23,7 +23,7 @@ feature → Village Treasures teaser → **`#offer`** → testimonials → CTA.
 
 - Hero is two loops: 16:9 above 768px, 4:5 below. The still is never hidden —
   the loop fades in over it only once a frame has painted. Its headline is the
-  site's thesis, "Let's make the film that moves everyone forward.", set low
+  site's thesis, "Let's make the film that moves people forward.", set low
   and fluid (2.6rem at 390, 5rem from 1440) so the picture above it stays
   clear. There is no eyebrow. The closing block does a different job from the
   hero: the hero makes the promise, the close sets up the form ("Let us hear
