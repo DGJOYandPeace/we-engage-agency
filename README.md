@@ -80,16 +80,17 @@ the expanded body, the price, the cue. Re-tinting a tier is one line.
 
 | Tier | Tone | | Why |
 | --- | --- | --- | --- |
-| Story Series | `#86BD97` | green | Start here. The entry point in a sequence a buyer already knows how to read. |
-| Signature Story | `#92B6CF` | blue | The focused single. Contained, considered, one thing done properly. |
-| Story Program | `#E0A85C` | gold | The premium. This is `--accent-night` itself, unchanged, which is what keeps the set inside the palette rather than beside it. |
-| Producer Engagement | `#BCA9D8` | violet | Deliberately **off** the green-blue-gold ladder. This tier is not a bigger or smaller version of the others, and a colour that refuses to rank is the honest signal for that. |
+| Single Story | `#92B6CF` | blue | The focused single. Contained, one thing done properly. |
+| Premium Story | `#86BD97` | green | Where most engagements start. The entry to the ladder. |
+| Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. |
+| Fractional Producer | `#BCA9D8` | violet | Deliberately **off** the ladder. Not a bigger or smaller version of the others, and a colour that refuses to rank is the honest signal for that. |
 
-All four are matched on perceptual lightness — CIE **L\* 72.0–72.6** — so no
-tier shouts louder than another, and each reads **8.05–8.20:1** on the card
-ground, well past the 4.5:1 WCAG asks of text. Matching on L\* rather than on
-contrast ratio is the point: two colours can share a contrast ratio and still
-look unequal, because contrast ratio is not a perceptual scale.
+The four are matched on perceptual lightness, CIE **L\* 72.0–73.4**, so no tier
+shouts louder than another, and each reads **8.05–8.39:1** on the card ground,
+well past the 4.5:1 WCAG asks of text. Matching on L\* rather than on contrast
+ratio is the point: two colours can share a contrast ratio and still look
+unequal, because contrast ratio is not a perceptual scale. Copy and pricing for
+the tiers live in `OFFER.md`, not here.
 
 Nothing is tinted at rest. The section is meant to open quiet, and the tone
 arrives as the panel expands: a rule wipes down the left edge, a wash of the

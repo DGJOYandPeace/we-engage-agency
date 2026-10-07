@@ -630,7 +630,9 @@
        question again would throw away the one piece of intent we have. */
     var PACKAGES = {
       "single-story":        "Single Story, ready to start",
-      "story-series":        "Story Series, ready to start",
+      /* The slug is still story-series so links already shared keep working;
+         only the name a person reads changed, to Premium Story. */
+      "story-series":        "Premium Story, ready to start",
       "production-partner":  "Production Partner, ready to start",
       "fractional-producer": "Fractional Producer, ready to start"
     };

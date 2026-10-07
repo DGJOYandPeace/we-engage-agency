@@ -58,7 +58,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Call CTA | Book a call about this |
 | Package | `single-story` |
 
-### Story Series
+### Premium Story
 
 | Slot | Current |
 | --- | --- |
@@ -75,7 +75,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | What moves the price | Number of voices and locations, crew size, travel, rush delivery, Broadcast Ready. |
 | Proof (stat) | Magic Hair: two television campaigns and a 40% lift in store traffic. |
 | Call CTA | Book a call about this |
-| Package | `story-series` |
+| Package | `story-series` (the slug predates the name; it stays so shared links keep working) |
 
 ### Production Partner
 
@@ -130,7 +130,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 - Spanish subtitles or a full Spanish-language version
 - Accessibility package
 - Additional film days
-- Broadcast Ready (Story Series and above)
+- Broadcast Ready (Premium Story and above)
 
 Beneath the band:
 
@@ -171,7 +171,7 @@ shape.
 | Tier | Tone | | Reasoning |
 | --- | --- | --- | --- |
 | Single Story | `#92B6CF` | blue | The focused single. Contained, one thing done properly. |
-| Story Series | `#86BD97` | green | Where most engagements start. The entry to the ladder. |
+| Premium Story | `#86BD97` | green | Where most engagements start. The entry to the ladder. |
 | Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. The one region of the wheel the other four leave open. |
 | Fractional Producer | `#BCA9D8` | violet | Deliberately off the ladder. Not a bigger or smaller version of the others. |
 
