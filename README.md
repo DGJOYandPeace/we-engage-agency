@@ -80,8 +80,8 @@ the expanded body, the price, the cue. Re-tinting a tier is one line.
 
 | Tier | Tone | | Why |
 | --- | --- | --- | --- |
+| Premium Story | `#86BD97` | green | Leads the section. Where most engagements start. |
 | Single Story | `#92B6CF` | blue | The focused single. Contained, one thing done properly. |
-| Premium Story | `#86BD97` | green | Where most engagements start. The entry to the ladder. |
 | Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. |
 | Fractional Producer | `#BCA9D8` | violet | Deliberately **off** the ladder. Not a bigger or smaller version of the others, and a colour that refuses to rank is the honest signal for that. |
 

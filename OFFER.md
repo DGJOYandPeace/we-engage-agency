@@ -38,6 +38,25 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Subline | Start with one film for the moment that matters. Grow into a series or a year-long program when the story does. |
 | Craft line | Real people, real places, a real crew. |
 
+### Premium Story
+
+| Slot | Current |
+| --- | --- |
+| Tagline | Strategy first, then two film days across a project arc. |
+| Price | Starting at $20,000 |
+| Plain sentence | When the story has more than one voice and more than one place to film. We start with strategy, talk to the people at the center of it, and build the story before we film it. |
+| Strategy | A strategy call, conversations with your key voices, and a narrative plan |
+| Film days | Two, across your project arc |
+| You receive | One hero film plus two Signature highlight videos from the same capture, and your full raw footage archive |
+| Delivery | 14 business days after your final film day. Rush in 7. |
+| Revisions | Revisions included. Additional rounds available if you'd like them. |
+| Your time | The strategy call, scheduling your voices, two film days, virtual check-ins |
+| Where it runs | Web, social, email, events, paid digital. Broadcast Ready available for TV. |
+| What moves the price | Number of voices and locations, crew size, travel, rush delivery, Broadcast Ready. |
+| Proof (stat) | Magic Hair: two television campaigns and a 40% lift in store traffic. |
+| Call CTA | Book a call about this |
+| Package | `story-series` (the slug predates the name; it stays so shared links keep working) |
+
 ### Single Story
 
 | Slot | Current |
@@ -57,25 +76,6 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Proof (quote) | Within two weeks, and within budget, he and his team created a gorgeous and effective promotional video. Dr. Theresa Wong W Geriatrics |
 | Call CTA | Book a call about this |
 | Package | `single-story` |
-
-### Premium Story
-
-| Slot | Current |
-| --- | --- |
-| Tagline | Strategy first, then two film days across a project arc. |
-| Price | Starting at $20,000 |
-| Plain sentence | When the story has more than one voice and more than one place to film. We start with strategy, talk to the people at the center of it, and build the story before we film it. |
-| Strategy | A strategy call, conversations with your key voices, and a narrative plan |
-| Film days | Two, across your project arc |
-| You receive | One hero film plus two Signature highlight videos from the same capture, and your full raw footage archive |
-| Delivery | 14 business days after your final film day. Rush in 7. |
-| Revisions | Revisions included. Additional rounds available if you'd like them. |
-| Your time | The strategy call, scheduling your voices, two film days, virtual check-ins |
-| Where it runs | Web, social, email, events, paid digital. Broadcast Ready available for TV. |
-| What moves the price | Number of voices and locations, crew size, travel, rush delivery, Broadcast Ready. |
-| Proof (stat) | Magic Hair: two television campaigns and a 40% lift in store traffic. |
-| Call CTA | Book a call about this |
-| Package | `story-series` (the slug predates the name; it stays so shared links keep working) |
 
 ### Production Partner
 
@@ -140,6 +140,14 @@ Beneath the band:
 
 ## Design notes
 
+### Premium Story comes first
+The cards run Premium Story, Single Story, Production Partner, Fractional
+Producer. Seen first, the higher figure is the reference the lower one is read
+against, and the card that carries the most explanation is the one a visitor
+meets before deciding how much to read. The contact form's select mirrors the
+order. The `tier--lead` class still marks the card that carries the resting
+border.
+
 ### One path, for now
 Every card carries a single action: **Book a call about this**, to
 `/contact.html?package=…`.
@@ -170,8 +178,8 @@ shape.
 
 | Tier | Tone | | Reasoning |
 | --- | --- | --- | --- |
+| Premium Story | `#86BD97` | green | Leads the section. Where most engagements start. |
 | Single Story | `#92B6CF` | blue | The focused single. Contained, one thing done properly. |
-| Premium Story | `#86BD97` | green | Where most engagements start. The entry to the ladder. |
 | Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. The one region of the wheel the other four leave open. |
 | Fractional Producer | `#BCA9D8` | violet | Deliberately off the ladder. Not a bigger or smaller version of the others. |
 
