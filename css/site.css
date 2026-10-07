@@ -1294,11 +1294,10 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 .tier[data-open="true"] .tier__price,
 .tier[data-open="true"] .tier__cue { color: var(--tone); }
 
-@media (hover: hover) and (pointer: fine) {
-  .tier:hover::before, .tier:focus-within::before { transform: scaleY(1); }
-  .tier:hover .tier__price, .tier:focus-within .tier__price,
-  .tier:hover .tier__cue, .tier:focus-within .tier__cue { color: var(--tone); }
-}
+/* No :hover or :focus-within variants of the reveal. Opening is state, set in
+   js/site.js, so a card that is merely under the pointer on its way past does
+   not wipe a rule down its edge and then take it back. The border below is the
+   only thing hover touches. */
 @media (prefers-reduced-motion: reduce) {
   .tier::before { transition: none; }
 }
@@ -1325,9 +1324,6 @@ img[src$="-white.png"], img[src$="-transparent.png"] { filter: invert(1); }
 .tier__wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s var(--ease); }
 .tier__body { overflow: hidden; }
 .tier[data-open="true"] .tier__wrap { grid-template-rows: 1fr; }
-@media (hover: hover) and (pointer: fine) {
-  .tier:hover .tier__wrap, .tier:focus-within .tier__wrap { grid-template-rows: 1fr; }
-}
 .tier__inner {
   padding: 0 clamp(1.25rem, 2.8vw, 2rem) clamp(1.4rem, 3vw, 2rem);
   border-top: 1px solid var(--hairline);

@@ -534,27 +534,78 @@
   closePlayer = function () { wrapped(); heroPause(false); };
 
   /* ---------- Offer tiers ----------
-     Click and keyboard toggle the panel. On a pointer device CSS also opens
-     it on hover, which is a convenience rather than the mechanism: the
-     button carries the real state, so keyboard and touch reach exactly the
-     same thing. Only one open at a time — the point of the layer is to stop
-     the page reading as a price comparison. */
+     On a desktop pointer, resting on a card's header is treated as a click:
+     the card opens and STAYS open when the pointer leaves, and resting on the
+     next one opens that and closes the last. Only one is ever open, because
+     the point of the layer is to stop the page reading as a price comparison.
+
+     This used to be pure CSS :hover, which meant a card closed the moment the
+     pointer left it. Opening one pushes the others down and closing it pulls
+     them back up, so the card under a stationary pointer kept changing and the
+     whole stack flickered open and shut while you tried to read it. Three
+     guards stop that:
+
+       intent   the pointer has to rest on a header for a beat, so sweeping
+                across the list opens nothing;
+       travel   the pointer has to have really moved since the last change. A
+                card sliding under a still pointer fires a synthetic enter
+                event with the same coordinates, which is not intent;
+       settle   nothing new opens until the last panel has finished moving.
+
+     Touch and keyboard are untouched: the button carries the real state, so
+     they reach exactly the same thing by tapping or pressing Enter. A first
+     mouse click on a card that hover already opened pins it instead of
+     closing it, because "I hovered, so I clicked" should not undo itself. */
   var tiers = document.querySelectorAll("[data-tier]");
   if (tiers.length) {
+    var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+    var INTENT = 130, SETTLE = 450, TRAVEL = 6;
+    var mark = { t: 0, x: -999, y: -999 };
+
+    var setOpen = function (tier, on, via) {
+      tier.setAttribute("data-open", on ? "true" : "false");
+      if (on) tier.setAttribute("data-via", via); else tier.removeAttribute("data-via");
+      var b = tier.querySelector(".tier__toggle");
+      if (b) b.setAttribute("aria-expanded", on ? "true" : "false");
+    };
+    var openOnly = function (tier, via, pt) {
+      tiers.forEach(function (other) { if (other !== tier) setOpen(other, false); });
+      setOpen(tier, true, via);
+      mark = { t: Date.now(), x: pt.x, y: pt.y };
+    };
+
     tiers.forEach(function (tier) {
       var btn = tier.querySelector(".tier__toggle");
       if (!btn) return;
-      btn.addEventListener("click", function () {
-        var open = tier.getAttribute("data-open") === "true";
-        tiers.forEach(function (other) {
-          other.setAttribute("data-open", "false");
-          var b = other.querySelector(".tier__toggle");
-          if (b) b.setAttribute("aria-expanded", "false");
-        });
-        if (!open) {
-          tier.setAttribute("data-open", "true");
-          btn.setAttribute("aria-expanded", "true");
+      var timer = null, pt = { x: 0, y: 0 }, closedByClick = false;
+      var isOpen = function () { return tier.getAttribute("data-open") === "true"; };
+      var cancel = function () { if (timer) { clearTimeout(timer); timer = null; } };
+
+      btn.addEventListener("pointermove", function (e) {
+        if (e.pointerType !== "mouse" || !fine.matches) return;
+        if (isOpen() || closedByClick) return;
+        pt = { x: e.clientX, y: e.clientY };
+        if (Math.hypot(pt.x - mark.x, pt.y - mark.y) < TRAVEL) return;
+        if (timer) return;
+        var wait = Math.max(INTENT, mark.t + SETTLE - Date.now());
+        timer = setTimeout(function () {
+          timer = null;
+          if (!isOpen()) openOnly(tier, "hover", pt);
+        }, wait);
+      });
+      /* Closing a card with a click is a decision. Until the pointer leaves it,
+         a wiggle of the mouse must not hover it open again. */
+      btn.addEventListener("pointerleave", function () { cancel(); closedByClick = false; });
+
+      btn.addEventListener("click", function (e) {
+        cancel();
+        var here = { x: e.clientX, y: e.clientY };
+        if (isOpen() && tier.getAttribute("data-via") === "hover" && e.detail > 0) {
+          tier.setAttribute("data-via", "click");
+          return;
         }
+        if (isOpen()) { setOpen(tier, false); closedByClick = true; mark = { t: Date.now(), x: here.x, y: here.y }; }
+        else openOnly(tier, "click", here);
       });
     });
   }
