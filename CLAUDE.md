@@ -148,6 +148,12 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
     drifted into British forms ("programme", "honour", "centrepiece"). The
     exception is **Theatre** in "Altadena Music Theatre", a proper name, and
     "musical theatre", the art form.
+15. **Start a session by reading `CONTINUITY.md`.** Cloud sessions run in
+    temporary containers and are reset without warning, so anything not pushed
+    is lost. Private material (pricing config, payment terms, internal rates)
+    must live in the separate private repository, never only in a gitignored
+    folder here. If `.private/` is missing, say so before doing anything that
+    depends on it. Do not rebuild a pricing file from memory.
 
 ---
 
