@@ -45,7 +45,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Tagline | Strategy first, then two film days across a project arc. |
 | Price | Starting at $20,000 |
 | Plain sentence | When the story has more than one voice and more than one place to film. We start with strategy, talk to the people at the center of it, and build the story before we film it. |
-| Strategy | A strategy call, conversations with your key voices, and a narrative plan |
+| Strategy | A strategy call, conversations with your key people, and a narrative plan |
 | Film days | Two, across your project arc |
 | You receive | One hero film plus two Signature highlight videos from the same capture, and your full raw footage archive |
 | Delivery | 14 business days after your final film day. Rush in 7. |
