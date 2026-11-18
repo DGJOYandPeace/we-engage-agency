@@ -50,9 +50,9 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | You receive | One hero film plus two Signature highlight videos from the same capture, and your full raw footage archive |
 | Delivery | 14 business days after your final film day. Rush in 7. |
 | Revisions | Revisions included. Additional rounds available if you'd like them. |
-| Your time | The strategy call, scheduling your voices, two film days, virtual check-ins |
+| Your time | The strategy call, scheduling the people on camera, two film days, virtual check-ins |
 | Where it runs | Web, social, email, events, paid digital. Broadcast Ready available for TV. |
-| What moves the price | Number of voices and locations, crew size, travel, rush delivery, Broadcast Ready. |
+| What moves the price | Number of on-screen talent and locations, crew size, travel, rush delivery, Broadcast Ready. |
 | Proof (stat) | Magic Hair: two television campaigns and a 40% lift in store traffic. |
 | Call CTA | Book a call about this |
 | Package | `story-series` (the slug predates the name; it stays so shared links keep working) |
@@ -102,7 +102,7 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Plain sentence | You already have the voice and the following. We find what's working, set your format, film several episodes in one day, and deliver a month of finished episodes. |
 | Launch | Format, style, one batch film day and your first two episodes |
 | Each month | One batch film day, four long-form episodes and a planning session |
-| Delivery | Episodes delivered on a steady monthly schedule |
+| Delivery | Finished, final files delivered on a steady monthly schedule |
 | Your time | One film day a month and a short planning session |
 | Where it runs | YouTube, your website, social, email and paid digital |
 | Note | Social Cutdowns can be added anytime. |
