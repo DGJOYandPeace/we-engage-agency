@@ -93,6 +93,31 @@ House style: **no em dashes in new copy.** Client quotes are never restyled.
 | Call CTA | Book a call about this |
 | Package | `production-partner` |
 
+### Channel Partner
+
+| Slot | Current |
+| --- | --- |
+| Tagline | Your channel, produced in batches. |
+| Price | Starting with Channel Launch, from $8,750. Then $7,500 monthly, three-month minimum. |
+| Plain sentence | You already have the voice and the following. We find what's working, set your format, film several episodes in one day, and deliver a month of finished episodes. |
+| Launch | Format, style, one batch film day and your first two episodes |
+| Each month | One batch film day, four long-form episodes and a planning session |
+| Delivery | Episodes delivered on a steady monthly schedule |
+| Your time | One film day a month and a short planning session |
+| Where it runs | YouTube, your website, social, email and paid digital |
+| Note | Social Cutdowns can be added anytime. |
+| What moves the price | Episode length, number of locations, and add-ons |
+| Proof (stat) | Los Angeles Master Chorale: five years of event and fundraising films. |
+| Call CTA | Book a call about this |
+| Package | `channel-partner` |
+
+Why it exists: it gives editing inquiries a clear door that leads to batch
+production, not per-clip work. The offer grid moved from four cards to five on
+purpose, reversing the earlier four-card decision. No new page; it is a card in
+`#offer`. An internal editing-only engagement, Edit Partner, exists and is
+offered in conversation, never on the site. Its terms live in the private
+repository only.
+
 ### Fractional Producer
 
 | Slot | Current |
@@ -141,8 +166,8 @@ Beneath the band:
 ## Design notes
 
 ### Premium Story comes first
-The cards run Premium Story, Single Story, Production Partner, Fractional
-Producer. Seen first, the higher figure is the reference the lower one is read
+The cards run Premium Story, Single Story, Channel Partner, Production
+Partner, Fractional Producer. Seen first, the higher figure is the reference the lower one is read
 against, and the card that carries the most explanation is the one a visitor
 meets before deciding how much to read. The contact form's select mirrors the
 order. The `tier--lead` class still marks the card that carries the resting
@@ -180,10 +205,11 @@ shape.
 | --- | --- | --- | --- |
 | Premium Story | `#86BD97` | green | Leads the section. Where most engagements start. |
 | Single Story | `#92B6CF` | blue | The focused single. Contained, one thing done properly. |
-| Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. The one region of the wheel the other four leave open. |
+| Channel Partner | `#E0A1B1` | rose | Hue 345, a region of the wheel the other four leave open. Sits between Single Story and Production Partner in the order. |
+| Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. |
 | Fractional Producer | `#BCA9D8` | violet | Deliberately off the ladder. Not a bigger or smaller version of the others. |
 
-All four matched on perceptual lightness, **CIE L\* 72.0 to 73.4**, reading
+All five matched on perceptual lightness, **CIE L\* 72.0 to 73.4**, reading
 **8.05:1 to 8.39:1** on the card ground. Matched on L\* rather than contrast
 ratio, because two colours can share a ratio and still look unequal.
 

@@ -64,8 +64,11 @@ progress. When it exists, add its name here and in `CLAUDE.md`.
   `OFFER.md`. Assets and consent records are in `ASSETS.md`.
 
 ### The offer, as it stands
-Four cards, in this order: **Premium Story**, **Single Story**, **Production
-Partner**, **Fractional Producer**. Premium Story leads on purpose.
+Five cards, in this order: **Premium Story**, **Single Story**, **Channel
+Partner**, **Production Partner**, **Fractional Producer**. Premium Story leads
+on purpose. Channel Partner (package `channel-partner`) was added 2026-11-18.
+`/brief.html` is the unlisted deeper project brief (no dollar figures, with a
+Channel Partner track); `/qualify.html` and `/feedback.html` are the others.
 
 - Premium Story was **Story Series** until 2026-10-08. The internal package
   value is still `story-series` so shared links keep working. Only the name

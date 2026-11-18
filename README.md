@@ -74,7 +74,7 @@ the offer panel invert without a second set of component rules.
 
 ### Tier tones
 
-The four engagements in `#offer` each carry a `--tone`, and every coloured
+The five engagements in `#offer` each carry a `--tone`, and every coloured
 surface on the card reads that one property — the left rule, the wash behind
 the expanded body, the price, the cue. Re-tinting a tier is one line.
 
@@ -82,10 +82,11 @@ the expanded body, the price, the cue. Re-tinting a tier is one line.
 | --- | --- | --- | --- |
 | Premium Story | `#86BD97` | green | Leads the section. Where most engagements start. |
 | Single Story | `#92B6CF` | blue | The focused single. Contained, one thing done properly. |
+| Channel Partner | `#E0A1B1` | rose | A region of the wheel the others leave open (L\* 72.6, 8.18:1). |
 | Production Partner | `#7FBFC4` | teal | Between the green and the blue without joining the ladder. |
 | Fractional Producer | `#BCA9D8` | violet | Deliberately **off** the ladder. Not a bigger or smaller version of the others, and a colour that refuses to rank is the honest signal for that. |
 
-The four are matched on perceptual lightness, CIE **L\* 72.0–73.4**, so no tier
+The five are matched on perceptual lightness, CIE **L\* 72.0–73.4**, so no tier
 shouts louder than another, and each reads **8.05–8.39:1** on the card ground,
 well past the 4.5:1 WCAG asks of text. Matching on L\* rather than on contrast
 ratio is the point: two colours can share a contrast ratio and still look

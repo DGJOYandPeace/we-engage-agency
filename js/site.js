@@ -402,6 +402,126 @@
     });
   }
 
+  /* ---------- Project brief (brief.html) ----------
+     The deeper form. Four answers are required: name, email, organization
+     and what the project should make possible. Everything else is optional
+     and sent only if filled in.
+
+     The Channel Partner questions live in a fieldset that is hidden and
+     disabled until that engagement is chosen. A disabled fieldset is left
+     out of FormData, so a person on another track is never sent questions
+     they were not asked.
+
+     Unlike the other forms, a failed send does NOT show success. The answers
+     stay on the page, and are offered as an email to send by hand. */
+  var brief = document.getElementById("brief");
+  if (brief) {
+    var bReq = [
+      { el: document.getElementById("b-name"), box: document.getElementById("b-name-field") },
+      { el: document.getElementById("b-email"), box: document.getElementById("b-email-field"), mail: true },
+      { el: document.getElementById("b-org"), box: document.getElementById("b-org-field") },
+      { el: document.getElementById("b-goal"), box: document.getElementById("b-goal-field") }
+    ].filter(function (f) { return f.el && f.box; });
+    var bPack = document.getElementById("b-package");
+    var track = document.getElementById("channel-track");
+    var okVal = function (f) {
+      var v = String(f.el.value).trim();
+      return f.mail ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) : !!v;
+    };
+    var syncTrack = function () {
+      var on = !!bPack && bPack.value === "channel-partner";
+      if (track) { track.hidden = !on; track.disabled = !on; }
+    };
+    try {
+      var want = new URLSearchParams(location.search).get("package");
+      if (want && bPack && bPack.querySelector('option[value="' + want.replace(/[^a-z-]/g, "") + '"]')) bPack.value = want;
+    } catch (err) {}
+    if (bPack) bPack.addEventListener("change", syncTrack);
+    syncTrack();
+    bReq.forEach(function (f) {
+      f.el.addEventListener("input", function () { if (okVal(f)) f.box.removeAttribute("data-invalid"); });
+    });
+
+    var PACK_NAMES = {
+      "story-series": "Premium Story", "single-story": "Single Story",
+      "channel-partner": "Channel Partner", "production-partner": "Production Partner",
+      "fractional-producer": "Fractional Producer"
+    };
+
+    brief.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var trap = brief.querySelector('input[name="_gotcha"]');
+      if (trap && trap.value) return;
+
+      var first = null;
+      bReq.forEach(function (f) {
+        if (okVal(f)) { f.box.removeAttribute("data-invalid"); return; }
+        f.box.setAttribute("data-invalid", "true");
+        if (!first) first = f.el;
+      });
+      if (first) {
+        first.focus();
+        first.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "center" });
+        return;
+      }
+
+      var data = {}, lists = {};
+      new FormData(brief).forEach(function (v, k) {
+        if (k === "_gotcha") return;
+        v = String(v).trim();
+        if (!v) return;
+        if (k === "have" || k === "runs") { (lists[k] = lists[k] || []).push(v); }
+        else data[k] = v;
+      });
+      if (lists.have) data.have = lists.have.join(", ");
+      if (lists.runs) data.runs = lists.runs.join(", ");
+      if (data.package) data.package = PACK_NAMES[data.package] || data.package;
+
+      var body = new URLSearchParams();
+      body.append("_subject", "Project brief" + (data.package ? ": " + data.package : ""));
+      var text = [];
+      Object.keys(data).forEach(function (k) {
+        body.append(k, data[k]);
+        text.push(k.replace(/_/g, " ") + ": " + data[k]);
+      });
+
+      var btn = brief.querySelector('button[type="submit"]');
+      var label = btn ? btn.innerHTML : "";
+      var failed = function () {
+        if (btn) { btn.disabled = false; btn.innerHTML = label; }
+        var box = document.getElementById("brief-failed");
+        var copy = document.getElementById("brief-copy");
+        var mail = document.getElementById("brief-mailto");
+        var to = brief.getAttribute("data-fallback-email") || "";
+        var joined = text.join("\n");
+        if (copy) copy.value = joined;
+        if (mail) mail.href = "mailto:" + to + "?subject=" + encodeURIComponent("Project brief") +
+          "&body=" + encodeURIComponent(joined.slice(0, 1800));
+        if (box) {
+          box.hidden = false;
+          box.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "center" });
+        }
+      };
+      var done = function () {
+        brief.hidden = true;
+        var d = document.getElementById("brief-done");
+        if (d) {
+          d.hidden = false;
+          d.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "center" });
+        }
+      };
+
+      var endpoint = brief.getAttribute("data-endpoint");
+      if (!endpoint) { failed(); return; }
+      if (btn) { btn.disabled = true; btn.textContent = "Sending\u2026"; }
+      var hide = document.getElementById("brief-failed"); if (hide) hide.hidden = true;
+
+      fetch(endpoint, { method: "POST", headers: { "Accept": "application/json" }, body: body })
+        .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); done(); })
+        .catch(failed);
+    });
+  }
+
   /* ---------- YouTube poster fallback ----------
      Not every video has a maxresdefault.jpg. When one is missing YouTube
      does NOT 404 — it answers 200 with a 120x90 grey placeholder, so an
@@ -630,6 +750,7 @@
        question again would throw away the one piece of intent we have. */
     var PACKAGES = {
       "single-story":        "Single Story, ready to start",
+      "channel-partner":     "Channel Partner, ready to start",
       /* The slug is still story-series so links already shared keep working;
          only the name a person reads changed, to Premium Story. */
       "story-series":        "Premium Story, ready to start",

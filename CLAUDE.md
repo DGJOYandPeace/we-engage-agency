@@ -29,8 +29,10 @@ feature → Village Treasures teaser → **`#offer`** → testimonials → CTA.
   hero: the hero makes the promise, the close sets up the form ("Let us hear
   from you. We'll take it from there.") and answers the questions someone has
   before they start it. Keep the two from repeating each other.
-- `#offer` is the permission layer. Four public cards, one open at a time.
-  **Its copy is governed by `OFFER.md`, not by this file.** A fifth
+- `/brief.html` is the unlisted deeper project brief: same Basin endpoint,
+  never a dollar figure, a failed send keeps the answers and offers email.
+- `#offer` is the permission layer. Five public cards, one open at a time.
+  **Its copy is governed by `OFFER.md`, not by this file.** A further
   engagement, Annual Partnership, exists but is never public: no card, no
   price, no reachable `?package=`. It lives in `.private/ops-reference.md`.
 - BTS mosaic replaced a portrait of David. The section claims people finish a
@@ -112,7 +114,7 @@ Root-absolute asset paths, because Pages serves it at whatever URL was missed.
    anywhere.
 2. **No page dead-ends.**
 3. **No pricing logic in the repo.** The only figures in site code are the
-   four card prices ($8,750 / $20,000 / $12,500 / $6,500) and the Strategy
+   five card prices ($8,750 / $20,000 / $12,500 / $6,500 / $7,500) and the Strategy
    Session price ($1,500). The Fractional Producer's lighter one-session
    cadence came off the card and is internal now, like the Annual
    Partnership. Add-on prices, adders, tier logic and internal unit rates
